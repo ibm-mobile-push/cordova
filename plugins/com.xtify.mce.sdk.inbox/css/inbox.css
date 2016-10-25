@@ -1,0 +1,18 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5725E28, 5725I03
+ *
+ * © Copyright IBM Corp. 2011, 2015
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+/* Inbox Support */
+#inboxMessages .messagePreview { border-bottom: 1px solid gray; padding: 5px; }
+#inboxMessages { padding: 0; }
+#inboxMessageContent { padding: 0; }
+#delete { background: red; color: white; position: absolute; right: 0; width: 50px; top: 0; bottom: 0; text-align: center; font-size: 12px; }
+#refresh_button { padding: 5px !important; }
+#up_button { float: right; padding: 10px;}
+#down_button { float: right; padding: 10px;}
+#delete_button { float: right; padding: 10px;}

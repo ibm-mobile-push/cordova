@@ -1,0 +1,30 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.xtify.silverpop"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.xtify.silverpop"
+        },
+        "cordova-plugin-actionsheet": {
+            "PACKAGE_NAME": "com.xtify.silverpop"
+        },
+        "cordova-plugin-email-composer": {
+            "PACKAGE_NAME": "com.xtify.silverpop"
+        },
+        "cordova-plugin-android-support-v7-appcompat": {
+            "PACKAGE_NAME": "com.xtify.silverpop"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.xtify.silverpop"
+        }
+    },
+    "dependent_plugins": {}
+}

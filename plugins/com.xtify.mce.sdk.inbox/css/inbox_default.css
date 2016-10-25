@@ -1,0 +1,20 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5725E28, 5725I03
+ *
+ * © Copyright IBM Corp. 2011, 2015
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+/* Inbox Default Template Support */
+#inboxMessages .defaultPreview { height: 44px; position: relative; }
+#inboxMessages .defaultPreview .subject { font-size: 20px; height: 24px; overflow: hidden;}
+#inboxMessages .defaultPreview .message { color: gray; height: 20px; }
+#inboxMessages .defaultPreview .expired .date { color: red; }
+#inboxMessages .defaultPreview .expired { opacity: 0.5; }
+#inboxMessages .defaultPreview .new { font-weight: bold; }
+#inboxMessages .defaultPreview .date { color: blue; float: right; }
+#inboxMessage .defaultDisplay .subject { padding: 5px; }
+#inboxMessage .defaultDisplay .date { padding: 5px; border-bottom: 1px solid gray; color: gray; font-size: smaller; }
+#inboxMessage .defaultDisplay .content { padding: 5px; }

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed Materials - Property of IBM
+ 5725E28, 5725I03
+ © Copyright IBM Corp. 2015, 2016
+ US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ -->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.inapp"
+version="3.2.7">
+    <name>InApp Action for IBM MCE Cordova Plugin</name>
+    <author>IBM MCE</author>
+    <description>InApp Action for IBM MCE Push Services</description>
+    <keywords>mce</keywords>
+    <license>Apache 2.0 License</license>
+
+    <hook type="after_plugin_install" src="scripts/after_plugin_install.js" />
+
+    <engines>
+        <engine name="cordova" version=">=3.0" />
+    </engines>
+
+    <js-module src="MCEInAppPlugin.js" name="MCEInAppPlugin">
+        <clobbers target="MCEInAppPlugin" />
+    </js-module>
+  
+    <js-module src="js/MCEInAppBanner.js" name="MCEInAppBanner">
+        <clobbers target="MCEInAppBanner" />
+    </js-module>
+
+    <js-module src="js/MCEInAppMedia.js" name="MCEInAppMedia">
+        <clobbers target="MCEInAppMedia" />
+    </js-module>
+
+    <js-module src="js/MCEInAppVideo.js" name="MCEInAppVideo">
+        <clobbers target="MCEInAppVideo" />
+    </js-module>
+
+    <js-module src="js/MCEInAppImage.js" name="MCEInAppImage">
+        <clobbers target="MCEInAppImage" />
+    </js-module>
+  
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="MCEInAppPlugin" >
+                <param name="ios-package" value="MCEInAppPlugin"/>
+            </feature>
+        </config-file>    
+        <header-file src="src/ios/MCEInAppPlugin.h" />
+        <source-file src="src/ios/MCEInAppPlugin.m" />
+    </platform>
+    <platform name="android">     
+    
+        <config-file target="res/xml/config.xml" parent="/widget">
+            <feature name="MCEInAppPlugin">
+                <param name="android-package" value="com.ibm.mce.plugin.cordova.inapp.MceCordovaInAppPlugin" />
+            </feature>
+        </config-file>
+   
+        <source-file src="src/android/ibm-mobile-push-android-cordova-inapp-3.6.1.6.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-inapp-3.6.1.6.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-sdk-plugin-inapp-3.6.1.6.jar" target-dir="libs" framework="false" />
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver android:name="com.ibm.mce.sdk.js.inapp.JsonMceBroadcastReceiver">
+              <intent-filter>
+                <action android:name="com.ibm.mce.sdk.NOTIFIER" />
+              </intent-filter>
+            </receiver>
+        </config-file>
+
+    </platform>
+</plugin>

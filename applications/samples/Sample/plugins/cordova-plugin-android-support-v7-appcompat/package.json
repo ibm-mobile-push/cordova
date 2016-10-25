@@ -1,0 +1,31 @@
+{
+  "name": "cordova-plugin-android-support-v7-appcompat",
+  "version": "1.0.0",
+  "description": "Cordova plugin to add android-support-v7-appcompat.jar to Cordova/PhoneGap project",
+  "cordova": {
+    "id": "cordova-plugin-android-support-v7-appcompat",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/floatinghotpot/cordova-plugin-android-support-v7-appcompat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/floatinghotpot/cordova-plugin-android-support-v7-appcompat/issues"
+  },
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "google",
+    "android",
+    "support",
+    "v7",
+    "appcompat"
+  ],
+  "author": {
+    "name": "Google"
+  },
+  "license": "MIT"
+}
