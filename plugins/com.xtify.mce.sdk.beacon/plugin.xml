@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed Materials - Property of IBM
+ 5725E28, 5725I03
+ © Copyright IBM Corp. 2011, 2015
+ US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ -->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.beacon"
+version="3.2.9">
+    <name>IBM MCE iBeacon Cordova Plugin</name>
+    <author>IBM MCE</author>
+    <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
+    <keywords>mce</keywords>
+    <license>Apache 2.0 License</license>
+    <engines>
+        <engine name="cordova" version=">=3.0" />
+    </engines>
+    <js-module src="MCEBeaconPlugin.js" name="MCEBeaconPlugin">
+        <clobbers target="MCEBeaconPlugin" />
+    </js-module>
+    <preference name="UUID" value="10000" />
+    <platform name="ios">
+        <header-file src="src/ios/MCEBeaconPlugin.h" />
+        <source-file src="src/ios/MCEBeaconPlugin.m" />
+        <config-file target="config.xml" parent="/*">
+            <feature name="MCEBeaconPlugin" >
+                <param name="ios-package" value="MCEBeaconPlugin"/>
+            </feature>
+            <preference name="beacon" value="true" />
+            <preference name="beaconUUID" value="$UUID" />
+        </config-file>
+    </platform>
+    <platform name="android">
+        <source-file src="src/android/ibm-mobile-push-android-cordova-beacon-3.6.4.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-beacon-3.6.4.0.jar" target-dir="libs" framework="false" />
+
+        <config-file target="res/xml/config.xml" parent="/widget">
+            <feature name="MCEBeaconPlugin">
+                <param name="android-package" value="com.ibm.mce.plugin.cordova.beacon.MceCordovaBeaconPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:name="uuid" android:value="$UUID" />
+            <service android:name="com.ibm.mce.sdk.beacons.MceBluetoothScanner" />
+            <receiver android:name="com.ibm.mce.sdk.js.beacon.JsonMceBroadcastReceiver">
+                <intent-filter>
+                    <action android:name="com.ibm.mce.sdk.NOTIFIER" />
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+    </platform>
+</plugin>

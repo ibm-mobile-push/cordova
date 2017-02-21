@@ -6,26 +6,29 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk"
-version="3.2.7">
-  <name>IBM MCE Cordova Plugin</name>
-  <author>IBM MCE</author>
-  <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
-  <keywords>mce</keywords>
-  <license>Apache 2.0 License</license>
-  <engines>
-    <engine name="cordova" version=">=3.0" />
-  </engines>
-  <js-module src="MCEPlugin.js" name="MCEPlugin">
-    <clobbers target="MCEPlugin" />
-  </js-module>
+version="3.2.9">
+    <name>IBM MCE Cordova Plugin</name>
+    <author>IBM MCE</author>
+    <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
+    <keywords>mce</keywords>
+    <license>Apache 2.0 License</license>
+    <engines>
+        <engine name="cordova" version=">=3.0" />
+    </engines>
+    <js-module src="MCEPlugin.js" name="MCEPlugin">
+        <clobbers target="MCEPlugin" />
+    </js-module>
+    <preference name="LOGLEVEL" value="error" />
+    <preference name="SERVER_URL" value="https://api.ibm.xtify.com" />
+    <preference name="IOS_PROD_APPKEY" />
+    <preference name="IOS_DEV_APPKEY" />
+    <preference name="CUSTOM_ACTIONS" />
+    <preference name="SENDER_ID" />
+    <preference name="ANDROID_APPKEY" />
     <platform name="ios">
-        <preference name="LOGLEVEL" value="error" />
-        <preference name="SERVER_URL" />
-        <preference name="IOS_PROD_APPKEY" />
-        <preference name="IOS_DEV_APPKEY" />
-        <preference name="CUSTOM_ACTIONS" />
-        <framework src="src/ios/IBMMobilePush.framework" custom="true" />
+        <framework src="src/ios/IBMMobilePush.framework" embed="true" custom="true" />
         <framework src="CoreTelephony.framework" />
+        <framework src="CoreLocation.framework" />
         <framework src="libsqlite3.dylib" />
         <header-file src="src/ios/AppDelegate+MCE.h" />
         <source-file src="src/ios/AppDelegate+MCE.m" />
@@ -49,13 +52,12 @@ version="3.2.7">
                 <string>remote-notification</string>
             </array>
         </config-file>
+
+        <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
+            <string>Be notified when interesting things are nearby</string>
+        </config-file>
     </platform>
     <platform name="android">
-        <preference name="loglevel" value="$LOGLEVEL" />
-        <preference name="SENDER_ID" />
-        <preference name="ANDROID_APPKEY" />
-        <preference name="CUSTOM_ACTIONS" />
-        <preference name="SERVER_URL" />
         <!--  Sets the changes that need to be made to AndroidManifest.xml
                 in the selected parent element. For separate parents, make sure
                 to use separate <config-file> elements with the proper parent.
@@ -95,14 +97,6 @@ version="3.2.7">
             <meta-data
                 android:name="customActions"
                 android:value="$CUSTOM_ACTIONS" />
-            <!--
-                 MCE server definition:
-                "us" - american server
-                "eu" - EU server
-                "qa" - QA Server
-                The value can also be a custom url like "https://myserver.api,mce.com"
-                If not defined, the default value is "us"
-            -->
             <meta-data
                 android:name="mceServer"
                 android:value="$SERVER_URL" />
@@ -172,8 +166,8 @@ version="3.2.7">
         <source-file src="src/android/x86/librealm-jni.so" target-dir="libs/x86" framework="false" />
         <source-file src="src/android/gson-2.2.4.jar" target-dir="libs" framework="false" />
         <source-file src="src/android/realm-0.82.1.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-sdk-3.6.1.6.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-3.6.1.6.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-cordova-3.6.1.6.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-sdk-3.6.4.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-3.6.4.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-3.6.4.0.jar" target-dir="libs" framework="false" />
     </platform>
 </plugin>

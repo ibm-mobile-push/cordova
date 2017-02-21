@@ -8,21 +8,20 @@
  * deposited with the U.S. Copyright Office.
  */
 
-#import <IBMMobilePush/IBMMobilePush.h>
 #import "MCETemplate.h"
 
-/** The MCETemplateRegistry class is used to specify what template names a template class can provide previews and full screen displays for.
- 
- ### Parent Class
- MCESingleton handles singleton object creation and retrieval. Singleton objects of subclasses of MCESingleton can be retrieved through the sharedInstance method. */
+/** The MCETemplateRegistry class is used to specify the template names for which a template class can provide previews and full screen displays. */
 
-@interface MCETemplateRegistry : MCESingleton
+@interface MCETemplateRegistry : NSObject
+
+/** This method returns the singleton object of this class. */
++ (instancetype)sharedInstance;
 
 /** The registerTemplate:handler: method records a specific object to handle templates of the specified name.
  
  @param templateName An identifier that this template can handle.
  @param handler The template that provides the preview cells and full page display objects. Must implement the MCETemplate protocol.
- @return Returns TRUE if the template was able to register and FALSE otherwise.
+ @return Returns TRUE if the template can register and FALSE otherwise.
 */
 -(BOOL) registerTemplate:(NSString*)templateName hander:(NSObject*)handler;
 
@@ -32,12 +31,6 @@
  */
 -(id<MCETemplateDisplay>) viewControllerForTemplate: (NSString*)templateName;
 
-/** The tableView:blankCellForTemplate: method returns a blank table view cell for the specified template name. This queries the registered template object for the blank table view cell to display the preview content.
-
- @param tableView A table view that will display the preview content.
- @param name An identifier tying a template name to an object that handles it.
- */
--(UITableViewCell *) tableView: (UITableView*)tableView blankCellForTemplate: (NSString*)templateName;
 
 /** The handlerForTemplate: method returns the registered handler for the specified template name.
 

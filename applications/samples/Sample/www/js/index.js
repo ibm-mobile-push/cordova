@@ -11,6 +11,129 @@ $(function () {
     checkDensity();
 });
 
+// Geofence Page
+
+function setupLocationPage()
+{
+    MCEGeofencePlugin.geofenceEnabled(function (status) {
+        if(status)
+            $('#geofences .status').html('ENABLED').addClass('enabled');
+        else
+            $('#geofences .status').html('DISABLED').addClass('disabled');
+    });
+
+    MCEGeofencePlugin.geofencesNear(function (geofences) {
+    }, 10, 10, 1000);
+
+    MCELocationPlugin.setLocationUpdatedCallback(function () {
+        $(document).trigger('locationUpdate');
+    });
+
+    $(document).on('pageshow', '#geofences', function (e, data) {
+        setTimeout(function () {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15
+            });
+
+            var mappedCircles = {};
+            function updateGeofences(geolocate)
+            {
+                var newGeofences = new Set();
+                MCEGeofencePlugin.geofencesNear(function (geofences) {
+                    geofences.forEach(function (geofence) {
+                        var key = JSON.stringify(geofence);
+                        newGeofences.add(key);
+                        if(!mappedCircles[key])
+                        {                        
+                            mappedCircles[key] = new google.maps.Circle({
+                                strokeColor: '#0000FF',
+                                strokeOpacity: 0.8,
+                                strokeWeight: 2,
+                                fillColor: '#0000FF',
+                                fillOpacity: 0.35,
+                                map: map,
+                                center: new google.maps.LatLng(geofence.latitude, geofence.longitude),
+                                radius: geofence.radius});
+                        }
+                    });
+
+                    var deleteMaps = [];
+                    for(key in mappedCircles)
+                    {
+                        if(!newGeofences.has(key))
+                        {
+                            mappedCircles[key].setMap(null);
+                            deleteMaps.push(key);
+                        }
+                    }
+
+                    deleteMaps.forEach(function (map) {
+                        delete mappedCircles[map];
+                    });
+
+                }, geolocate.lat(), geolocate.lng(), 1000);
+            }   
+
+            var lastLocation;
+
+            $(document).on('locationUpdate', function () {
+                updateGeofences(lastLocation);
+            });
+
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                lastLocation = geolocate;
+                var currentLocation = new google.maps.Marker({
+                    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                    icon: 'images/blue.png',
+                    map: map
+                });
+
+                updateGeofences(geolocate);
+                map.setCenter(geolocate);
+
+                var autoCenter = true;
+                $('#gps_refresh').click(function () {
+                    MCELocationPlugin.syncLocations();
+                });
+                
+                $('#gps_button').css('opacity',1).click(function () {
+                    autoCenter = !autoCenter;
+                    if(autoCenter)
+                    {
+                        $('#gps_button').css('opacity', 1);
+                        map.setCenter(lastLocation);
+                    }
+                    else
+                    {
+                        $('#gps_button').css('opacity', 0.5);
+                    }
+                });
+                
+
+                map.addListener('drag', function() {
+                    autoCenter = false;
+                    $('#gps_button').css('opacity',0.5);
+                });
+
+                navigator.geolocation.watchPosition(function (position) {
+                    var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    lastLocation = geolocate;
+                    if(autoCenter)
+                    {
+                        map.setCenter(geolocate);
+                        map.setZoom(15);
+                    }
+                    currentLocation.setPosition(geolocate);
+
+                    updateGeofences(geolocate);
+                });
+            });
+
+        }, 250);
+    });
+}
+
 document.addEventListener("backbutton", function () {
     if($.mobile.activePage.is('#sample')){
         navigator.app.exitApp();
@@ -20,7 +143,63 @@ document.addEventListener("backbutton", function () {
     }
 }, false);
 
+function setupBeaconPage()
+{
+    var lastRegions = [];
+    var beaconStatus = {};
+
+    $('#beacon_refresh').click(function () {
+        MCELocationPlugin.syncLocations();
+    });
+
+    function updateBeaconRegions()
+    {
+        $('#beaconRegions').empty()
+        lastRegions.forEach(function (region){
+            $('#beaconRegions').append($('<li>', {'class': 'ui-li-static ui-body-inherit ui-grid-a'})
+                .append( $('<div>', {'class':'ui-block-a'}).html( region.major ) )
+                .append( $('<div>', {'class':'ui-block-b right'}).html( beaconStatus[region.major] ? beaconStatus[region.major] : '' ) )
+            );
+        });
+    }
+
+    MCEBeaconPlugin.beaconEnabled(function (status) {
+        if(status)
+            $('#beacons .status').html('ENABLED').addClass('enabled');
+        else
+            $('#beacons .status').html('DISABLED').addClass('disabled');
+    });
+
+    MCEBeaconPlugin.beaconUUID(function (uuid) {
+        $('#uuid').html(uuid)
+    });
+
+    $(document).on('locationUpdate', function () {
+        MCEBeaconPlugin.beaconRegions(function (regions) {
+            lastRegions = regions;
+            updateBeaconRegions();
+        });
+    });
+
+    MCEBeaconPlugin.setBeaconEnterCallback(function (beacon) {
+        beaconStatus[beacon.major] = 'Entered Minor ' + beacon.minor;
+        updateBeaconRegions();
+    });
+
+    MCEBeaconPlugin.setBeaconExitCallback(function (beacon) {
+        beaconStatus[beacon.major] = 'Exited Minor ' + beacon.minor;
+        updateBeaconRegions();
+    });
+
+    MCEBeaconPlugin.beaconRegions(function (regions) {
+        lastRegions = regions;
+        updateBeaconRegions();
+    });
+}
+
+
 document.addEventListener('deviceready', function () {
+    setupLocationPage();
     FastClick.attach(document.body);
     setupInAppPage();
     setupDefaults();
@@ -30,6 +209,7 @@ document.addEventListener('deviceready', function () {
     setupEventPage();
     setupAttributesPage();
     setupPhoneHomePage();
+    setupBeaconPage();
     
     if(navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i))
     {

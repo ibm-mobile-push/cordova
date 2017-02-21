@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Licensed Materials - Property of IBM
  *
  * 5725E28, 5725I03
@@ -49,15 +49,14 @@ var filestocopy = [
 var fs = require('fs');
 var path = require('path');
  
-// no need to configure below
-var rootdir = process.argv[process.argv.length - 1];
- 
+var rootdir = path.join(process.env.PWD, "plugins", "com.xtify.mce.sdk.inapp");
+
 filestocopy.forEach(function(obj) {
     Object.keys(obj).forEach(function(key) {
-        var val = obj[key];
-        var srcfile = path.join(rootdir, key);
-        var destfile = path.join("www", val);
-        var destdir = path.dirname(destfile);
+    var val = obj[key];
+	var srcfile = path.join(rootdir, key);
+	var destfile = path.join(process.env.PWD, "www", val);
+	var destdir = path.dirname(destfile);
         
         if(!fs.existsSync(destdir)) {
             console.log("mkdir " + destdir);

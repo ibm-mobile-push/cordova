@@ -15,6 +15,7 @@
 #import "AppDelegate+MCE.h"
 #import "MCEEventCallbackQueue.h"
 #import <IBMMobilePush/MCEPhoneHomeManager.h>
+#import <IBMMobilePush/MCELocationClient.h>
 
 @interface MCEPlugin ()
 @property NSMutableDictionary * actionCallbacks;
@@ -83,7 +84,7 @@
     self.actionCallbacks = [NSMutableDictionary dictionary];
     self.categoryCallbacks = [NSMutableDictionary dictionary];
     self.attributeClient = [[MCEAttributesClient alloc] init];
-    self.eventClient = [[MCEEventClient alloc] initAsync];
+    self.eventClient = [[MCEEventClient alloc] init];
     self.attributeQueue = [[MCEAttributesQueueManager alloc] init];
     
     self.rfc3339DateFormatter = [[NSDateFormatter alloc] init];
@@ -584,6 +585,8 @@ void sendAttributeCallback(NSString* callback, NSError*error, id <CDVCommandDele
         {
             result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         }
+        result.keepCallback = @TRUE;        
         [delegate sendPluginResult:result callbackId:callback];
     }
 }
+

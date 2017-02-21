@@ -7,6 +7,50 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
+.rowhead
+{
+    font-size:18px;
+    font-weight:bold; 
+}
+
+#geofences .ui-header
+{
+    position: relative;
+}
+
+#gps_button
+{
+    padding: 5px !important;
+}
+
+#gps_refresh
+{
+    padding: 5px !important;
+}
+
+#geofences li
+{
+    border: none !important;
+}
+
+.status.enabled
+{
+    color: green;
+}
+
+.status.disabled
+{
+    color: red;
+}
+
+#map
+{
+    left: 0;
+    right: 10px;
+    bottom:10px;
+    top:80px;
+}
+
 * { text-shadow: none !important; }
 
 .ui-body
@@ -47,7 +91,7 @@ div.copyright
 
 div.header {
     background-image: url(images/logo.png);
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-position: center center;
     background-size: 200px 100px;
     height:100px;

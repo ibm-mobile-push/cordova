@@ -13,10 +13,10 @@
 /** The MCEInAppTemplate protocol specifies the required methods for templates to register with the MCEInAppTemplateRegistry. */
 @protocol MCEInAppTemplate <NSObject>
 
-/** The displayInAppMessage: method should configure your view controller to display the message specified and present it to the user. */
+/** The displayInAppMessage: method configures your view controller to display the specified message and present the message to the user. */
 -(void) displayInAppMessage:(MCEInAppMessage*)message;
 
-/** The registerTemplate method should register this template with the MCEInAppTemplateRegistry. */
+/** The registerTemplate method registers this template with the MCEInAppTemplateRegistry. */
 +(void) registerTemplate;
 
 @end

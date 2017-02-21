@@ -8,7 +8,7 @@
  * deposited with the U.S. Copyright Office.
  */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 @class MCEInboxMessage;
 @class MCERichContent;
 
@@ -32,7 +32,6 @@
 
 /** The setRichContent:inboxMessage: method is used to set the current rich content and inbox message values that the UITableViewCell should display.
  
- @param richContent The MCERichContent object that represents the content to display.
  @param inboxMessage The MCEInboxMessage object that represents a single message in the inbox.
 */
 
@@ -40,26 +39,23 @@
 
 @end
 
-/** The MCETemplate protocol is required for the template class to implement. It provides the UIViewController and UITableViewCells to display the content of inbox messages. */
+/** The MCETemplate protocol is required to implement the template class. It provides the UIViewController and UITableViewCells to display the content of inbox messages. */
 @protocol MCETemplate
 
-/** The displayViewController method returns a UIViewController that implements the MCETemplateDisplay protocol used to display a single message full screen.
+/** The displayViewController method returns a UIViewController that implements the MCETemplateDisplay protocol that displays a single message on a full screen.
  
- @return Returns a UIViewController that implements the MCETemplateDisplay protocol used to display a single message full screen.
+ @return Returns a UIViewController that implements the MCETemplateDisplay protocol that displays a single message on a full screen.
  */
 -(id<MCETemplateDisplay>)displayViewController;
 
-/** The shouldDisplayInboxMessage: method is used to see if a message should be openable. This is typically used to disallow expired messages from being opened, but can also be used for any other criteria.
+/** The shouldDisplayInboxMessage: method determines that a message can be opened. This is typically used to disallow expired messages from being opened but can also be used for other criteria.
  
  @param inboxMessage A MCEInboxMessage object.
- @return TRUE if the message should be openable, FALSE otherwise.
+ @return TRUE if the message can be opened, FALSE otherwise.
  */
 -(BOOL)shouldDisplayInboxMessage: (MCEInboxMessage*)inboxMessage;
 
 -(UITableViewCell *) cellForTableView: (UITableView*)tableView inboxMessage:(MCEInboxMessage *)inboxMessage indexPath:(NSIndexPath*)indexPath;
-
-/** The registerTemplate class method is a helper method that registers this class with the MCETemplateRegistry. */
-+(void) registerTemplate;
 
 /** Provides a method for changing the height of the UITableView content preview cells.
 

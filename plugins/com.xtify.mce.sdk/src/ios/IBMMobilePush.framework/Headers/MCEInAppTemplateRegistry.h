@@ -8,15 +8,14 @@
  * deposited with the U.S. Copyright Office.
  */
 
-#import <Foundation/Foundation.h>
-#import "MCESingleton.h"
+@import Foundation;
 #import "MCEInAppTemplate.h"
 
-/** The MCEInAppTemplateRegistry class is used to tie inApp template names to display handlers.
- 
- ### Parent Class
- MCESingleton handles singleton object creation and retrieval. Singleton objects of subclasses of MCESingleton can be retrieved via the sharedInstance method. */
-@interface MCEInAppTemplateRegistry : MCESingleton
+/** The MCEInAppTemplateRegistry class is used to tie inApp template names to display handlers. */
+@interface MCEInAppTemplateRegistry : NSObject
+
+/** This method returns the singleton object of this class. */
++ (instancetype)sharedInstance;
 
 /** The registerTemplate:handler: method records a specific object to handle templates of the specified name.
  

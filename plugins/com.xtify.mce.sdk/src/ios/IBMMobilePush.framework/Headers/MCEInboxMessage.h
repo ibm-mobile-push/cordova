@@ -1,18 +1,18 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2015
+ * © Copyright IBM Corp. 2014, 2016
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
  * deposited with the U.S. Copyright Office.
  */
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @class MCEResultSet;
 
-/** The MCEInboxMessage class represents an inbox message that was sent to the user. The richContentId can be used to query the MCERichContent object that represents the content of the message. */
+/** The MCEInboxMessage class represents an inbox message that is sent to the user. The richContentId can be used to query the MCERichContent object that represents the content of the message. */
 @interface MCEInboxMessage : NSObject
 
 /** inboxMessageId is a unique identifier for the inbox message. */
@@ -21,10 +21,10 @@
 /** richContentId is a unique identifier for the rich content. */
 @property NSString * richContentId;
 
-/** expirationDate is the specified date that the message should no longer be available for viewing. */
+/** expirationDate is the date that the message is no longer available for viewing. */
 @property NSDate * expirationDate;
 
-/** sendDate is the date that the message was sent to the user. */
+/** sendDate is the date that the message is sent to the user. */
 @property NSDate * sendDate;
 
 /** template is an identifier that matches a template object in the MCETemplateRegistry. */
@@ -33,10 +33,12 @@
 /** attribution is an identifier that specifies a campaign. */
 @property NSString * attribution;
 
+@property NSString * mailingId;
+
 /** isRead is TRUE when the message has been read and FALSE by default. */
 @property (readonly) BOOL isRead;
 
-/** isDeleted is TRUE when the message should no longer show up in the message list and is FALSE by default. */
+/** isDeleted is TRUE when the message no longer displays in the message list and is FALSE by default. */
 @property (readonly) BOOL isDeleted;
 
 

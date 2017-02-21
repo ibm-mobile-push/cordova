@@ -9,8 +9,9 @@
 
 #import <IBMMobilePush/IBMMobilePush.h>
 
-@interface MCEEventCallbackQueue : MCESingleton
+@interface MCEEventCallbackQueue : NSObject
 
++ (instancetype)sharedInstance;
 -(void) queueEvents: (NSArray*)events error: (NSString*)error;
 -(void) queueEvents: (NSArray*)events;
 -(void) dequeueWithCallback: (void (^)(NSArray * events, NSString * error))callbackBlock;

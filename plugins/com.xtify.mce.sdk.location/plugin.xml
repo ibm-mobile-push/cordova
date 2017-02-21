@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed Materials - Property of IBM
+ 5725E28, 5725I03
+ © Copyright IBM Corp. 2011, 2015
+ US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ -->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.location"
+version="3.2.9">
+    <name>IBM MCE Location Cordova Plugin</name>
+    <author>IBM MCE</author>
+    <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
+    <keywords>mce</keywords>
+    <license>Apache 2.0 License</license>
+    <engines>
+        <engine name="cordova" version=">=3.0" />
+    </engines>
+    <js-module src="MCELocationPlugin.js" name="MCELocationPlugin">
+        <clobbers target="MCELocationPlugin" />
+    </js-module>
+    <preference name="SYNC_RADIUS" value="100000" />
+    <preference name="SYNC_INTERVAL" value="600" />
+    <platform name="ios">
+        <header-file src="src/ios/MCELocationPlugin.h" />
+        <source-file src="src/ios/MCELocationPlugin.m" />
+        <config-file target="config.xml" parent="/*">
+            <feature name="MCELocationPlugin" >
+                <param name="ios-package" value="MCELocationPlugin"/>
+            </feature>
+            <preference name="locationSyncRadius" value="$SYNC_RADIUS" />
+            <preference name="locationSyncInterval" value="$SYNC_INTERVAL" />
+        </config-file>
+        <config-file target="*-Info.plist" parent="UIBackgroundModes">
+            <array>
+                <string>fetch</string>
+                <string>location</string>
+            </array>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
+            <string>Be notified when interesting things are nearby</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
+            <string>Be notified when interesting things are nearby</string>
+        </config-file>
+    </platform>
+    <platform name="android">
+        <source-file src="src/android/ibm-mobile-push-android-cordova-location-3.6.4.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-location-3.6.4.0.jar" target-dir="libs" framework="false" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <!-- MCE properties -->
+            <meta-data
+                android:name="refAreaRadius"
+                android:value="$SYNC_RADIUS" />
+            <meta-data
+                android:name="syncInterval"
+                android:value="$SYNC_INTERVAL" />
+        </config-file>
+
+        <config-file target="res/xml/config.xml" parent="/widget">
+            <feature name="MCELocationPlugin">
+                <param name="android-package" value="com.ibm.mce.plugin.cordova.location.MceCordovaLocationPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="com.ibm.mce.sdk.location.LocationRetrieveService" />
+            <service android:name="com.ibm.mce.sdk.location.LocationEventsIntentService" />
+            <service android:name="com.ibm.mce.sdk.location.LocationSyncAlarmListener" />
+            <receiver android:name="com.ibm.mce.sdk.js.location.JsonMceBroadcastReceiver">
+                <intent-filter>
+                    <action android:name="com.ibm.mce.sdk.NOTIFIER" />
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+    </platform>
+</plugin>

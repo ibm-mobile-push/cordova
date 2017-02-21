@@ -111,7 +111,19 @@
 -(void)appDidFinishLaunching:(NSNotification*)notification
 {
     UIApplication * application = [UIApplication sharedApplication];
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    
+    if([UNUserNotificationCenter class])
+    {
+        UNUserNotificationCenter * center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate=MCENotificationDelegate.sharedInstance;
+        NSUInteger options = UNAuthorizationOptionAlert|UNAuthorizationOptionSound|UNAuthorizationOptionBadge|UNAuthorizationOptionCarPlay;
+        [center requestAuthorizationWithOptions: options completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            // Enable or disable features based on authorization.
+            NSLog(@"Notifications response %d, %@", granted, error);
+            [application registerForRemoteNotifications];
+        }];
+    }
+    else if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
     {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
         [application registerUserNotificationSettings:settings];
@@ -262,7 +274,33 @@
     NSString * baseUrl = [self settingForKey:@"baseUrl"];
     NSNumber * autoInitialize = (NSNumber*)[self settingForKey:@"autoInitialize"];
     
-    [[MCESdk sharedInstance] handleApplicationLaunchWithConfig: @{@"loglevel":loglevel,@"baseUrl":baseUrl, @"appKey":@{ @"prod":prodAppKey, @"dev":devAppKey}, @"autoInitialize":autoInitialize}];
+    NSMutableDictionary * config = [@{@"loglevel":loglevel,@"baseUrl":baseUrl, @"appKey":@{ @"prod":prodAppKey, @"dev":devAppKey}, @"autoInitialize":autoInitialize, @"location": [NSMutableDictionary dictionary] } mutableCopy];
+    if([[self settingForKey:@"geofence"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
+    {
+        config[@"location"][@"geofence"] = [NSMutableDictionary dictionary];
+    }
+
+    NSNumber * geofenceSyncInterval = (NSNumber*)[self settingForKey:@"locationSyncInterval"];
+    NSNumber * geofenceSyncRadius = (NSNumber*)[self settingForKey:@"locationSyncRadius"];
+    if(geofenceSyncRadius && geofenceSyncInterval)
+    {
+        config[@"location"][@"sync"] = [NSMutableDictionary dictionary];
+        config[@"location"][@"sync"][@"syncRadius"] = geofenceSyncRadius;
+        config[@"location"][@"sync"][@"syncInterval"] = geofenceSyncInterval;
+    }
+
+    if([[self settingForKey:@"ibeacon"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
+    {
+        config[@"location"][@"ibeacon"] = [NSMutableDictionary dictionary];
+
+        NSString * beaconUUID = (NSString*)[self settingForKey:@"beaconUUID"];
+        if(beaconUUID)
+        {
+            config[@"location"][@"ibeacon"][@"UUID"] = beaconUUID;
+        }
+    }
+
+    [[MCESdk sharedInstance] handleApplicationLaunchWithConfig: config];
     // This actually calls the original init method over in AppDelegate. Equivilent to calling super
     // on an overrided method, this is not recursive, although it appears that way. neat huh?
     return [self swizzled_init];
@@ -342,7 +380,8 @@
     [[MCEInAppManager sharedInstance] processPayload: userInfo];
 
     [self executeCategory:@{@"payload":userInfo, @"identifier": identifier}];
-    [[MCESdk sharedInstance] processCategoryNotification: userInfo identifier:identifier fetchCompletionHandler:completionHandler];
+    [[MCESdk sharedInstance] processCategoryNotification: userInfo identifier:identifier];
+    completionHandler();
 }
 
 // This is where remote notifications get delivered for iOS7 or iOS8+ without categories or when choice is not made
@@ -362,7 +401,8 @@
     [[MCEInAppManager sharedInstance] processPayload: userInfo];
 
     NSLog(@"This is where remote notifications get delivered for iOS when didReceiveRemoteNotification:fetchCompletionHandler: is defined.");
-    [[MCESdk sharedInstance] presentDynamicCategoryNotification: userInfo fetchCompletionHandler:completionHandler];
+    [[MCESdk sharedInstance] presentDynamicCategoryNotification: userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 
@@ -376,7 +416,8 @@
 // This is where dynamic categories get delivered on iOS 8+ when a choice is made
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler
 {
-    [[MCESdk sharedInstance] processDynamicCategoryNotification: notification.userInfo identifier:identifier fetchCompletionHandler:completionHandler];
+    [[MCESdk sharedInstance] processDynamicCategoryNotification: notification.userInfo identifier:identifier userText:nil];
+    completionHandler();
 }
 
 -(BOOL)needsRegistration

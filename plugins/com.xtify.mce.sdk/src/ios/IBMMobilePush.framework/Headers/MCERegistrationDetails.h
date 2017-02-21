@@ -6,9 +6,9 @@
  * divested of its trade secrets, irrespective of what has been
  * deposited with the U.S. Copyright Office.
  */
-#import <Foundation/Foundation.h>
+@import Foundation;
 
-/** MCERegistrationDetails provides the userId, channelId and pushToken registration details. You may wish to store the userId and channelId on your servers if you wish to directly target users and channels. */
+/** MCERegistrationDetails provides the userId, channelId and pushToken registration details. You might want to store the userId and channelId on your servers if you want to directly target users and channels. */
 @interface MCERegistrationDetails : NSObject
 
 /** Retrieve userId 
@@ -43,7 +43,7 @@
 
 /** Set pushToken
  
- @param pushToken a new NSData to use as the push token
+ @param deviceToken a new NSData to use as the push token
  */
 +(void)setPushToken:(NSData*)deviceToken;
 

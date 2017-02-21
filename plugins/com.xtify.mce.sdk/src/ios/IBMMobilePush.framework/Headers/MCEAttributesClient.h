@@ -13,35 +13,32 @@
 // Copyright (c) 2013 Xtify. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "MCEClient.h"
 
-/** AttributesCallback is the callback block format for the methods in this class. If an error object is returned the request has failed and will need to be retried if desired.  */
-typedef void (^AttributesCallback)(NSError* error);
-
-/** The MCEAttributesClient class can be used to set, update or delete user or channel attributes on the server directly. If an error occurs while this happens, it is the responsibility of the developer to resend the request if desired. If the developer wishes the SDK to handle retries for him, he should use the MCEAttributesQueueManager class instead. */
+/** The MCEAttributesClient class can be used to set, update, or delete user or channel attributes directly on the server. If an error occurs, you can resend the request, if desired; or, if you want the SDK to handle retries, use the MCEAttributesQueueManager class. */
 @interface MCEAttributesClient : MCEClient
 
 /** @name Channel Methods */
 
-/** The setChannelAttributes method will replace all the channel attributes on the server with the specified set of attribute key value pairs */
-- (void)setChannelAttributes:(NSDictionary *)attributes completion:(AttributesCallback)callback;
+/** The setChannelAttributes method replaces channel attributes on the server with the specified set of attribute key value pairs. */
+- (void)setChannelAttributes:(NSDictionary *)attributes completion:(void (^)(NSError * error))callback;
 
-/** The updateChannelAttributes method will add or update the specified attributes to the channel record on the server */
-- (void)updateChannelAttributes:(NSDictionary *)attributes completion:(AttributesCallback)callback;
+/** The updateChannelAttributes method adds or updates the specified attributes to the channel record on the server. */
+- (void)updateChannelAttributes:(NSDictionary *)attributes completion:(void (^)(NSError * error))callback;
 
-/** The deleteChannelAttributes method will remove the specified keys from the channel record on the server */
-- (void)deleteChannelAttributes:(NSArray *)attributeKeys completion:(AttributesCallback)callback;
+/** The deleteChannelAttributes method removes the specified keys from the channel record on the server. */
+- (void)deleteChannelAttributes:(NSArray *)attributeKeys completion:(void (^)(NSError * error))callback;
 
 /** @name User Methods */
 
-/** The setUserAttributes method will replace all the user attributes on the server with the specified set of attribute key value pairs */
-- (void)setUserAttributes:(NSDictionary *)attributes completion:(AttributesCallback)callback;
+/** The setUserAttributes method replaces the user attributes on the server with the specified set of attribute key value pairs. */
+- (void)setUserAttributes:(NSDictionary *)attributes completion:(void (^)(NSError * error))callback;
 
-/** The updateUserAttributes method will add or update the specified attributes to the user record on the server */
-- (void)updateUserAttributes:(NSDictionary *)attributes completion:(AttributesCallback)callback;
+/** The updateUserAttributes method adds or updates the specified attributes to the user record on the server. */
+- (void)updateUserAttributes:(NSDictionary *)attributes completion:(void (^)(NSError * error))callback;
 
-/** The deleteUserAttributes method will remove the specified keys from the user record on the server */
-- (void)deleteUserAttributes:(NSArray *)attributeKeys completion:(AttributesCallback)callback;
+/** The deleteUserAttributes method removes the specified keys from the user record on the server. */
+- (void)deleteUserAttributes:(NSArray *)attributeKeys completion:(void (^)(NSError * error))callback;
 
 @end

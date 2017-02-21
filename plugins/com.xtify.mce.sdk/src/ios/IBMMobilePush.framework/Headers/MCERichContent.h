@@ -8,7 +8,7 @@
  * deposited with the U.S. Copyright Office.
  */
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @class MCEResultSet;
 
@@ -18,13 +18,13 @@
 /** richContentId is a unique identifier for the rich content. */
 @property NSString * richContentId;
 
-/** content is a where all the template's content is stored. The elements of this dictionary are undefined by the SDK and consist of whatever is sent. */
+/** content is where the template's content is stored. The elements of this dictionary are undefined by the SDK and consist of whatever is sent. */
 @property NSDictionary * content;
 
-/** The richContentFromResultSet:error: method returns an allocated and initialized MCERichContent object with the contents of a database row or an NSError object if an issue occurred.
+/** The richContentFromResultSet:error: method returns an allocated and initialized MCERichContent object with the contents of a database row or an NSError object if a problem occurs.
 
  @param results A database result set.
- @param error An error object describing what when wrong.
+ @param error An error object describing the problem. 
  @return Returns the initialized object.
  */
 +(instancetype)richContentFromResultSet:(MCEResultSet*)results error: (NSError **)error;
@@ -32,7 +32,7 @@
 /** The initWithResultSet:error: method returns an initialized MCERichContent object with the contents of a database row or an NSError object if an issue occurred.
 
  @param results A database result set.
- @param error An error object describing what went wrong.
+ @param error An error object describing the problem. 
  @return Returns the initialized object.
 */
 -(instancetype)initWithResultSet:(MCEResultSet*)results error: (NSError **)error;
