@@ -377,7 +377,7 @@
 {
     NSNumber * ibmRegistered = [NSNumber numberWithBool: MCERegistrationDetails.mceRegistered];
     NSNumber * providerRegistered = [NSNumber numberWithBool: MCERegistrationDetails.apsRegistered];
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsMultipart:@[ ibmRegistered, providerRegistered, @"APNS"]];
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsMultipart:@[ ibmRegistered, providerRegistered, @"APNS"]];
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
