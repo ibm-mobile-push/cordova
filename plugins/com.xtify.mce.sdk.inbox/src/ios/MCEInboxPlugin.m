@@ -18,11 +18,10 @@
 {
     NSDictionary * action = [command argumentAtIndex:0];
     NSString * inboxMessageId = [command argumentAtIndex:1];
-    [[MCEInboxDatabase sharedInstance] fetchInboxMessageId:inboxMessageId completion:^(MCEInboxMessage *inboxMessage, NSError *error) {
-        NSDictionary * payload = @{@"mce":@{@"attribution":inboxMessage.attribution}};
-        NSDictionary * attributes = @{@"richContentId": inboxMessage.richContentId, @"inboxMessageId": inboxMessage.inboxMessageId} ;
-        [[MCEActionRegistry sharedInstance] performAction:action forPayload:payload source: InboxSource attributes:attributes];
-    }];
+    MCEInboxMessage *inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId:inboxMessageId];
+    NSDictionary * payload = @{@"mce":@{@"attribution":inboxMessage.attribution}};
+    NSDictionary * attributes = @{@"richContentId": inboxMessage.richContentId, @"inboxMessageId": inboxMessage.inboxMessageId} ;
+    [[MCEActionRegistry sharedInstance] performAction:action forPayload:payload source: InboxSource attributes:attributes];
 }
 
 -(void)setInboxMessagesUpdateCallback: (CDVInvokedUrlCommand*)command
@@ -35,37 +34,36 @@
 {
     NSString* inboxMessageId = [command argumentAtIndex:0];
     
-    [[MCEInboxDatabase sharedInstance] fetchInboxMessageId:inboxMessageId completion:^(MCEInboxMessage *inboxMessage, NSError *error) {
-        if(error)
-        {
-            NSLog(@"Could not fetch inbox message");
-            return;
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: [self packageInboxMessage: inboxMessage] ];
-            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-        });
-    }];
+    MCEInboxMessage * inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId:inboxMessageId];
+    if(!inboxMessage)
+    {
+        NSLog(@"Could not fetch inbox message");
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: [self packageInboxMessage: inboxMessage] ];
+        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    });
 }
 
 -(void)fetchRichContentId: (CDVInvokedUrlCommand*)command
 {
     NSString* richContentId = [command argumentAtIndex:0];
     
-    MCERichContent *richContent = [[MCEInboxDatabase sharedInstance] fetchRichContentId:richContentId];
-    if(!richContent)
+    MCEInboxMessage *inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithRichContentId: richContentId];
+    if(!inboxMessage)
     {
         NSLog(@"Could not fetch rich content");
         return;
     }
     
-    CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self packageRichContent:richContent]];
+    CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self packageRichContent:inboxMessage]];
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
--(NSDictionary*)packageRichContent:(MCERichContent*)richContent
+-(NSDictionary*)packageRichContent:(MCEInboxMessage*)inboxMessage
 {
-    return @{ @"richContentId":richContent.richContentId, @"content": richContent.content };
+    return @{ @"richContentId":inboxMessage.richContentId, @"content": inboxMessage.content };
 }
 
 -(NSDictionary*)packageInboxMessage:(MCEInboxMessage*)message
@@ -77,29 +75,29 @@
 {
     NSString* richContentId = [command argumentAtIndex:0];
     
-    [[MCEInboxDatabase sharedInstance] fetchInboxMessageViaRichContentId:richContentId completion:^(MCEInboxMessage *inboxMessage, NSError *error) {
-        if(error)
-        {
-            NSLog(@"An error occured while getting the rich content %@", [error localizedDescription]);
-            return;
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self packageInboxMessage:inboxMessage]];
-            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-        });
-    }];
-    
+    MCEInboxMessage *inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithRichContentId:richContentId];
+    if(!inboxMessage)
+    {
+        NSLog(@"An error occured while getting the rich content");
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self packageInboxMessage:inboxMessage]];
+        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    });
 }
 
 -(void)readMessageId:(CDVInvokedUrlCommand*)command
 {
     NSString * inboxMessageId = [command argumentAtIndex:0];
-    [[MCEInboxDatabase sharedInstance] setReadForInboxMessageId: inboxMessageId];
+    MCEInboxMessage * inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId:inboxMessageId];
+    inboxMessage.isRead=TRUE;
 }
 -(void)deleteMessageId:(CDVInvokedUrlCommand*)command
 {
     NSString * inboxMessageId = [command argumentAtIndex:0];
-    [[MCEInboxDatabase sharedInstance] setDeletedForInboxMessageId: inboxMessageId];
+    MCEInboxMessage * inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId:inboxMessageId];
+    inboxMessage.isDeleted=TRUE;
 }
 
 -(void)sendInboxMessages:(NSArray*)messages
@@ -122,14 +120,13 @@
 
 -(void)retrieveInboxMessages:(CDVInvokedUrlCommand*)command
 {
-    [[MCEInboxDatabase sharedInstance] fetchInboxMessages: ^(NSMutableArray * inboxMessages, NSError * error) {
-        if(error)
-        {
-            NSLog(@"Could not fetch inbox messages");
-            return;
-        }
-        [self sendInboxMessages:inboxMessages];
-    } ascending:TRUE];
+    NSArray * inboxMessages = [[MCEInboxDatabase sharedInstance] inboxMessagesAscending:TRUE];
+    if(!inboxMessages)
+    {
+        NSLog(@"Could not fetch inbox messages");
+        return;
+    }
+    [self sendInboxMessages:inboxMessages];
 }
 
 @end

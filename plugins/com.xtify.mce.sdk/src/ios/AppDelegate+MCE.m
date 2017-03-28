@@ -275,7 +275,7 @@
     NSNumber * autoInitialize = (NSNumber*)[self settingForKey:@"autoInitialize"];
     
     NSMutableDictionary * config = [@{@"loglevel":loglevel,@"baseUrl":baseUrl, @"appKey":@{ @"prod":prodAppKey, @"dev":devAppKey}, @"autoInitialize":autoInitialize, @"location": [NSMutableDictionary dictionary] } mutableCopy];
-    if([[self settingForKey:@"geofence"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
+    if([self settingForKey:@"geofence"] && [[self settingForKey:@"geofence"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
     {
         config[@"location"][@"geofence"] = [NSMutableDictionary dictionary];
     }
@@ -289,7 +289,7 @@
         config[@"location"][@"sync"][@"syncInterval"] = geofenceSyncInterval;
     }
 
-    if([[self settingForKey:@"ibeacon"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
+    if([self settingForKey:@"geofence"] && [[self settingForKey:@"ibeacon"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
     {
         config[@"location"][@"ibeacon"] = [NSMutableDictionary dictionary];
 

@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.displayweb"
-version="3.2.9">
+version="3.3.0">
   <name>Display Web Action for IBM MCE Cordova Plugin</name>
   <author>IBM MCE</author>
   <description>Display Web Action for IBM MCE Push Services</description>
@@ -35,7 +35,7 @@ version="3.2.9">
                 android:name="com.ibm.mce.sdk.plugin.displayweb.DisplayWebViewActivity">
             </activity>            
         </config-file>
-        <source-file src="src/android/ibm-mobile-push-android-sdk-plugin-displayweb-3.6.4.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-sdk-plugin-displayweb-3.6.5.0.jar" target-dir="libs" framework="false" />
         <source-file src="src/android/assets/mce/plugins/displayweb.json" target-dir="assets/mce/plugins" framework="false" />
         <source-file src="src/android/res/drawable-hdpi/ic_action_back.png" target-dir="res/drawable-hdpi" framework="false" />
         <source-file src="src/android/res/drawable-hdpi/ic_action_forward.png" target-dir="res/drawable-hdpi" framework="false" />

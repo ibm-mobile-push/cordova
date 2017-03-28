@@ -43,7 +43,6 @@ FOUNDATION_EXPORT const unsigned char IBMMobilePushVersionString[];
 #import <IBMMobilePush/MCENotificationDelegate.h>
 #import <IBMMobilePush/MCEPhoneHomeManager.h>
 #import <IBMMobilePush/MCERegistrationDetails.h>
-#import <IBMMobilePush/MCERichContent.h>
 #import <IBMMobilePush/MCESdk.h>
 #import <IBMMobilePush/MCETemplate.h>
 #import <IBMMobilePush/MCETemplateRegistry.h>

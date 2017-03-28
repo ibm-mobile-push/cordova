@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.geofence"
-version="3.2.9">
+version="3.3.0">
     <name>IBM MCE Geofence Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -29,8 +29,8 @@ version="3.2.9">
         </config-file>
     </platform>
     <platform name="android">
-        <source-file src="src/android/ibm-mobile-push-android-cordova-geofence-3.6.4.0.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-geofence-3.6.4.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-geofence-3.6.5.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-geofence-3.6.5.0.jar" target-dir="libs" framework="false" />
 
         <config-file target="res/xml/config.xml" parent="/widget">
             <feature name="MCEGeofencePlugin">
