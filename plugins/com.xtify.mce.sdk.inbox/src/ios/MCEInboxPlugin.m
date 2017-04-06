@@ -46,29 +46,9 @@
     });
 }
 
--(void)fetchRichContentId: (CDVInvokedUrlCommand*)command
-{
-    NSString* richContentId = [command argumentAtIndex:0];
-    
-    MCEInboxMessage *inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithRichContentId: richContentId];
-    if(!inboxMessage)
-    {
-        NSLog(@"Could not fetch rich content");
-        return;
-    }
-    
-    CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self packageRichContent:inboxMessage]];
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-}
-
--(NSDictionary*)packageRichContent:(MCEInboxMessage*)inboxMessage
-{
-    return @{ @"richContentId":inboxMessage.richContentId, @"content": inboxMessage.content };
-}
-
 -(NSDictionary*)packageInboxMessage:(MCEInboxMessage*)message
 {
-    return @{ @"inboxMessageId": message.inboxMessageId, @"richContentId": message.richContentId, @"expirationDate": @([message.expirationDate timeIntervalSince1970]*1000),  @"sendDate": @([message.sendDate timeIntervalSince1970]*1000),  @"template": message.template, @"attribution": message.attribution, @"isRead": @(message.isRead), @"isDeleted": @(message.isDeleted)};
+    return @{ @"inboxMessageId": message.inboxMessageId, @"richContentId": message.richContentId, @"expirationDate": @([message.expirationDate timeIntervalSince1970]*1000),  @"sendDate": @([message.sendDate timeIntervalSince1970]*1000),  @"template": message.template, @"attribution": message.attribution, @"isRead": @(message.isRead), @"isDeleted": @(message.isDeleted), @"content": message.content };
 }
 
 -(void)fetchInboxMessageViaRichContentId:(CDVInvokedUrlCommand*)command;

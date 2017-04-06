@@ -32,33 +32,13 @@ Allow Cordova Inbox Plugin to respond to changes in the inbox list.
 exports.setInboxMessagesUpdateCallback = function(callback) {
     cordova.exec(callback, this.error, "MCEInboxPlugin", "setInboxMessagesUpdateCallback", []);
 }
-    
+
 /**
 Allows Cordova Inbox Plugin to initiate a sync with the server. Will execute function 
 registered with setInboxMessagesUpdateCallback when complete.
 */
 exports.syncInboxMessages = function() {
     cordova.exec(null, this.error, "MCEInboxPlugin", "syncInboxMessages", []);
-}
-
-/**
-@typedef RichContent 
-@property richContentId {string} Unique identifier for rich content
-@property content {object} Template defined details of message
-*/
-
-/**
-@callback richContentCallback
-@param messages {RichContent} Contents of message
-*/
-
-/**
-Allows Cordova Inbox Plugin to get the rich content by providing the rich content id.
-@param richContentId {string} Unique identifier for rich content
-@param callback {richContentCallback} The callback that handles the response
-*/
-exports.fetchRichContentId = function(richContentId, callback) {
-    cordova.exec(callback, this.error, "MCEInboxPlugin", "fetchRichContentId", [richContentId]);
 }
 
 /**

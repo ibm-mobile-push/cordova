@@ -9,19 +9,21 @@
 
 /* Inbox Default Template Support */
 MCEInbox.setInboxRegistry("default", {
-    'actions':function(richContent) { return richContent["content"]["actions"] },
-    'preview': function (richContent, inboxMessage) {
+    'actions': function(inboxMessage) { return inboxMessage["content"]["actions"] },
+    'preview': function(inboxMessage) {
         return "<div open class='" + (inboxMessage['isExpired'] ? "expired" : "") + "'>" +
-                    "<div>" + 
-                        "<div class='date'>" + (inboxMessage['isExpired'] ? "Expired: " + inboxMessage['expirationDate'].toLocaleDateString() : inboxMessage['sendDate'].toLocaleDateString()) + "</div>" +
-                        "<div class='subject " + (inboxMessage['isRead'] ? "old" : "new") + "'>" + richContent['content']['messagePreview']['subject'] + "</div>" +
-                    "</div>" +
-                    "<div class='message'>" + richContent['content']['messagePreview']['previewContent'] + "</div>" +
-                "</div>";
- }, 'display': function (richContent, inboxMessage) {
-     return "<div class='defaultDisplay'>" +
-        "<div class='subject'>" + richContent['content']['messagePreview']['subject'] + "</div>" +
-        "<div class='date'>" + inboxMessage['sendDate'].toLocaleString() + "</div>" +
-        "<div class='content'>" + richContent['content']['messageDetails']["richContent"] + "</div>" +
-     "</div>";
-}});
+            "<div>" +
+            "<div class='date'>" + (inboxMessage['isExpired'] ? "Expired: " + inboxMessage['expirationDate'].toLocaleDateString() : inboxMessage['sendDate'].toLocaleDateString()) + "</div>" +
+            "<div class='subject " + (inboxMessage['isRead'] ? "old" : "new") + "'>" + inboxMessage['content']['messagePreview']['subject'] + "</div>" +
+            "</div>" +
+            "<div class='message'>" + inboxMessage['content']['messagePreview']['previewContent'] + "</div>" +
+            "</div>";
+    },
+    'display': function(inboxMessage) {
+        return "<div class='defaultDisplay'>" +
+            "<div class='subject'>" + inboxMessage['content']['messagePreview']['subject'] + "</div>" +
+            "<div class='date'>" + inboxMessage['sendDate'].toLocaleString() + "</div>" +
+            "<div class='content'>" + inboxMessage['content']['messageDetails']["richContent"] + "</div>" +
+            "</div>";
+    }
+});
