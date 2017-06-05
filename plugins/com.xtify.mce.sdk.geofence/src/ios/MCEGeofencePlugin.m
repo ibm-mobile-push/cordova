@@ -27,12 +27,13 @@
     NSNumber * longitude = [command argumentAtIndex:1];
     NSNumber * radius = [command argumentAtIndex:2];
 
-    NSSet * geofences = [[MCELocationDatabase sharedInstance] geofencesNearLatitude: [latitude doubleValue] longitude: [longitude doubleValue] radius: [radius doubleValue]];
-
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
+    NSSet * geofences = [[MCELocationDatabase sharedInstance] geofencesNearCoordinate: coord radius: [radius doubleValue]];
+    
     NSMutableArray * geofenceArray = [NSMutableArray array];
-    for(CLCircularRegion * geofence in geofences)
+    for(MCEGeofence * geofence in geofences)
     {
-        [geofenceArray addObject: @{ @"latitude": @(geofence.center.latitude), @"longitude": @(geofence.center.longitude), @"radius": @(geofence.radius) } ];
+        [geofenceArray addObject: @{ @"latitude": @(geofence.latitude), @"longitude": @(geofence.longitude), @"radius": @(geofence.radius) } ];
     }
 
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsArray: geofenceArray];

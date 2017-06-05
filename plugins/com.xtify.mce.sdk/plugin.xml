@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk"
-version="3.3.0.1">
+version="3.3.1">
     <name>IBM MCE Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -26,7 +26,7 @@ version="3.3.0.1">
     <preference name="SENDER_ID" />
     <preference name="ANDROID_APPKEY" />
     <platform name="ios">
-        <framework src="src/ios/IBMMobilePush.framework" embed="true" custom="true" />
+        <framework src="src/ios/IBMMobilePush.framework" custom="true" />
         <framework src="CoreTelephony.framework" />
         <framework src="CoreLocation.framework" />
         <framework src="libsqlite3.dylib" />
@@ -159,15 +159,9 @@ version="3.3.0.1">
                 <param name="android-package" value="com.ibm.mce.plugin.cordova.MceCordovaPlugin" />
             </feature>
         </config-file>
-        <source-file src="src/android/arm64-v8a/librealm-jni.so" target-dir="libs/arm64-v8a" framework="false" />
-        <source-file src="src/android/armeabi/librealm-jni.so" target-dir="libs/armeabi" framework="false" />
-        <source-file src="src/android/armeabi-v7a/librealm-jni.so" target-dir="libs/armeabi-v7a" framework="false" />
-        <source-file src="src/android/mips/librealm-jni.so" target-dir="libs/mips" framework="false" />
-        <source-file src="src/android/x86/librealm-jni.so" target-dir="libs/x86" framework="false" />
         <source-file src="src/android/gson-2.2.4.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/realm-0.82.1.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-sdk-3.6.5.0.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-3.6.5.0.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-cordova-3.6.5.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-sdk-3.6.6.1.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-3.6.6.1.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-3.6.6.1.jar" target-dir="libs" framework="false" />
     </platform>
 </plugin>

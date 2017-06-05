@@ -29,19 +29,27 @@
                             "count": 1
                         },
                         {
-                            "xml": "<preference default=\"17+\" name=\"xwalkVersion\" />",
+                            "xml": "<preference name=\"xwalkVersion\" value=\"23+\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<preference default=\"--disable-pull-to-refresh-effect\" name=\"xwalkCommandLine\" />",
+                            "xml": "<preference name=\"xwalkLiteVersion\" value=\"xwalk_core_library_canary:17+\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<preference default=\"embedded\" name=\"xwalkMode\" />",
+                            "xml": "<preference name=\"xwalkCommandLine\" value=\"--disable-pull-to-refresh-effect\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<preference default=\"true\" name=\"xwalkMultipleApk\" />",
+                            "xml": "<preference name=\"xwalkMode\" value=\"embedded\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"xwalkMultipleApk\" value=\"true\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"android-minSdkVersion\" value=\"16\" />",
                             "count": 1
                         }
                     ],
@@ -99,6 +107,11 @@
             "PACKAGE_NAME": "com.xtify.silverpop"
         },
         "cordova-plugin-crosswalk-webview": {
+            "XWALK_VERSION": "23+",
+            "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+            "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+            "XWALK_MODE": "embedded",
+            "XWALK_MULTIPLEAPK": "true",
             "PACKAGE_NAME": "com.xtify.silverpop"
         }
     },
@@ -138,6 +151,6 @@
         "cordova-plugin-actionsheet": "2.2.2",
         "cordova-plugin-email-composer": "0.8.3",
         "cordova-plugin-android-support-v7-appcompat": "1.0.0",
-        "cordova-plugin-crosswalk-webview": "1.6.1"
+        "cordova-plugin-crosswalk-webview": "2.3.0"
     }
 }
