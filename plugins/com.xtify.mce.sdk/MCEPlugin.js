@@ -90,33 +90,32 @@ Allow Cordova developer to know when events are sent to the server.
 If the event is sent while the application is not active, the callback will be queued
 until the next time this method is called to register a callback handler
     
-@param callback {eventQueueSuccessCallback} The callback that handles the response
-@param callback {eventQueueFailureCallback} The callback that handles the response
+@param successCallback {eventQueueSuccessCallback} The callback that handles the response
+@param errorCallback {eventQueueFailureCallback} The callback that handles the response
 */
 exports.setEventQueueCallbacks = function(successCallback, errorCallback) {
-        cordova.exec(function (events) {
-            successCallback(MCEPlugin.translateEvents(events));
-        }, function (eventsAndError) {
-            MCEPlugin.translateEvents(eventsAndError['events']);
-            errorCallback(eventsAndError);
-        }, "MCEPlugin", "setEventQueueCallbacks", []);
-    }
-    
+    cordova.exec(function(events) {
+        successCallback(MCEPlugin.translateEvents(events));
+    }, function(eventsAndError) {
+        MCEPlugin.translateEvents(eventsAndError['events']);
+        errorCallback(eventsAndError);
+    }, "MCEPlugin", "setEventQueueCallbacks", []);
+}
+
 /** 
 Internal function to translate timestamps from integers or strings to JavaScript date objects
 @param events {Array.<Event>} List of events to translate
 @return {Array.<Event>} List of events translated
 */
 exports.translateEvents = function(events) {
-    for(index in events)
-    {
+    for (index in events) {
         var event = events[index];
         event['timestamp'] = new Date(event['timestamp']);
-        events[index]=event;
+        events[index] = event;
     }
     return events;
 }
-    
+
 /**
 @callback attributeQueueSuccessCallback
 @param result {Object}
@@ -134,7 +133,7 @@ exports.translateEvents = function(events) {
 @param result.attributes {Object} Key value pairs that were updated if the operation was set or update
 @param result.keys {Array} A list of keys that were deleted when the operation is delete
 @param result.error {string} Description of the error
-*/ 
+*/
 
 /**
 Allow Cordova developer to know when attributes are sent to the server.
@@ -144,26 +143,24 @@ queued until the next time this method is called to register a callback handler
 @param callback {attributeQueueFailureCallback} The callback that handles the response
 */
 exports.setAttributeQueueCallbacks = function(successCallback, errorCallback) {
-        cordova.exec(function (details) { 
-            details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
-            successCallback(details);
-        }, function (details) {
-            details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
-            errorCallback(details)
-        }, "MCEPlugin", "setAttributeQueueCallbacks", []);
-    }
-    
+    cordova.exec(function(details) {
+        details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
+        successCallback(details);
+    }, function(details) {
+        details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
+        errorCallback(details)
+    }, "MCEPlugin", "setAttributeQueueCallbacks", []);
+}
+
 /** 
 Internal function to translate a dictionary of attributes with dates represented as integers back into JavaScript date objects
 @param attributes {Array.<Object>} Attributes to be converted
 @return {Array.<Object>}
 */
-exports.translateAttributesCallback = function (attributes) {
-    for(key in attributes)
-    {
+exports.translateAttributesCallback = function(attributes) {
+    for (key in attributes) {
         var value = attributes[key]
-        if(value["mcedate"])
-        {
+        if (value["mcedate"]) {
             attributes[key] = new Date(value["mcedate"]);
         }
     }
@@ -174,7 +171,7 @@ exports.translateAttributesCallback = function (attributes) {
 @callback getBadgeCallback
 @param badgeCount {integer}
 */
-    
+
 /**
 Allow Cordova developer to get the current badge count
 @param callback {getBadgeCallback} The callback that handles the response
@@ -222,20 +219,18 @@ Allow Cordova developer to determine if the device has registered with the push 
 exports.isRegistered = function(callback) {
     cordova.exec(callback, this.error, "MCEPlugin", "isRegistered", []);
 }
-    
+
 /** 
 Internal function to translate a dictionary of attributes with dates into integers so they can be processed by SDK
 @param attributes {Array.<Object>} Attributes to be converted
 @return {Array.<Object>}
 */
-exports.translateAttributes = function (attributes) {
+exports.translateAttributes = function(attributes) {
     var toClass = {}.toString;
-    for(key in attributes)
-    {
+    for (key in attributes) {
         var value = attributes[key]
-        if(toClass.call(value) == "[object Date]")
-        {
-            attributes[key] = {"mcedate":value.getTime()};
+        if (toClass.call(value) == "[object Date]") {
+            attributes[key] = { "mcedate": value.getTime() };
         }
     }
     return attributes;
@@ -246,19 +241,25 @@ Allow Cordova developer to replace all channel attributes with a specified set o
 This method also includes automatic retrying of failures
 This method has no callbacks, but the status of the request will be sent to the JavaScript callback that was registered with setAttributeQueueCallbacks or if none were registered, it will be queued.
 @param attributes {Object} a list of attributes in key, value format
+
+@deprecated This method is deprecated.
 */
 exports.queueSetChannelAttributes = function(attributes) {
+    console.log("Calling deprecated method queueSetChannelAttributes.");
     attributes = MCEPlugin.translateAttributes(attributes);
     cordova.exec(null, this.error, "MCEPlugin", "queueSetChannelAttributes", [attributes]);
 }
-    
+
 /**
 Allow Cordova developer to replace all user attributes with a specified set of attributes
 This method also includes automatic retrying of failures
 This method has no callbacks, but the status of the request will be sent to the JavaScript callback that was registered with setAttributeQueueCallbacks or if none were registered, it will be queued.
 @param attributes {Object} a list of attributes in key, value format
+
+@deprecated This method is deprecated.
 */
 exports.queueSetUserAttributes = function(attributes) {
+    console.log("Calling deprecated method queueSetUserAttributes.");
     attributes = MCEPlugin.translateAttributes(attributes);
     cordova.exec(null, this.error, "MCEPlugin", "queueSetUserAttributes", [attributes]);
 }
@@ -273,7 +274,7 @@ exports.queueUpdateChannelAttributes = function(attributes) {
     attributes = MCEPlugin.translateAttributes(attributes);
     cordova.exec(null, this.error, "MCEPlugin", "queueUpdateChannelAttributes", [attributes]);
 }
-    
+
 /** 
 Allow Cordova developer to update any user attributes while leaving the existing attributes alone
 This method also includes automatic retrying of failures
@@ -284,17 +285,20 @@ exports.queueUpdateUserAttributes = function(attributes) {
     attributes = MCEPlugin.translateAttributes(attributes);
     cordova.exec(null, this.error, "MCEPlugin", "queueUpdateUserAttributes", [attributes]);
 }
-    
+
 /**
 Allow Cordova developer to remove specific channel attributes
 This method also includes automatic retrying of failures
 This method has no callbacks, but the status of the request will be sent to the JavaScript callback that was registered with setAttributeQueueCallbacks or if none were registered, it will be queued.
 @param attributes {Array} a list of attribute keys to be removed
+
+@deprecated This method is deprecated.
 */
 exports.queueDeleteChannelAttributes = function(attributes) {
+    console.log("Calling deprecated method queueDeleteChannelAttributes.");
     cordova.exec(null, this.error, "MCEPlugin", "queueDeleteChannelAttributes", [attributes]);
 }
-    
+
 /** 
 Allow Cordova developer to remove specific user attributes
 This method also includes automatic retrying of failures
@@ -319,8 +323,11 @@ Allow Cordova developer to replace all channel attributes with a specified set o
 @param attributes {Object} a list of attributes in key, value format
 @param successCallback {basicSuccessCallback}
 @param failureCallback {basicFailureCallback}
+
+@deprecated This method is deprecated.
 */
 exports.setChannelAttributes = function(attributes, successCallback, errorCallback) {
+    console.log("Calling deprecated method setChannelAttributes.");
     attributes = MCEPlugin.translateAttributes(attributes);
     cordova.exec(successCallback, errorCallback, "MCEPlugin", "setChannelAttributes", [attributes]);
 }
@@ -330,51 +337,66 @@ Allow Cordova developer to replace all user attributes with a specified set of a
 @param attributes {Object} a list of attributes in key, value format
 @param successCallback {basicSuccessCallback}
 @param failureCallback {basicFailureCallback}
+
+@deprecated This method is deprecated.
 */
 exports.setUserAttributes = function(attributes, successCallback, errorCallback) {
+    console.log("Calling deprecated method setUserAttributes.");
     attributes = MCEPlugin.translateAttributes(attributes);
     cordova.exec(successCallback, errorCallback, "MCEPlugin", "setUserAttributes", [attributes]);
 }
-    
+
 /** 
 Allow Cordova developer to update any channel attributes while leaving the existing attributes alone
 @param attributes {Object} a list of attributes in key, value format
 @param successCallback {basicSuccessCallback}
 @param failureCallback {basicFailureCallback}
+
+@deprecated This method is deprecated.
 */
 exports.updateChannelAttributes = function(attributes, successCallback, errorCallback) {
+    console.log("Calling deprecated method updateChannelAttributes.");
     attributes = MCEPlugin.translateAttributes(attributes);
     cordova.exec(successCallback, errorCallback, "MCEPlugin", "updateChannelAttributes", [attributes]);
 }
-    
+
 /**
 Allow Cordova developer to update any user attributes while leaving the existing  attributes alone
 @param attributes {Object} a list of attributes in key, value format
 @param successCallback {basicSuccessCallback}
 @param failureCallback {basicFailureCallback}
+
+@deprecated This method is deprecated, please use queueUpdateUserAttributes.
 */
 exports.updateUserAttributes = function(attributes, successCallback, errorCallback) {
+    console.log("Calling deprecated method updateUserAttributes.");
     attributes = MCEPlugin.translateAttributes(attributes);
     cordova.exec(successCallback, errorCallback, "MCEPlugin", "updateUserAttributes", [attributes]);
 }
-    
+
 /**
 Allow Cordova developer to remove specific channel attributes
 @param attributes {Array} a list of attribute keys to be removed
 @param successCallback {basicSuccessCallback}
 @param failureCallback {basicFailureCallback}
+
+@deprecated This method is deprecated.
 */
 exports.deleteChannelAttributes = function(attributes, successCallback, errorCallback) {
+    console.log("Calling deprecated method deleteChannelAttributes.");
     cordova.exec(successCallback, errorCallback, "MCEPlugin", "deleteChannelAttributes", [attributes]);
 }
-    
+
 /**
 Allow Cordova developer to remove specific user attributes
 @param attributes {Array} a list of attribute keys to be removed
 @param successCallback {basicSuccessCallback}
 @param failureCallback {basicFailureCallback}
+
+@deprecated This method is deprecated, please use queueDeleteUserAttributes instead.
 */
 exports.deleteUserAttributes = function(attributes, successCallback, errorCallback) {
+    console.log("Calling deprecated method deleteUserAttributes.");
     cordova.exec(successCallback, errorCallback, "MCEPlugin", "deleteUserAttributes", [attributes]);
 }
 
@@ -394,8 +416,11 @@ Allow Cordova developer to send an event to the IBM infrastructure.
 @param event {Event} Event to be sent to the server
 @param successCallback {basicSuccessCallback}
 @param failureCallback {basicFailureCallback}
-*/    
+
+@deprecated This method is deprecated, please use queueAddEvent instead.
+*/
 exports.addEvent = function(event, successCallback, errorCallback) {
+    console.log("Calling deprecated method addEvent.");
     event['timestamp'] = event['timestamp'].getTime();
     cordova.exec(successCallback, errorCallback, "MCEPlugin", "addEvent", [event]);
 }
@@ -407,7 +432,7 @@ Allow Cordova developer to set the badge count for the iOS homescreen
 exports.setBadge = function(badge) {
     cordova.exec(null, this.error, "MCEPlugin", "setBadge", [badge]);
 }
-    
+
 /**
 Allow Cordova developer to change the Android icon
 @param drawableName {string} Name of a drawable image in app bundle

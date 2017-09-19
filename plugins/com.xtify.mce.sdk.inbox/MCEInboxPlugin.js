@@ -6,6 +6,11 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
+/**
+IBM MCE Inbox Cordova Plugin
+@module MCEInboxPlugin
+*/
+
 cordova.exec(null, null, "MCEInboxPlugin", null, []);
 
 /**

@@ -6,6 +6,11 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
+/**
+IBM MCE InApp Cordova Plugin
+@module MCEInAppPlugin
+*/
+
 cordova.exec(null, null, "MCEInAppPlugin", null, []);
 
 /**
@@ -58,46 +63,30 @@ exports.executeInAppAction = function(action) {
     cordova.exec(null, this.error, "MCEInAppPlugin", "executeInAppAction", [action]);
 }
 
-exports.addImageRatio = function (name)
-{
-    if(window.devicePixelRatio>2)
-    {
+exports.addImageRatio = function(name) {
+    if (window.devicePixelRatio > 2) {
         return name + '@3x.png';
-    }
-    else if(window.devicePixelRatio>1)
-    {
+    } else if (window.devicePixelRatio > 1) {
         return name + '@2x.png';
-    }
-    else
-    {
+    } else {
         return name + '.png';
     }
 }
 
-exports.processColor = function(colorString, defaultColor)
-{
-    if(colorString != undefined)
-    {
-        if(typeof colorString == "string")
-        {
-            if(colorString.substr(0,2) == "0x")
-            {
+exports.processColor = function(colorString, defaultColor) {
+    if (colorString != undefined) {
+        if (typeof colorString == "string") {
+            if (colorString.substr(0, 2) == "0x") {
                 return "#" + colorString.substr(2, 6);
-            }
-            else if(colorString.substr(0,1) != "#")
-            {
+            } else if (colorString.substr(0, 1) != "#") {
                 return "#" + colorString;
-            }
-            else
-            {
+            } else {
                 return colorString;
             }
-        }
-        else if(colorString['red'] != undefined && colorString['green'] != undefined && colorString['blue'] != undefined)
-        {
-            var red = parseFloat(colorString['red'])*255;
-            var green = parseFloat(colorString['green'])*255;
-            var blue = parseFloat(colorString['blue'])*255;
+        } else if (colorString['red'] != undefined && colorString['green'] != undefined && colorString['blue'] != undefined) {
+            var red = parseFloat(colorString['red']) * 255;
+            var green = parseFloat(colorString['green']) * 255;
+            var blue = parseFloat(colorString['blue']) * 255;
             return "RGBA(" + red + "," + green + "," + blue + ",1)";
         }
     }

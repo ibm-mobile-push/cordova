@@ -35,15 +35,30 @@
     NSString* inboxMessageId = [command argumentAtIndex:0];
     
     MCEInboxMessage * inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId:inboxMessageId];
-    if(!inboxMessage)
+    if(inboxMessage)
     {
-        NSLog(@"Could not fetch inbox message");
-        return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: [self packageInboxMessage: inboxMessage] ];
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+        });
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: [self packageInboxMessage: inboxMessage] ];
-        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-    });
+    else
+    {
+        __block bool complete = false;
+        id observer = [[NSNotificationCenter defaultCenter] addObserverForName:@"MCESyncDatabase" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note)
+                       {
+                           MCEInboxMessage * inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId:inboxMessageId];
+                           if(inboxMessage && !complete)
+                           {
+                               complete = true;
+                               [[NSNotificationCenter defaultCenter] removeObserver:observer];
+                               CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: [self packageInboxMessage: inboxMessage] ];
+                               [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+                           }
+                       }];
+        
+        [[MCEInboxQueueManager sharedInstance] syncInbox];
+    }
 }
 
 -(NSDictionary*)packageInboxMessage:(MCEInboxMessage*)message
@@ -110,3 +125,4 @@
 }
 
 @end
+

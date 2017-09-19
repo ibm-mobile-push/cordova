@@ -1,6 +1,6 @@
 {
     "name": "Display-Web-Action-for-IBM-MCE-Cordova-Plugin",
-    "version": "3.3.1",
+    "version": "3.4.0",
     "description": "Display Web Action for IBM MCE Push Services",
     "cordova": {
         "id": "com.xtify.mce.sdk.displayweb",

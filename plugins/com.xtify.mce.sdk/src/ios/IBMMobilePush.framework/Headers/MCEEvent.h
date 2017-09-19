@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2016
+ * © Copyright IBM Corp. 2014, 2017
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -10,7 +10,7 @@
 
 @import Foundation;
 
-/** The MCEEvent class represents events to be sent to the server via the MCEEventClient or MCEEventService classes. */
+/** The MCEEvent class represents events to be sent to the server via the MCEEventService class. */
 @interface MCEEvent : NSObject
 
 /** The type property is used to set the type value of the event. */

@@ -12,10 +12,22 @@ IBM MCE Location Cordova Plugin
 @module MCELocationPlugin
 */
 
-exports.setLocationUpdatedCallback = function (callback) {
+/**
+The location callback includes no data. When it is received you should refresh your inbox database.
+@typedef locationCallback
+ */
+
+/**
+Set callback for location database updates
+@param callback {locationCallback} Callback which will be called when the database is updated.
+ */
+exports.setLocationUpdatedCallback = function(callback) {
     cordova.exec(callback, this.error, "MCELocationPlugin", "setLocationUpdatedCallback", []);
 }
 
-exports.syncLocations = function () {
+/**
+Ask SDK to syncronize the geofences with the server. This can only be called once every 5 minutes.
+ */
+exports.syncLocations = function() {
     cordova.exec(null, this.error, "MCELocationPlugin", "syncLocations", []);
 }

@@ -9,358 +9,359 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="js/jquery-1.11.1.min.js"></script>
-        <script src="js/jquery.mobile-1.4.5.min.js"></script>
-        <script src="js/jquery-ui-1.11.4.min.js"></script>
-        <script src="js/fastclick.js"></script>
-        
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
-        <link rel="stylesheet" href="css/jquery.mobile.flatui.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        
-        <!-- disable here if you don't want to use the inapp plugin -->
-        <link rel="stylesheet" type="text/css" href="css/inapp_media.css" />
-        <link rel="stylesheet" type="text/css" href="css/inapp_banner.css" />
-        <link rel="stylesheet" type="text/css" href="css/inapp_image.css" />
-        <link rel="stylesheet" type="text/css" href="css/inapp_video.css" />
-        <!-- end inapp disable -->
-        
-        <!-- disable here if you don't want to use the inbox plugin -->
-        <link rel="stylesheet" type="text/css" href="css/inbox.css" />
-        <link rel="stylesheet" type="text/css" href="css/inbox_default.css" />
-        <link rel="stylesheet" type="text/css" href="css/inbox_post.css" />
-        <!-- end inbox disable -->
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div data-role="page" id="sample">
-            
-            <div class="ui-body">
-                <center><h4>IBM Mobile Customer Engagement</h4></center>
-                <div class="header"></div>
-                <a data-transition="slide" href="#registration" data-role="button" data-icon="arrow-r" data-iconpos="right">Registration Details</a>
-                <a data-transition="slide" href="#phonehome" data-role="button" data-icon="arrow-r" data-iconpos="right">Phone Home</a>
-                <!-- disable here if you don't want to use the inbox plugin -->
-                <a data-transition="slide" href="#inbox" data-role="button" data-icon="arrow-r" data-iconpos="right">Inbox</a>
-                <!-- end inbox disable -->
-                
-                <!-- disable here if you don't want to use the inapp plugin -->
-                <a data-transition="slide" href="#inAppPage" data-role="button" data-icon="arrow-r" data-iconpos="right">In App</a>
-                <!-- end inapp disable -->
-                <a data-transition="slide" href="#actions" data-role="button" data-icon="arrow-r" data-iconpos="right">Push Actions</a>
-                <a data-transition="slide" id='categoryNavigation' href="#categories" data-role="button" data-icon="arrow-r" data-iconpos="right">Actionable Notifications (Categories)</a>
-                <a data-transition="slide" href="#events" data-role="button" data-icon="arrow-r" data-iconpos="right">Send Test Events</a>
-                <a data-transition="slide" href="#attributes" data-role="button" data-icon="arrow-r" data-iconpos="right">Send User Attributes</a>
-                <a data-transition="slide" href="#geofences" data-role="button" data-icon="arrow-r" data-iconpos="right">View Geofences</a>
-                <a data-transition="slide" href="#beacons" data-role="button" data-icon="arrow-r" data-iconpos="right">View iBeacons</a>
-            </div>
-            
-            <div class='copyright'>Copyright (c) 2015 IBM. All rights reserved.</div>
-            
-            <div data-role="header">
-                <h1>Sample App</h1>
-            </div>
-            
-        </div>
-        
-        <div data-role="page" id="beacons">
-            <div class="ui-body">
-                
-                <p><b>iBeacon Feature</b></p>
-                <ul data-role="listview">
-                    <li>
-                        <div class="rowhead">UUID</div>
-                        <div id='uuid'></div>
-                    </li>
-                    <li>
-                        <div class="rowhead">Status</div>
-                        <div class='status'></div>
-                    </li>
-                </ul>
 
-                <p><b>iBeacon Major Regions</b></p>
-                <ul data-role="listview" id='beaconRegions'>
-                </ul>
+<head>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/jquery-ui-1.11.4.min.js"></script>
+    <script src="js/fastclick.js"></script>
 
-            </div>
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>iBeacons</h1>
-                <div class="ui-btn-right">
-                    <a id="beacon_refresh"><img width='22' height='22' src="images/inbox/refresh.png"></a>
-                </div>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.flatui.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+    <!-- disable here if you don't want to use the inapp plugin -->
+    <link rel="stylesheet" type="text/css" href="css/inapp_media.css" />
+    <link rel="stylesheet" type="text/css" href="css/inapp_banner.css" />
+    <link rel="stylesheet" type="text/css" href="css/inapp_image.css" />
+    <link rel="stylesheet" type="text/css" href="css/inapp_video.css" />
+    <!-- end inapp disable -->
+
+    <!-- disable here if you don't want to use the inbox plugin -->
+    <link rel="stylesheet" type="text/css" href="css/inbox.css" />
+    <link rel="stylesheet" type="text/css" href="css/inbox_default.css" />
+    <link rel="stylesheet" type="text/css" href="css/inbox_post.css" />
+    <!-- end inbox disable -->
+    <title>Hello World</title>
+</head>
+
+<body>
+    <div data-role="page" id="sample">
+
+        <div class="ui-body">
+            <center>
+                <h4>IBM Mobile Customer Engagement</h4>
+            </center>
+            <div class="header"></div>
+            <a data-transition="slide" href="#registration" data-role="button" data-icon="arrow-r" data-iconpos="right">Registration Details</a>
+            <a data-transition="slide" href="#phonehome" data-role="button" data-icon="arrow-r" data-iconpos="right">Phone Home</a>
+            <!-- disable here if you don't want to use the inbox plugin -->
+            <a data-transition="slide" href="#inbox" data-role="button" data-icon="arrow-r" data-iconpos="right">Inbox</a>
+            <!-- end inbox disable -->
+
+            <!-- disable here if you don't want to use the inapp plugin -->
+            <a data-transition="slide" href="#inAppPage" data-role="button" data-icon="arrow-r" data-iconpos="right">In App</a>
+            <!-- end inapp disable -->
+            <a data-transition="slide" href="#actions" data-role="button" data-icon="arrow-r" data-iconpos="right">Push Actions</a>
+            <a data-transition="slide" id='categoryNavigation' href="#categories" data-role="button" data-icon="arrow-r" data-iconpos="right">Actionable Notifications (Categories)</a>
+            <a data-transition="slide" href="#events" data-role="button" data-icon="arrow-r" data-iconpos="right">Send Test Events</a>
+            <a data-transition="slide" href="#attributes" data-role="button" data-icon="arrow-r" data-iconpos="right">Send User Attributes</a>
+            <a data-transition="slide" href="#geofences" data-role="button" data-icon="arrow-r" data-iconpos="right">View Geofences</a>
+            <a data-transition="slide" href="#beacons" data-role="button" data-icon="arrow-r" data-iconpos="right">View iBeacons</a>
+        </div>
+
+        <div class='copyright'>Copyright (c) 2015 IBM. All rights reserved.</div>
+
+        <div data-role="header">
+            <h1>Sample App</h1>
+        </div>
+
+    </div>
+
+    <div data-role="page" id="beacons">
+        <div class="ui-body">
+
+            <p><b>iBeacon Feature</b></p>
+            <ul data-role="listview">
+                <li>
+                    <div class="rowhead">UUID</div>
+                    <div id='uuid'></div>
+                </li>
+                <li>
+                    <div class="rowhead">Status</div>
+                    <div class='status'></div>
+                </li>
+            </ul>
+
+            <p><b>iBeacon Major Regions</b></p>
+            <ul data-role="listview" id='beaconRegions'>
+            </ul>
+
+        </div>
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>iBeacons</h1>
+            <div class="ui-btn-right">
+                <a id="beacon_refresh"><img width='22' height='22' src="images/inbox/refresh.png"></a>
             </div>
         </div>
-        <div data-role="page" id="geofences">
-            <div class="ui-body">
-                <ul data-role="listview">
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">Status</div>
-                        <div class="ui-block-b right status"></div>
-                    </li>
-                </ul>
-            </div>
-            <div id='map' class="ui-body"></div>
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>Geofences</h1>
-                <div class="ui-btn-right">
-                    <a id="gps_refresh"><img width='22' height='22' src="images/inbox/refresh.png"></a>
-                    <a id="gps_button"><img width='22' height='22' src="images/gps.png"></a>
-                </div>
+    </div>
+    <div data-role="page" id="geofences">
+        <div class="ui-body">
+            <ul data-role="listview">
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Status</div>
+                    <div class="ui-block-b right status"></div>
+                </li>
+            </ul>
+        </div>
+        <div id='map' class="ui-body"></div>
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>Geofences</h1>
+            <div class="ui-btn-right">
+                <a id="gps_refresh"><img width='22' height='22' src="images/inbox/refresh.png"></a>
+                <a id="gps_button"><img width='22' height='22' src="images/gps.png"></a>
             </div>
         </div>
-        
-        <!-- disable here if you don't want to use the inbox plugin -->
-        <div data-role="page" id="inbox">
-            <div id='inboxMessages' class="ui-body"></div>
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>Inbox</h1>
-                <a id="refresh_button"><img width='22' height='22' src="images/inbox/refresh.png"></a>
-            </div>
+    </div>
+
+    <!-- disable here if you don't want to use the inbox plugin -->
+    <div data-role="page" id="inbox">
+        <div id='inboxMessages' class="ui-body"></div>
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>Inbox</h1>
+            <a id="refresh_button"><img width='22' height='22' src="images/inbox/refresh.png"></a>
         </div>
-        
-        <div data-role="page" id="inboxMessage">
-            <div id='inboxMessageContent' class="ui-body"></div>
-            <div data-role="header">
-                <div id='buttons'>
-                    <a id="delete_button"><img width='22' height='22' src="images/inbox/trash.png"></a>
-                    <a id="down_button"><img width='22' height='11' src="images/inbox/chevron-down.png"></a>
-                    <a id="up_button"><img width='22' height='11' src="images/inbox/chevron-up.png"></a>
-                </div>
-                <a href="#inbox" data-direction="reverse" data-transition="slide">Inbox</a>
-                <h1></h1>
+    </div>
+
+    <div data-role="page" id="inboxMessage">
+        <div id='inboxMessageContent' class="ui-body"></div>
+        <div data-role="header">
+            <div id='buttons'>
+                <a id="delete_button"><img width='22' height='22' src="images/inbox/trash.png"></a>
+                <a id="down_button"><img width='22' height='11' src="images/inbox/chevron-down.png"></a>
+                <a id="up_button"><img width='22' height='11' src="images/inbox/chevron-up.png"></a>
             </div>
+            <a href="#inbox" data-direction="reverse" data-transition="slide">Inbox</a>
+            <h1></h1>
         </div>
-        <!-- end inbox disable -->
-        
-        <div data-role="page" id="phonehome">
-            <div class="ui-body">
-                <a data-transition="slide" id='phonehome_button' data-role="button">Execute Phone Home</a>
-            </div>
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>Phone Home</h1>
-            </div>
+    </div>
+    <!-- end inbox disable -->
+
+    <div data-role="page" id="phonehome">
+        <div class="ui-body">
+            <a data-transition="slide" id='phonehome_button' data-role="button">Execute Phone Home</a>
         </div>
-        
-        <!-- disable here if you don't want to use the inapp plugin -->
-        <div data-role="page" id="inAppPage">
-            <div class="ui-body">
-                <a data-transition="slide" id='inAppBannerTop' data-role="button">Top Banner Template</a>
-                <a data-transition="slide" id='inAppBannerBottom' data-role="button">Bottom Banner Template</a>
-                <a data-transition="slide" id='inAppImage' data-role="button">Image Template</a>
-                <a data-transition="slide" id='inAppVideo' data-role="button">Video Template</a>
-                <a data-transition="slide" id='inAppNext' data-role="button">Next Queued InApp</a>
-            </div>
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>In App</h1>
-            </div>
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>Phone Home</h1>
         </div>
-        <!-- end inapp disable -->
-        
-        <div data-role="page" id="registration">
-            <div class="ui-body">
-                <p><b>Credentials</b></p>
-                <ul data-role="listview">
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">User Id</div>
-                        <div class="ui-block-b right" id='userId'></div>
-                    </li>
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">Channel Id</div>
-                        <div class="ui-block-b right" id='channelId'></div>
-                    </li>
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">App Key</div>
-                        <div class="ui-block-b right" id='appKey'></div>
-                    </li>
-                </ul>
-                <p>User ID and Channel ID only known after registration. The registration process could take several minutes, If you have issues with registering a device make sure you have the correct certificate and appKey</p>
-            </div>
-            
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>Registration Details</h1>
-            </div>
-            
+    </div>
+
+    <!-- disable here if you don't want to use the inapp plugin -->
+    <div data-role="page" id="inAppPage">
+        <div class="ui-body">
+            <a data-transition="slide" id='inAppBannerTop' data-role="button">Top Banner Template</a>
+            <a data-transition="slide" id='inAppBannerBottom' data-role="button">Bottom Banner Template</a>
+            <a data-transition="slide" id='inAppImage' data-role="button">Image Template</a>
+            <a data-transition="slide" id='inAppVideo' data-role="button">Video Template</a>
+            <a data-transition="slide" id='inAppNext' data-role="button">Next Queued InApp</a>
         </div>
-        
-        <div data-role="page" id="actions">
-            <div class="ui-body">
-                <p><b>Standard Action</b></p>
-                <ul data-role="listview">
-                    <li class="ui-grid-a" id='standardTypeSelector'>
-                        <div class="ui-block-a">Type</div>
-                        <div class="ui-block-b right" id='standardType' default='dial'></div>
-                    </li>
-                    <li class="ui-grid-a standardDialRow">
-                        <div class="ui-block-a">Name</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='standardDialName' data-mini="true" default='Dial' />
-                        </div>
-                    </li>
-                    <li class="ui-grid-a standardUrlRow">
-                        <div class="ui-block-a">Name</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='standardUrlName' data-mini="true" default='Open URL' />
-                        </div>
-                    </li>
-                    <li class="ui-grid-a standardOpenAppRow">
-                        <div class="ui-block-a">Name</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='standardOpenAppName' data-mini="true" default='Open App' />
-                        </div>
-                    </li>
-                    <li class="ui-grid-a standardDialRow">
-                        <div class="ui-block-a">Value</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id="standardDialValue" data-mini="true" default='"8774266006"' />
-                        </div>
-                    </li>
-                    <li class="ui-grid-a standardUrlRow">
-                        <div class="ui-block-a">Value</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id="standardUrlValue" data-mini="true" default='"http://ibm.com"' />
-                        </div>
-                    </li>
-                    <li>
-                        <div>JSON</div>
-                        <div id='standardJSON'></div>
-                    </li>
-                </ul>
-                <p>The action opens a dialer to call the number that is specified in the "value" key</p>
-                <p><b>Custom Action</b></p>
-                <ul data-role="listview">
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">Type</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='customType' data-mini="true" default="emailAction" />
-                        </div>
-                    </li>
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">Name</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='customName' data-mini="true" default='Email Action' />
-                        </div>
-                    </li>
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">Value</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='customValue' data-mini="true" default='{"subject":"Hello from Sample App", "body": "This is an example email body", "recipient":"fake-email@fake-site.com"}' />
-                        </div>
-                    </li>
-                    <li>
-                        <div>JSON</div>
-                        <div id='customJSON'></div>
-                    </li>
-                </ul>
-            </div>
-            
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>Push Actions</h1>
-            </div>
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>In App</h1>
         </div>
-        
-        <div data-role="page" id="categories">
-            <div class="ui-body">
-                <p><b>Example Category</b></p>
-                <ul data-role="listview">
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">Category ID</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='categoryName' data-mini="true" default="example" />
-                        </div>
-                    </li>
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">Button 1</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='button1' data-mini="true" default="Accept" />
-                        </div>
-                    </li>
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">Button 2</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='button2' data-mini="true" default="Reject" />
-                        </div>
-                    </li>
-                </ul>
-                <p>An example category with two buttons to demonstrate static categories.</p>
-                <p>These action categories are implemented in the Sample App. You can get details about implementing more such categories following instructions at - &lt;Apple's actions category developer page&gt;</p>
-            </div>
-            
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>Actionable Notifications (Categories)</h1>
-            </div>
+    </div>
+    <!-- end inapp disable -->
+
+    <div data-role="page" id="registration">
+        <div class="ui-body">
+            <p><b>Credentials</b></p>
+            <ul data-role="listview">
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">User Id</div>
+                    <div class="ui-block-b right" id='userId'></div>
+                </li>
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Channel Id</div>
+                    <div class="ui-block-b right" id='channelId'></div>
+                </li>
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">App Key</div>
+                    <div class="ui-block-b right" id='appKey'></div>
+                </li>
+            </ul>
+            <p>User ID and Channel ID only known after registration. The registration process could take several minutes, If you have issues with registering a device make sure you have the correct certificate and appKey</p>
         </div>
-        
-        <div data-role="page" id="events">
-            <div class="ui-body">
-                <p><b>Events</b></p>
-                <button id='send_click'>Send Notification Click Event</button>
-                <button id='send_click_queue'>Queue Notification Click Event</button>
-                <p>Click to send a test event, you should see the send status to the right of the click event.</p>
-            </div>
-            
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>Test Events</h1>
-            </div>
+
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>Registration Details</h1>
         </div>
-        
-        <div data-role="page" id="attributes">
-            <div class="ui-body">
-                <p><b>Send User Attributes</b></p>
-                <ul data-role="listview">
-                    <li class="ui-grid-a">
-                        <div class="ui-block-a">Enter your attribute</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='attribute' data-mini="true" default="attribute" />
-                        </div>
-                    </li>
-                    <li class="ui-grid-a" id='valuerow'>
-                        <div class="ui-block-a">Enter your value</div>
-                        <div class="ui-block-b right">
-                            <input type="text" id='value' data-mini="true" default="value" />
-                        </div>
-                    </li>
-                    <li>
-                        <div>Choose an Action</div>
-                        <div data-role="fieldcontain" class='right'>
-                            <fieldset data-role="controlgroup" data-type="horizontal" id='action' default='set'>
-                                <input type='radio' id="set-action" name='action' value='set' />
-                                <label for="set-action">Set</label>
-                                
-                                <input type='radio' id="update-action" name='action' value='update' />
-                                <label for="update-action">Update</label>
-                                
-                                <input type='radio' id="delete-action" name='action' value='delete' />
-                                <label for="delete-action">Delete</label>
-                            </fieldset>
-                        </div>
-                    </li>
-                </ul>
-                <button id='sendAttributes'>Click to send</button>
-            </div>
-            
-            <div data-role="header">
-                <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
-                <h1>User Attributes</h1>
-            </div>
+
+    </div>
+
+    <div data-role="page" id="actions">
+        <div class="ui-body">
+            <p><b>Standard Action</b></p>
+            <ul data-role="listview">
+                <li class="ui-grid-a" id='standardTypeSelector'>
+                    <div class="ui-block-a">Type</div>
+                    <div class="ui-block-b right" id='standardType' default='dial'></div>
+                </li>
+                <li class="ui-grid-a standardDialRow">
+                    <div class="ui-block-a">Name</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='standardDialName' data-mini="true" default='Dial' />
+                    </div>
+                </li>
+                <li class="ui-grid-a standardUrlRow">
+                    <div class="ui-block-a">Name</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='standardUrlName' data-mini="true" default='Open URL' />
+                    </div>
+                </li>
+                <li class="ui-grid-a standardOpenAppRow">
+                    <div class="ui-block-a">Name</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='standardOpenAppName' data-mini="true" default='Open App' />
+                    </div>
+                </li>
+                <li class="ui-grid-a standardDialRow">
+                    <div class="ui-block-a">Value</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id="standardDialValue" data-mini="true" default='"8774266006"' />
+                    </div>
+                </li>
+                <li class="ui-grid-a standardUrlRow">
+                    <div class="ui-block-a">Value</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id="standardUrlValue" data-mini="true" default='"http://ibm.com"' />
+                    </div>
+                </li>
+                <li>
+                    <div>JSON</div>
+                    <div id='standardJSON'></div>
+                </li>
+            </ul>
+            <p>The action opens a dialer to call the number that is specified in the "value" key</p>
+            <p><b>Custom Action</b></p>
+            <ul data-role="listview">
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Type</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='customType' data-mini="true" default="emailAction" />
+                    </div>
+                </li>
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Name</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='customName' data-mini="true" default='Email Action' />
+                    </div>
+                </li>
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Value</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='customValue' data-mini="true" default='{"subject":"Hello from Sample App", "body": "This is an example email body", "recipient":"fake-email@fake-site.com"}' />
+                    </div>
+                </li>
+                <li>
+                    <div>JSON</div>
+                    <div id='customJSON'></div>
+                </li>
+            </ul>
         </div>
-        
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCd4XNgcnazeQXGh9_MgJnaXIjvDWpEhM"></script>
-    </body>
+
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>Push Actions</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="categories">
+        <div class="ui-body">
+            <p><b>Example Category</b></p>
+            <ul data-role="listview">
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Category ID</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='categoryName' data-mini="true" default="example" />
+                    </div>
+                </li>
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Button 1</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='button1' data-mini="true" default="Accept" />
+                    </div>
+                </li>
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Button 2</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='button2' data-mini="true" default="Reject" />
+                    </div>
+                </li>
+            </ul>
+            <p>An example category with two buttons to demonstrate static categories.</p>
+            <p>These action categories are implemented in the Sample App. You can get details about implementing more such categories following instructions at - &lt;Apple's actions category developer page&gt;</p>
+        </div>
+
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>Actionable Notifications (Categories)</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="events">
+        <div class="ui-body">
+            <p><b>Events</b></p>
+            <button id='send_click_queue'>Queue Notification Click Event</button>
+            <p>Click to send a test event, you should see the send status to the right of the click event.</p>
+        </div>
+
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>Test Events</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="attributes">
+        <div class="ui-body">
+            <p><b>Send User Attributes</b></p>
+            <ul data-role="listview">
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Enter your attribute</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='attribute' data-mini="true" default="attribute" />
+                    </div>
+                </li>
+                <li class="ui-grid-a" id='valuerow'>
+                    <div class="ui-block-a">Enter your value</div>
+                    <div class="ui-block-b right">
+                        <input type="text" id='value' data-mini="true" default="value" />
+                    </div>
+                </li>
+                <li>
+                    <div>Choose an Action</div>
+                    <div data-role="fieldcontain" class='right'>
+                        <fieldset data-role="controlgroup" data-type="horizontal" id='action' default='set'>
+                            <input type='radio' id="update-action" name='action' value='update' />
+                            <label for="update-action">Update</label>
+
+                            <input type='radio' id="delete-action" name='action' value='delete' />
+                            <label for="delete-action">Delete</label>
+                        </fieldset>
+                    </div>
+                </li>
+            </ul>
+            <button id='sendAttributes'>Click to send</button>
+        </div>
+
+        <div data-role="header">
+            <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+            <h1>User Attributes</h1>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCd4XNgcnazeQXGh9_MgJnaXIjvDWpEhM"></script>
+</body>
+
 </html>

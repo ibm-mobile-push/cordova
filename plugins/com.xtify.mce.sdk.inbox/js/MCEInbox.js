@@ -103,21 +103,15 @@ document.addEventListener('deviceready', function() {
         MCEInboxPlugin.syncInboxMessages();
     });
 
-    var loadRichContentId = null;
     MCEPlugin.setRegisteredActionCallback(function(action, payload) {
-        loadRichContentId = action['value'];
-        MCEInboxPlugin.syncInboxMessages();
+        MCEInboxPlugin.fetchInboxMessageId(action['inboxMessageId'], function(inboxMessage) {
+            MCEInbox.openInboxMessage(inboxMessage);
+        });
     }, "openInboxMessage");
 
     // Before starting sync, setup the handler for the sync callback
     MCEInboxPlugin.setInboxMessagesUpdateCallback(function(newInboxMessages) {
         inboxMessages = newInboxMessages;
-        if (loadRichContentId) {
-            MCEInboxPlugin.fetchInboxMessageViaRichContentId(loadRichContentId, function(inboxMessage) {
-                MCEInbox.openInboxMessage(inboxMessage);
-                loadRichContentId = null;
-            });
-        }
 
         var scrollPosition = $('body').scrollTop();
 

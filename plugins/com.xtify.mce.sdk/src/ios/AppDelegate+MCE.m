@@ -349,7 +349,7 @@
     }
 
     [[MCESdk sharedInstance]registerDeviceToken:deviceToken];
-    NSLog(@"deviceToken: %@", [MCEApiUtil deviceToken: [MCERegistrationDetails pushToken]]);
+    NSLog(@"deviceToken: %@", [MCEApiUtil deviceToken: [MCERegistrationDetails.sharedInstance pushToken]]);
 }
 
 -(BOOL)executeCategory: (NSDictionary *)response

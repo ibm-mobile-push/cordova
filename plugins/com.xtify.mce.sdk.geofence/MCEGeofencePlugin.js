@@ -12,18 +12,60 @@ IBM MCE Geofence Cordova Plugin
 @module MCEGeofencePlugin
 */
 
-exports.geofencesNear = function (callback, latitude, longitude, radius) {
+/**
+@typedef Geofence
+@property latitude {double} Latitude of center of geofence.
+@property longitude {double} Longitude of center of geofence.
+@property radius {double} Radius of geofence in meters.
+@property locationId {string} Unique location identifier.
+ */
+
+/**
+@callback geofencesNearCallback
+@param geofences {Array.<Geofence>} List of geofences
+ */
+
+/**
+Get geofences nearby provided latitude and longitude
+@param callback {geofencesNearCallback} Callback data will be provided to
+@param latitude {double} Latitude of center of area
+@param longitude {double} Longitude of center of area
+@param radius {double} Radius of area
+*/
+exports.geofencesNear = function(callback, latitude, longitude, radius) {
     cordova.exec(callback, this.error, "MCEGeofencePlugin", "geofencesNear", [latitude, longitude, radius]);
 }
 
-exports.setGeofenceEnterCallback = function (callback) {
+/**
+@callback geofenceCallback
+@param geofence {Geofence} Geofence entered or exited.
+ */
+
+/**
+Set callback for entering geofences
+@param callback {geofenceCallback} Callback executed when geofences are entered.
+ */
+exports.setGeofenceEnterCallback = function(callback) {
     cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceEnterCallback", []);
 }
 
-exports.setGeofenceExitCallback = function (callback) {
+/**
+Set callback for exiting geofences
+@param callback {geofenceCallback} Callback executed when geofences are exited.
+ */
+exports.setGeofenceExitCallback = function(callback) {
     cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceExitCallback", []);
 }
 
-exports.geofenceEnabled = function (callback) {
+/**
+@callback geofenceEnabledCallback
+@param status {boolean} True if geofences are enabled, false otherwise.
+*/
+
+/**
+Query if geofences are enabled or disabled
+@param callback {geofenceEnabledCallback} response callback.
+ */
+exports.geofenceEnabled = function(callback) {
     cordova.exec(callback, this.error, "MCEGeofencePlugin", "geofenceEnabled", []);
 }

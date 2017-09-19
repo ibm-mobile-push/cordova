@@ -350,17 +350,17 @@
 - (void)sendRegistrationDetails:(id)callbackId
 {
     NSMutableDictionary * details = [NSMutableDictionary dictionary];
-    if(MCERegistrationDetails.userId)
+    if(MCERegistrationDetails.sharedInstance.userId)
     {
-        details[@"userId"] = MCERegistrationDetails.userId;
+        details[@"userId"] = MCERegistrationDetails.sharedInstance.userId;
     }
-    if(MCERegistrationDetails.channelId)
+    if(MCERegistrationDetails.sharedInstance.channelId)
     {
-        details[@"channelId"] = MCERegistrationDetails.channelId;
+        details[@"channelId"] = MCERegistrationDetails.sharedInstance.channelId;
     }
-    if(MCERegistrationDetails.pushToken)
+    if(MCERegistrationDetails.sharedInstance.pushToken)
     {
-        details[@"deviceToken"] = [MCEApiUtil deviceToken: MCERegistrationDetails.pushToken];
+        details[@"deviceToken"] = [MCEApiUtil deviceToken: MCERegistrationDetails.sharedInstance.pushToken];
     }
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: details ];
     [self.commandDelegate sendPluginResult:result callbackId:callbackId];
@@ -375,8 +375,8 @@
 
 - (void)isRegistered:(CDVInvokedUrlCommand*)command
 {
-    NSNumber * ibmRegistered = [NSNumber numberWithBool: MCERegistrationDetails.mceRegistered];
-    NSNumber * providerRegistered = [NSNumber numberWithBool: MCERegistrationDetails.apsRegistered];
+    NSNumber * ibmRegistered = [NSNumber numberWithBool: MCERegistrationDetails.sharedInstance.mceRegistered];
+    NSNumber * providerRegistered = [NSNumber numberWithBool: MCERegistrationDetails.sharedInstance.apsRegistered];
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsMultipart:@[ ibmRegistered, providerRegistered, @"APNS"]];
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }

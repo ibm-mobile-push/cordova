@@ -293,6 +293,14 @@ function setupAttributesPage() {
         updateActions();
     });
 
+    MCEPlugin.setAttributeQueueCallbacks(function() {
+        console.log("attribute success");
+        animateGreen($('#sendAttributes'));
+    }, function(error) {
+        console.log("attribute failure")
+        animateRed($('#sendAttributes'));
+    });
+
     $('#sendAttributes').click(function() {
         var action = getValueForId("action");
         var attribute = getValueForId("attribute");
@@ -301,29 +309,9 @@ function setupAttributesPage() {
         json[attribute] = value;
 
         if (action == 'update') {
-            MCEPlugin.updateUserAttributes(json, function() {
-                console.log("update attribute success");
-                animateGreen($('#sendAttributes'));
-            }, function(error) {
-                console.log("attribute failure")
-                animateRed($('#sendAttributes'));
-            });
-        } else if (action == 'set') {
-            MCEPlugin.setUserAttributes(json, function() {
-                console.log("set attribute success");
-                animateGreen($('#sendAttributes'));
-            }, function(error) {
-                console.log("attribute failure")
-                animateRed($('#sendAttributes'));
-            });
+            MCEPlugin.queueUpdateUserAttributes(json);
         } else if (action == 'delete') {
-            MCEPlugin.deleteUserAttributes([attribute], function() {
-                console.log("delete attribute success");
-                animateGreen($('#sendAttributes'));
-            }, function(error) {
-                console.log("attribute failure")
-                animateRed($('#sendAttributes'));
-            });
+            MCEPlugin.queueDeleteUserAttributes([attribute]);
         } else {
             console.log("unknown action value")
         }
@@ -332,23 +320,13 @@ function setupAttributesPage() {
 
 function updateActions() {
     var action = getValueForId('action');
-    if (action == 'set' || action == 'update')
+    if (action == 'update')
         $('#valuerow').show();
     else
         $('#valuerow').hide();
 }
 
 function setupEventPage() {
-    $('#send_click').click(function() {
-        MCEPlugin.addEvent({ type: "simpleNotification", name: "appOpened", timestamp: new Date() }, function() {
-            console.log("event success")
-            animateGreen($('#send_click'));
-        }, function() {
-            console.log("event failure")
-            animateRed($('#send_click'));
-        });
-    });
-
     MCEPlugin.setEventQueueCallbacks(function(events) {
         animateGreen($('#send_click_queue'));
         console.log("event queue success");
