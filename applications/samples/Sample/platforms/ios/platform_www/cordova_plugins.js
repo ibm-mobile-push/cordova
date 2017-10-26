@@ -33,7 +33,6 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.1.2",
     "cordova-plugin-actionsheet": "2.2.2",
     "cordova-plugin-email-composer": "0.8.3",
-    "cordova-plugin-android-support-v7-appcompat": "1.0.0",
     "cordova-plugin-crosswalk-webview": "2.3.0"
 };
 // BOTTOM OF METADATA

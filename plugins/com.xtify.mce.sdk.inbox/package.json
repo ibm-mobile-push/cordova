@@ -1,6 +1,6 @@
 {
     "name": "Inbox-Action-for-IBM-MCE-Cordova-Plugin",
-    "version": "3.4.0",
+    "version": "3.4.1",
     "description": "Inbox Action for IBM MCE Push Services",
     "cordova": {
         "id": "com.xtify.mce.sdk.inbox",

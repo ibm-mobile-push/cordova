@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk"
-version="3.4.0">
+version="3.4.1">
     <name>IBM MCE Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -22,6 +22,7 @@ version="3.4.0">
     <preference name="SERVER_URL" value="https://api.ibm.xtify.com" />
     <preference name="IOS_PROD_APPKEY" />
     <preference name="IOS_DEV_APPKEY" />
+    <preference name="AUTO_INITIALIZE_LOCATION" />
     <preference name="CUSTOM_ACTIONS" />
     <preference name="SENDER_ID" />
     <preference name="ANDROID_APPKEY" />
@@ -40,6 +41,7 @@ version="3.4.0">
             <feature name="MCEPlugin" >
                 <param name="ios-package" value="MCEPlugin"/>
             </feature>
+            <preference name="autoInitializeLocation" value="$AUTO_INITIALIZE_LOCATION" />
             <preference name="baseUrl" value="$SERVER_URL" />
             <preference name="prodAppKey" value="$IOS_PROD_APPKEY" />
             <preference name="devAppKey" value="$IOS_DEV_APPKEY" />
@@ -53,15 +55,30 @@ version="3.4.0">
             </array>
         </config-file>
 
+        <config-file target="*-Info.plist" parent="NSLocationAlwaysAndWhenInUseUsageDescription">
+            <string>Be notified when interesting things are nearby</string>
+        </config-file>
         <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
+            <string>Be notified when interesting things are nearby</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
             <string>Be notified when interesting things are nearby</string>
         </config-file>
     </platform>
     <platform name="android">
+        <framework src="com.google.android.gms:play-services:7.8.+" />
+        <framework src="com.android.support:appcompat-v7:26+" />
+        <framework src="com.android.support:support-v4:26+" />
+
         <!--  Sets the changes that need to be made to AndroidManifest.xml
                 in the selected parent element. For separate parents, make sure
                 to use separate <config-file> elements with the proper parent.
                 These changes are applied by AppBuilder during the build process.-->
+
+        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="overwrite">
+            <application android:hardwareAccelerated="true" android:icon="@drawable/icon" android:label="@string/app_name" android:name="com.ibm.mce.sdk.js.MceJsonApplication" android:supportsRtl="true" />
+        </edit-config>
+
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.INTERNET"/>
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -79,29 +96,15 @@ version="3.4.0">
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <!-- MCE properties -->
-            <meta-data
-                android:name="mceAppKey"
-                android:value="@string/appkey" />
-            <meta-data
-                android:name="mceSenderId"
-                android:value="@string/senderid" />
-            <meta-data
-                android:name="loglevel"
-                android:value="$LOGLEVEL" />
-            <meta-data
-                android:name="mceSessionEnabled"
-                android:value="true" />
-            <meta-data
-                android:name="mceSessionDuration"
-                android:value="5" />
-            <meta-data
-                android:name="customActions"
-                android:value="$CUSTOM_ACTIONS" />
-            <meta-data
-                android:name="mceServer"
-                android:value="$SERVER_URL" />
-            <meta-data android:name="com.google.android.gms.version"
-                android:value="@integer/google_play_services_version" />
+            <meta-data android:name="autoInitializeLocation" android:value="$AUTO_INITIALIZE_LOCATION" />
+            <meta-data android:name="mceAppKey" android:value="@string/appkey" />
+            <meta-data android:name="mceSenderId" android:value="@string/senderid" />
+            <meta-data android:name="loglevel" android:value="$LOGLEVEL" />
+            <meta-data android:name="mceSessionEnabled" android:value="true" />
+            <meta-data android:name="mceSessionDuration" android:value="5" />
+            <meta-data android:name="customActions" android:value="$CUSTOM_ACTIONS" />
+            <meta-data android:name="mceServer" android:value="$SERVER_URL" />
+            <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
             <receiver android:name="com.ibm.mce.sdk.gcm.GcmBroadcastReceiver" >
               <intent-filter android:permission="com.google.android.c2dm.permission.SEND" >
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -134,14 +137,8 @@ version="3.4.0">
                     <action android:name="android.intent.action.LOCALE_CHANGED" />
                 </intent-filter>
             </receiver>
-             <provider
-            android:name="com.ibm.mce.sdk.db.Provider"
-            android:authorities="$PACKAGE_NAME.MCE_PROVIDER"
-            android:exported="false" />
-            <provider
-            android:name="com.ibm.mce.sdk.js.Provider"
-            android:authorities="$PACKAGE_NAME.MCE_JSON_PROVIDER"
-            android:exported="false" />
+            <provider android:name="com.ibm.mce.sdk.db.Provider" android:authorities="$PACKAGE_NAME.MCE_PROVIDER" android:exported="false" />
+            <provider android:name="com.ibm.mce.sdk.js.Provider" android:authorities="$PACKAGE_NAME.MCE_JSON_PROVIDER" android:exported="false" />
             <service android:name="com.ibm.mce.sdk.gcm.GcmIntentService" />
             <service android:name="com.ibm.mce.sdk.events.EventsAlarmListener" />
             <service android:name="com.ibm.mce.sdk.registration.RegistrationIntentService" />
@@ -160,8 +157,8 @@ version="3.4.0">
             </feature>
         </config-file>
         <source-file src="src/android/gson-2.2.4.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-sdk-3.7.0.0.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-3.7.0.0.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-cordova-3.7.0.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-sdk-3.7.0.0.1.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-3.7.0.0.1.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-3.7.0.0.1.jar" target-dir="libs" framework="false" />
     </platform>
 </plugin>

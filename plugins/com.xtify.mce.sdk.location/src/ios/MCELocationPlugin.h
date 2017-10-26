@@ -8,8 +8,9 @@
  */
 
 #import <Cordova/CDVPlugin.h>
+@import CoreLocation;
 
-@interface MCELocationPlugin : CDVPlugin {
+@interface MCELocationPlugin : CDVPlugin <CLLocationManagerDelegate> {
     
 }
 
@@ -17,3 +18,4 @@
 - (void) syncLocations:(CDVInvokedUrlCommand*)command;
 
 @end
+

@@ -13,14 +13,37 @@ $(function() {
 
 // Geofence Page
 
-function setupLocationPage() {
+function updateLocationStatus() {
     MCEGeofencePlugin.geofenceEnabled(function(status) {
-        if (status)
-            $('#geofences .status').html('ENABLED').addClass('enabled');
-        else
+        if (status) {
+            MCELocationPlugin.locationAuthorization(function(status) {
+                $('#geofences .status').removeClass('delayed').removeClass('disabled').removeClass('enabled')
+                if (status == 0) {
+                    $('#geofences .status').html('DELAYED (touch to enable)').addClass('delayed');
+                } else if (status == -1) {
+                    $('#geofences .status').html('DENIED').addClass('disabled');
+                } else if (status == -2) {
+                    $('#geofences .status').html('FOREGROUND (touch to enable)').addClass('delayed');
+                } else if (status == 1) {
+                    $('#geofences .status').html('ENABLED').addClass('enabled');
+                }
+            });
+        } else
             $('#geofences .status').html('DISABLED').addClass('disabled');
     });
+}
 
+function setupLocationPage() {
+    $('#geofences .status').click(function() {
+        MCELocationPlugin.manualLocationInitialization();
+    });
+
+    MCELocationPlugin.setLocationAuthorizationCallback(function() {
+        updateBeaconStatus();
+        updateLocationStatus();
+    });
+
+    updateLocationStatus();
     MCEGeofencePlugin.geofencesNear(function(geofences) {}, 10, 10, 1000);
 
     MCELocationPlugin.setLocationUpdatedCallback(function() {
@@ -134,6 +157,26 @@ document.addEventListener("backbutton", function() {
     }
 }, false);
 
+function updateBeaconStatus() {
+    MCEBeaconPlugin.beaconEnabled(function(status) {
+        if (status) {
+            MCELocationPlugin.locationAuthorization(function(status) {
+                $('#beacons .status').removeClass('delayed').removeClass('disabled').removeClass('enabled')
+                if (status == 0) {
+                    $('#beacons .status').html('DELAYED (touch to enable)').addClass('delayed');
+                } else if (status == -1) {
+                    $('#beacons .status').html('DENIED').addClass('disabled');
+                } else if (status == -2) {
+                    $('#beacons .status').html('FOREGROUND (touch to enable)').addClass('delayed');
+                } else if (status == 1) {
+                    $('#beacons .status').html('ENABLED').addClass('enabled');
+                }
+            });
+        } else
+            $('#beacons .status').html('DISABLED').addClass('disabled');
+    });
+}
+
 function setupBeaconPage() {
     var lastRegions = [];
     var beaconStatus = {};
@@ -152,12 +195,11 @@ function setupBeaconPage() {
         });
     }
 
-    MCEBeaconPlugin.beaconEnabled(function(status) {
-        if (status)
-            $('#beacons .status').html('ENABLED').addClass('enabled');
-        else
-            $('#beacons .status').html('DISABLED').addClass('disabled');
+    $('#beacons .status').click(function() {
+        MCELocationPlugin.manualLocationInitialization();
     });
+
+    updateBeaconStatus();
 
     MCEBeaconPlugin.beaconUUID(function(uuid) {
         $('#uuid').html(uuid)

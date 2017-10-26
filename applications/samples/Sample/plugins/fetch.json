@@ -32,14 +32,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-android-support-v7-appcompat": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-android-support-v7-appcompat"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-crosswalk-webview": {
         "source": {
             "type": "registry",

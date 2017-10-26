@@ -29,6 +29,11 @@
 
 @implementation MCEPlugin
 
+-(void) manualInitialization:(CDVInvokedUrlCommand*)command
+{
+    [MCESdk.sharedInstance manualInitialization];
+}
+
 - (void) phoneHome: (CDVInvokedUrlCommand*)command;
 {
     [[NSUserDefaults standardUserDefaults] setObject: [NSDate distantPast] forKey: @"MCELastPhoneHome"];

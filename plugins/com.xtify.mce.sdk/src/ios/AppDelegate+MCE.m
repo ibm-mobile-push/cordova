@@ -120,7 +120,7 @@
         [center requestAuthorizationWithOptions: options completionHandler:^(BOOL granted, NSError * _Nullable error) {
             // Enable or disable features based on authorization.
             NSLog(@"Notifications response %d, %@", granted, error);
-            [application registerForRemoteNotifications];
+            [application performSelectorOnMainThread:@selector(registerForRemoteNotifications) withObject:nil waitUntilDone:NO];
         }];
     }
     else if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
@@ -176,7 +176,7 @@
     else
     {
         NSLog(@"event failure queue: %@", notification.userInfo);
-
+        
         MCEEventCallbackQueue * eventCallbackQueue = [MCEEventCallbackQueue sharedInstance];
         [eventCallbackQueue queueEvents: notification.userInfo[@"events"] error: [error localizedDescription]];
     }
@@ -267,7 +267,7 @@
     [center addObserver:self selector:@selector(updateChannelAttributeSuccess:) name:UpdateChannelAttributesSuccess object:nil];
     [center addObserver:self selector:@selector(deleteChannelAttributeFailure:) name:DeleteChannelAttributesError object:nil];
     [center addObserver:self selector:@selector(deleteChannelAttributeSuccess:) name:DeleteChannelAttributesSuccess object:nil];
-
+    
     NSString * devAppKey = [self settingForKey:@"devAppKey"];
     NSString * prodAppKey = [self settingForKey:@"prodAppKey"];
     NSString * loglevel = [self settingForKey:@"loglevel"];
@@ -279,7 +279,8 @@
     {
         config[@"location"][@"geofence"] = [NSMutableDictionary dictionary];
     }
-
+    
+    NSNumber * autoInitializeLocation = (NSNumber*)[self settingForKey:@"autoInitializeLocation"];
     NSNumber * geofenceSyncInterval = (NSNumber*)[self settingForKey:@"locationSyncInterval"];
     NSNumber * geofenceSyncRadius = (NSNumber*)[self settingForKey:@"locationSyncRadius"];
     if(geofenceSyncRadius && geofenceSyncInterval)
@@ -287,19 +288,20 @@
         config[@"location"][@"sync"] = [NSMutableDictionary dictionary];
         config[@"location"][@"sync"][@"syncRadius"] = geofenceSyncRadius;
         config[@"location"][@"sync"][@"syncInterval"] = geofenceSyncInterval;
+        config[@"location"][@"autoInitialize"] = autoInitializeLocation;
     }
-
+    
     if([self settingForKey:@"geofence"] && [[self settingForKey:@"ibeacon"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
     {
         config[@"location"][@"ibeacon"] = [NSMutableDictionary dictionary];
-
+        
         NSString * beaconUUID = (NSString*)[self settingForKey:@"beaconUUID"];
         if(beaconUUID)
         {
             config[@"location"][@"ibeacon"][@"UUID"] = beaconUUID;
         }
     }
-
+    
     [[MCESdk sharedInstance] handleApplicationLaunchWithConfig: config];
     // This actually calls the original init method over in AppDelegate. Equivilent to calling super
     // on an overrided method, this is not recursive, although it appears that way. neat huh?
@@ -336,7 +338,7 @@
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    [MCEEventService.sharedInstance sendPushEnabledEvent];
+    [[MCESdk sharedInstance]deviceTokenRegistartionFailed];
 }
 
 -(void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -347,7 +349,7 @@
     {
         [MCEEventService.sharedInstance sendPushEnabledEvent];
     }
-
+    
     [[MCESdk sharedInstance]registerDeviceToken:deviceToken];
     NSLog(@"deviceToken: %@", [MCEApiUtil deviceToken: [MCERegistrationDetails.sharedInstance pushToken]]);
 }
@@ -378,7 +380,7 @@
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler
 {
     [[MCEInAppManager sharedInstance] processPayload: userInfo];
-
+    
     [self executeCategory:@{@"payload":userInfo, @"identifier": identifier}];
     [[MCESdk sharedInstance] processCategoryNotification: userInfo identifier:identifier];
     completionHandler();
@@ -388,7 +390,7 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     [[MCEInAppManager sharedInstance] processPayload: userInfo];
-
+    
     if(![self executeCategory:@{@"payload":userInfo}])
     {
         [[MCESdk sharedInstance] presentOrPerformNotification: userInfo];
@@ -399,7 +401,7 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     [[MCEInAppManager sharedInstance] processPayload: userInfo];
-
+    
     NSLog(@"This is where remote notifications get delivered for iOS when didReceiveRemoteNotification:fetchCompletionHandler: is defined.");
     [[MCESdk sharedInstance] presentDynamicCategoryNotification: userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
@@ -441,3 +443,5 @@
 }
 
 @end
+
+

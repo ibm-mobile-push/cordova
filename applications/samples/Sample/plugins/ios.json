@@ -19,9 +19,6 @@
         "cordova-plugin-email-composer": {
             "PACKAGE_NAME": "com.xtify.silverpop"
         },
-        "cordova-plugin-android-support-v7-appcompat": {
-            "PACKAGE_NAME": "com.xtify.silverpop"
-        },
         "cordova-plugin-crosswalk-webview": {
             "PACKAGE_NAME": "com.xtify.silverpop"
         }

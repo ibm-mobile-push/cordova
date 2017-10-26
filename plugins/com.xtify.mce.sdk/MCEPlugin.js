@@ -468,6 +468,16 @@ exports.setCategoryCallbacks = function(callback, categoryName, actions) {
     cordova.exec(callback, this.error, "MCEPlugin", "setCategoryCallbacksCommand", [categoryName, actions]);
 }
 
+/** iOS Support Only 
+Manually initialize SDK, is used to wait until an event occurs before beginning 
+to interact with the IBM servers. For example, you might not want to create a 
+userid/channelid until after a user logs into your system. Requires 
+autoInitialize=FALSE MceConfig.plist flag.
+ */
+exports.manualInitialization = function() {
+    cordova.exec(null, null, "MCEPlugin", "manualInitialization", []);
+}
+
 /**
 Console error reporting 
 @param message {string} Error message

@@ -1,6 +1,6 @@
 {
     "name": "IBM-MCE-Location-Cordova-Plugin",
-    "version": "3.4.0",
+    "version": "3.4.1",
     "description": "Allows Cordova applications to integrate with IBM MCE Push Services",
     "cordova": {
         "id": "com.xtify.mce.sdk.location",
