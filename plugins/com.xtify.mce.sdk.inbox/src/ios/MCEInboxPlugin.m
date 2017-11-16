@@ -28,6 +28,7 @@
 {
     self.inboxCallback = command.callbackId;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retrieveInboxMessages:) name:@"MCESyncDatabase" object:nil];
+    [self retrieveInboxMessages: command];
 }
 
 -(void)fetchInboxMessageId: (CDVInvokedUrlCommand*)command

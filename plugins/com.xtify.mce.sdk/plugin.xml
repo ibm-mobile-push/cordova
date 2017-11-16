@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk"
-version="3.4.1">
+version="3.4.3">
     <name>IBM MCE Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -66,9 +66,12 @@ version="3.4.1">
         </config-file>
     </platform>
     <platform name="android">
-        <framework src="com.google.android.gms:play-services:7.8.+" />
-        <framework src="com.android.support:appcompat-v7:26+" />
-        <framework src="com.android.support:support-v4:26+" />
+        <framework src="com.google.android.gms:play-services-base:+" />
+        <framework src="com.google.android.gms:play-services-auth:+" />
+        <framework src="com.google.android.gms:play-services-gcm:+" />
+    
+        <framework src="com.android.support:appcompat-v7:+" />
+        <framework src="com.android.support:support-v4:+" />
 
         <!--  Sets the changes that need to be made to AndroidManifest.xml
                 in the selected parent element. For separate parents, make sure
@@ -76,7 +79,7 @@ version="3.4.1">
                 These changes are applied by AppBuilder during the build process.-->
 
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="overwrite">
-            <application android:hardwareAccelerated="true" android:icon="@drawable/icon" android:label="@string/app_name" android:name="com.ibm.mce.sdk.js.MceJsonApplication" android:supportsRtl="true" />
+            <application android:hardwareAccelerated="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:name="com.ibm.mce.sdk.js.MceJsonApplication" android:supportsRtl="true" />
         </edit-config>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">

@@ -1,6 +1,6 @@
 {
     "name": "Calendar-Action-for-IBM-MCE-Push-Services",
-    "version": "3.4.1",
+    "version": "3.4.3",
     "description": "Calendar Action for IBM MCE Push Services",
     "cordova": {
         "id": "com.xtify.mce.sdk.calendar",

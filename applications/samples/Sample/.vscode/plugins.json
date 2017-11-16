@@ -1,0 +1,1 @@
+{"plugins":["cordova-plugin-whitelist","cordova-plugin-statusbar","cordova-plugin-actionsheet","cordova-plugin-email-composer","cordova-plugin-crosswalk-webview"]}

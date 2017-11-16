@@ -1,9 +1,0 @@
-{
-    "notification-actions": [{
-        "type": "openInboxMessage",
-        "class": "com.ibm.mce.sdk.plugin.inbox.InboxMessageAction",
-        "initOptions": {
-            "templates": {}
-        }
-    }]
-}
