@@ -8,7 +8,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
 
 @class MCETaskQueue;
 @class MCEEvent;
@@ -31,12 +35,24 @@
 /** The sendEvents method flushes the queue to the server on demand. */
 - (void) sendEvents;
 
-/** Record a view of an inbox message */
--(void)recordViewForInboxMessage:(MCEInboxMessage*)inboxMessage attribution: (NSString*)attribution;
+/** Record a view of an inbox message
+ @param inboxMessage An MCEInboxMessage object to record view for
+ @param attribution A string representing the campaign name or attribution of the push message associated with the view event.
+ 
+ Please note that recordViewForInboxMessage:attribution: is deprecated, please use recordViewForInboxMessage:attribution:mailingId: instaed.
+ */
+-(void)recordViewForInboxMessage:(MCEInboxMessage*)inboxMessage attribution: (NSString*)attribution __attribute__ ((deprecated));
 
+/** Record a view of an inbox message including a mailing id
+ @param inboxMessage An MCEInboxMessage object to record view for
+ @param attribution A string representing the campaign name or attribution of the push message associated with the view event.
+ @param mailingId A string representing the mailing id of the push message associated with the view event.
+ */
 -(void)recordViewForInboxMessage:(MCEInboxMessage*)inboxMessage attribution: (NSString*)attribution mailingId: (NSString*)mailingId;
 
+#if TARGET_OS_WATCH == 0
 /** Record if push is enabled or disabled */
 -(void) sendPushEnabledEvent;
+#endif
 
 @end

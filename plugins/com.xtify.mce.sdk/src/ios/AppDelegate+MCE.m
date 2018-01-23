@@ -7,7 +7,7 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
-#import "AppDelegate+mce.h"
+#import "AppDelegate+MCE.h"
 #import <objc/runtime.h>
 #import <Cordova/CDVConfigParser.h>
 #import <IBMMobilePush/IBMMobilePush.h>
@@ -16,14 +16,6 @@
 
 @implementation AppDelegate (mce)
 
--(void)setUserAttributeFailure:(NSNotification*)notification
-{
-    [self attributeFailureDomain: @"user" operation: @"set" notification: notification];
-}
--(void)setUserAttributeSuccess:(NSNotification*)notification
-{
-    [self attributeSuccessDomain: @"user" operation: @"set" notification: notification];
-}
 -(void)updateUserAttributeFailure:(NSNotification*)notification
 {
     [self attributeFailureDomain: @"user" operation: @"update" notification: notification];
@@ -39,14 +31,6 @@
 -(void)deleteUserAttributeSuccess:(NSNotification*)notification
 {
     [self attributeSuccessDomain: @"user" operation: @"delete" notification: notification];
-}
--(void)setChannelAttributeFailure:(NSNotification*)notification
-{
-    [self attributeFailureDomain: @"channel" operation: @"set" notification: notification];
-}
--(void)setChannelAttributeSuccess:(NSNotification*)notification
-{
-    [self attributeSuccessDomain: @"channel" operation: @"set" notification: notification];
 }
 -(void)updateChannelAttributeFailure:(NSNotification*)notification
 {
@@ -255,14 +239,10 @@
     [center addObserver:self selector:@selector(eventFailure:) name:MCEEventFailure object:nil];
     
     
-    [center addObserver:self selector:@selector(setUserAttributeFailure:) name:SetUserAttributesError object:nil];
-    [center addObserver:self selector:@selector(setUserAttributeSuccess:) name:SetUserAttributesSuccess object:nil];
     [center addObserver:self selector:@selector(updateUserAttributeFailure:) name:UpdateUserAttributesError object:nil];
     [center addObserver:self selector:@selector(updateUserAttributeSuccess:) name:UpdateUserAttributesSuccess object:nil];
     [center addObserver:self selector:@selector(deleteUserAttributeFailure:) name:DeleteUserAttributesError object:nil];
     [center addObserver:self selector:@selector(deleteUserAttributeSuccess:) name:DeleteUserAttributesSuccess object:nil];
-    [center addObserver:self selector:@selector(setChannelAttributeFailure:) name:SetChannelAttributesError object:nil];
-    [center addObserver:self selector:@selector(setChannelAttributeSuccess:) name:SetChannelAttributesSuccess object:nil];
     [center addObserver:self selector:@selector(updateChannelAttributeFailure:) name:UpdateChannelAttributesError object:nil];
     [center addObserver:self selector:@selector(updateChannelAttributeSuccess:) name:UpdateChannelAttributesSuccess object:nil];
     [center addObserver:self selector:@selector(deleteChannelAttributeFailure:) name:DeleteChannelAttributesError object:nil];
@@ -272,13 +252,17 @@
     NSString * prodAppKey = [self settingForKey:@"prodAppKey"];
     NSString * loglevel = [self settingForKey:@"loglevel"];
     NSString * baseUrl = [self settingForKey:@"baseUrl"];
-    NSNumber * autoInitialize = (NSNumber*)[self settingForKey:@"autoInitialize"];
+    NSNumber * autoInitialize = [[self settingForKey:@"autoInitialize"] caseInsensitiveCompare:@"false"] == NSOrderedSame ? @NO : @YES;
     
-    NSMutableDictionary * config = [@{@"loglevel":loglevel,@"baseUrl":baseUrl, @"appKey":@{ @"prod":prodAppKey, @"dev":devAppKey}, @"autoInitialize":autoInitialize, @"location": [NSMutableDictionary dictionary] } mutableCopy];
+    NSString * invalidateExistingUserString = [self settingForKey:@"invalidateExistingUser"];
+    NSNumber * invalidateExistingUser = ([invalidateExistingUserString caseInsensitiveCompare: @"true"] == NSOrderedSame || [invalidateExistingUserString caseInsensitiveCompare: @"yes"] == NSOrderedSame) ? @YES : @NO;
+    
+    NSMutableDictionary * config = [@{@"invalidateExistingUser":invalidateExistingUser, @"loglevel":loglevel,@"baseUrl":baseUrl, @"appKey":@{ @"prod":prodAppKey, @"dev":devAppKey}, @"autoInitialize":autoInitialize, @"location": [NSMutableDictionary dictionary] } mutableCopy];
     if([self settingForKey:@"geofence"] && [[self settingForKey:@"geofence"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
     {
         config[@"location"][@"geofence"] = [NSMutableDictionary dictionary];
     }
+    
     
     NSNumber * autoInitializeLocation = (NSNumber*)[self settingForKey:@"autoInitializeLocation"];
     NSNumber * geofenceSyncInterval = (NSNumber*)[self settingForKey:@"locationSyncInterval"];

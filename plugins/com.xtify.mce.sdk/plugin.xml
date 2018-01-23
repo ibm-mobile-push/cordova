@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk"
-version="3.4.3">
+version="3.5.0">
     <name>IBM MCE Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -18,13 +18,14 @@ version="3.4.3">
     <js-module src="MCEPlugin.js" name="MCEPlugin">
         <clobbers target="MCEPlugin" />
     </js-module>
-    <preference name="LOGLEVEL" value="error" />
-    <preference name="SERVER_URL" value="https://api.ibm.xtify.com" />
+    <preference name="LOGLEVEL" default="error" />
+    <preference name="SERVER_URL" default="https://api.ibm.xtify.com" />
     <preference name="IOS_PROD_APPKEY" />
     <preference name="IOS_DEV_APPKEY" />
-    <preference name="AUTO_INITIALIZE_LOCATION" />
-    <preference name="CUSTOM_ACTIONS" />
-    <preference name="SENDER_ID" />
+    <preference name="CUSTOM_ACTIONS" default="none" />
+    <preference name="SENDER_ID" default=" " />
+    <preference name="ANDROID_SERVICE" default="gcm" />
+    <preference name="INVALIDATE_EXISTING_USER" default="false" />
     <preference name="ANDROID_APPKEY" />
     <platform name="ios">
         <framework src="src/ios/IBMMobilePush.framework" custom="true" />
@@ -41,13 +42,13 @@ version="3.4.3">
             <feature name="MCEPlugin" >
                 <param name="ios-package" value="MCEPlugin"/>
             </feature>
-            <preference name="autoInitializeLocation" value="$AUTO_INITIALIZE_LOCATION" />
             <preference name="baseUrl" value="$SERVER_URL" />
             <preference name="prodAppKey" value="$IOS_PROD_APPKEY" />
             <preference name="devAppKey" value="$IOS_DEV_APPKEY" />
             <preference name="autoInitialize" value="true" />
             <preference name="customActions" value="$CUSTOM_ACTIONS" />
             <preference name="loglevel" value="$LOGLEVEL" />
+            <preference name="invalidateExistingUser" value="$INVALIDATE_EXISTING_USER" />
         </config-file>
         <config-file target="*-Info.plist" parent="UIBackgroundModes">
             <array>
@@ -66,10 +67,13 @@ version="3.4.3">
         </config-file>
     </platform>
     <platform name="android">
+    	<hook src="scripts/after_prepare.js" type="after_prepare" />
+
+        <framework src="com.google.android.gms:play-services-gcm:+" />
         <framework src="com.google.android.gms:play-services-base:+" />
         <framework src="com.google.android.gms:play-services-auth:+" />
-        <framework src="com.google.android.gms:play-services-gcm:+" />
-    
+        <framework src="com.google.firebase:firebase-messaging:+" />
+
         <framework src="com.android.support:appcompat-v7:+" />
         <framework src="com.android.support:support-v4:+" />
 
@@ -99,7 +103,7 @@ version="3.4.3">
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <!-- MCE properties -->
-            <meta-data android:name="autoInitializeLocation" android:value="$AUTO_INITIALIZE_LOCATION" />
+            <meta-data android:name="messagingService" android:value="$ANDROID_SERVICE" />
             <meta-data android:name="mceAppKey" android:value="@string/appkey" />
             <meta-data android:name="mceSenderId" android:value="@string/senderid" />
             <meta-data android:name="loglevel" android:value="$LOGLEVEL" />
@@ -107,6 +111,7 @@ version="3.4.3">
             <meta-data android:name="mceSessionDuration" android:value="5" />
             <meta-data android:name="customActions" android:value="$CUSTOM_ACTIONS" />
             <meta-data android:name="mceServer" android:value="$SERVER_URL" />
+            <meta-data android:name="invalidateExistingUser" android:value="$INVALIDATE_EXISTING_USER" />
             <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
             <receiver android:name="com.ibm.mce.sdk.gcm.GcmBroadcastReceiver" >
               <intent-filter android:permission="com.google.android.c2dm.permission.SEND" >
@@ -149,6 +154,21 @@ version="3.4.3">
             <service android:name="com.ibm.mce.sdk.session.SessionTrackingIntentService" />
 			<service android:name="com.ibm.mce.sdk.registration.PhoneHomeIntentService" />
             <service android:name="com.ibm.mce.sdk.plugin.inbox.InboxUpdateService" />
+
+            <!-- FCM Registration -->
+            <service android:name="com.ibm.mce.sdk.fcm.FcmInstanceIdService">
+                <intent-filter>
+                    <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                </intent-filter>
+            </service>
+
+            <!-- FCM Messages -->
+            <service android:name="com.ibm.mce.sdk.fcm.FcmMessagingService">
+                <intent-filter>
+                    <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                </intent-filter>
+            </service>
+            
         </config-file>
         <config-file target="res/values/strings.xml" parent="/*">
             <string name="appkey">$ANDROID_APPKEY</string>
@@ -160,8 +180,8 @@ version="3.4.3">
             </feature>
         </config-file>
         <source-file src="src/android/gson-2.2.4.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-sdk-3.7.0.0.1.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-3.7.0.0.1.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-cordova-3.7.0.0.1.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-sdk-3.7.1.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-3.7.1.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-3.7.1.0.jar" target-dir="libs" framework="false" />
     </platform>
 </plugin>

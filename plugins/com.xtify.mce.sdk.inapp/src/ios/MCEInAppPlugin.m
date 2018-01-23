@@ -31,7 +31,7 @@
              @"inAppMessageId": @(inAppMessage.inAppMessageId),
              @"maxViews": @(inAppMessage.maxViews),
              @"numViews": @(inAppMessage.numViews),
-             @"template": inAppMessage.template,
+             @"template": inAppMessage.templateName,
              @"content": inAppMessage.content,
              @"triggerDate": @( [inAppMessage.triggerDate timeIntervalSince1970]*1000 ),
              @"expirationDate": @([inAppMessage.expirationDate timeIntervalSince1970]*1000 ),
@@ -41,7 +41,7 @@
 -(void)displayInAppMessage:(MCEInAppMessage*)message
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSString * callback = self.inAppCallbacks[message.template];
+        NSString * callback = self.inAppCallbacks[message.templateName];
         CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: [self packageInAppMessage: message] ];
         result.keepCallback = @TRUE;
         [self.commandDelegate sendPluginResult:result callbackId:callback];
@@ -79,3 +79,4 @@
 }
 
 @end
+

@@ -8,7 +8,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import UserNotifications;
+#else
+#import <UserNotifications/UserNotifications.h>
+#endif
 
 /**
  MCENotificationDelegate provides SDK integration for the UNUserNotificationCenterDelegate methods introduced in iOS 10. 

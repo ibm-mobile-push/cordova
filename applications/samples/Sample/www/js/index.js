@@ -15,6 +15,8 @@ $(function() {
 
 function updateLocationStatus() {
     MCEGeofencePlugin.geofenceEnabled(function(status) {
+        console.log("Update Geofence Status");
+
         if (status) {
             MCELocationPlugin.locationAuthorization(function(status) {
                 $('#geofences .status').removeClass('delayed').removeClass('disabled').removeClass('enabled')
@@ -40,6 +42,10 @@ function setupLocationPage() {
 
     MCELocationPlugin.setLocationAuthorizationCallback(function() {
         updateBeaconStatus();
+        updateLocationStatus();
+    });
+
+    $('#geofences').on('pagebeforeshow', function() {
         updateLocationStatus();
     });
 
@@ -159,6 +165,7 @@ document.addEventListener("backbutton", function() {
 
 function updateBeaconStatus() {
     MCEBeaconPlugin.beaconEnabled(function(status) {
+        console.log("Update Beacon Status");
         if (status) {
             MCELocationPlugin.locationAuthorization(function(status) {
                 $('#beacons .status').removeClass('delayed').removeClass('disabled').removeClass('enabled')
@@ -180,6 +187,10 @@ function updateBeaconStatus() {
 function setupBeaconPage() {
     var lastRegions = [];
     var beaconStatus = {};
+
+    $('#beacons').on('pagebeforeshow', function() {
+        updateBeaconStatus();
+    });
 
     $('#beacon_refresh').click(function() {
         MCELocationPlugin.syncLocations();
@@ -230,6 +241,12 @@ function setupBeaconPage() {
 
 
 document.addEventListener('deviceready', function() {
+    MCEPlugin.getPluginVersion(function(version) {
+        $('#pluginVersion span').html(version);
+    });
+    MCEPlugin.getSdkVersion(function(version) {
+        $('#sdkVersion span').html(version);
+    });
     setupLocationPage();
     FastClick.attach(document.body);
     setupInAppPage();

@@ -20,7 +20,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="css/jquery.mobile.flatui.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -48,6 +48,8 @@
                 <h4>IBM Mobile Customer Engagement</h4>
             </center>
             <div class="header"></div>
+            <div id='pluginVersion'>Plugin Version: <span></span></div>
+            <div id='sdkVersion'>Native SDK Version: <span></span></div>
             <a data-transition="slide" href="#registration" data-role="button" data-icon="arrow-r" data-iconpos="right">Registration Details</a>
             <a data-transition="slide" href="#phonehome" data-role="button" data-icon="arrow-r" data-iconpos="right">Phone Home</a>
             <!-- disable here if you don't want to use the inbox plugin -->
@@ -340,7 +342,7 @@
                 <li>
                     <div>Choose an Action</div>
                     <div data-role="fieldcontain" class='right'>
-                        <fieldset data-role="controlgroup" data-type="horizontal" id='action' default='set'>
+                        <fieldset data-role="controlgroup" data-type="horizontal" id='action' default='update'>
                             <input type='radio' id="update-action" name='action' value='update' />
                             <label for="update-action">Update</label>
 

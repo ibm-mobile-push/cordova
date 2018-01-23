@@ -8,7 +8,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
 
 /** The MCEEvent class represents events to be sent to the server via the MCEEventService class. */
 @interface MCEEvent : NSObject

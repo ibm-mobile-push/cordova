@@ -25,6 +25,14 @@ exports.getSdkVersion = function(callback) {
     cordova.exec(callback, null, "MCEPlugin", "getSdkVersion", []);
 };
 
+/**  
+Allow Cordova developer to get the current native SDK version in use
+@param callback {sdkVersionCallback} The callback that handles the response
+*/
+exports.getPluginVersion = function(callback) {
+    callback("3.5.0");
+};
+
 /**
 @typedef Registration
 @property userId {string} A short string identifying the user, possibly multiple devices
@@ -119,7 +127,7 @@ exports.translateEvents = function(events) {
 /**
 @callback attributeQueueSuccessCallback
 @param result {Object}
-@param result.operation {string} Either "update", "set" or "delete" depending on which method was called
+@param result.operation {string} Either "update" or "delete" depending on which method was called
 @param result.domain {string} Either "channel" or "user" depending on which method was called
 @param result.attributes {Object} Key value pairs that were updated if the operation was set or update
 @param result.keys {Array} A list of keys that were deleted when the operation is delete
@@ -128,7 +136,7 @@ exports.translateEvents = function(events) {
 /**
 @callback attributeQueueFailureCallback
 @param result {Object}
-@param result.operation {string} Either "update", "set" or "delete" depending on which method was called
+@param result.operation {string} Either "update" or "delete" depending on which method was called
 @param result.domain {string} Either "channel" or "user" depending on which method was called
 @param result.attributes {Object} Key value pairs that were updated if the operation was set or update
 @param result.keys {Array} A list of keys that were deleted when the operation is delete

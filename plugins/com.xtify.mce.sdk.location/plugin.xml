@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.location"
-version="3.4.3">
+version="3.5.0">
     <name>IBM MCE Location Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -18,8 +18,9 @@ version="3.4.3">
     <js-module src="MCELocationPlugin.js" name="MCELocationPlugin">
         <clobbers target="MCELocationPlugin" />
     </js-module>
-    <preference name="SYNC_RADIUS" value="100000" />
-    <preference name="SYNC_INTERVAL" value="600" />
+    <preference name="SYNC_RADIUS" default="100000" />
+    <preference name="SYNC_INTERVAL" default="600" />
+    <preference name="AUTO_INITIALIZE_LOCATION" default="true" />
     <platform name="ios">
         <header-file src="src/ios/MCELocationPlugin.h" />
         <source-file src="src/ios/MCELocationPlugin.m" />
@@ -27,6 +28,7 @@ version="3.4.3">
             <feature name="MCELocationPlugin" >
                 <param name="ios-package" value="MCELocationPlugin"/>
             </feature>
+            <preference name="autoInitializeLocation" value="$AUTO_INITIALIZE_LOCATION" />
             <preference name="locationSyncRadius" value="$SYNC_RADIUS" />
             <preference name="locationSyncInterval" value="$SYNC_INTERVAL" />
         </config-file>
@@ -49,8 +51,8 @@ version="3.4.3">
     </platform>
     <platform name="android">
         <framework src="com.google.android.gms:play-services-location:+" />
-        <source-file src="src/android/ibm-mobile-push-android-cordova-location-3.7.0.0.1.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-location-3.7.0.0.1.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-location-3.7.1.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-location-3.7.1.0.jar" target-dir="libs" framework="false" />
 
         <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="overwrite">
             <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/activity_name" android:launchMode="singleTop" android:name="com.ibm.mce.plugin.cordova.location.MceJsonActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:windowSoftInputMode="adjustResize" />
@@ -58,12 +60,9 @@ version="3.4.3">
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <!-- MCE properties -->
-            <meta-data
-                android:name="refAreaRadius"
-                android:value="$SYNC_RADIUS" />
-            <meta-data
-                android:name="syncInterval"
-                android:value="$SYNC_INTERVAL" />
+            <meta-data android:name="refAreaRadius" android:value="$SYNC_RADIUS" />
+            <meta-data android:name="syncInterval" android:value="$SYNC_INTERVAL" />
+            <meta-data android:name="autoInitializeLocation" android:value="$AUTO_INITIALIZE_LOCATION" />
         </config-file>
 
         <config-file target="res/xml/config.xml" parent="/widget">

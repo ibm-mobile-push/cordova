@@ -21,6 +21,6 @@
 - (void) executeInboxAction: (CDVInvokedUrlCommand*)command;
 - (void) fetchInboxMessageId: (CDVInvokedUrlCommand*)command;
 - (void) setInboxMessagesUpdateCallback: (CDVInvokedUrlCommand*)command;
-- (void) fetchRichContentId: (CDVInvokedUrlCommand*)command;
 
 @end
+

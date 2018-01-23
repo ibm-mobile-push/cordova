@@ -19,7 +19,7 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
         <link rel="stylesheet" href="css/jquery.mobile.flatui.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -337,10 +337,7 @@
                     <li>
                         <div>Choose an Action</div>
                         <div data-role="fieldcontain" class='right'>
-                            <fieldset data-role="controlgroup" data-type="horizontal" id='action' default='set'>
-                                <input type='radio' id="set-action" name='action' value='set' />
-                                <label for="set-action">Set</label>
-                                
+                            <fieldset data-role="controlgroup" data-type="horizontal" id='action' default='update'>                                
                                 <input type='radio' id="update-action" name='action' value='update' />
                                 <label for="update-action">Update</label>
                                 

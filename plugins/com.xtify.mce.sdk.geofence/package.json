@@ -1,6 +1,6 @@
 {
     "name": "IBM-MCE-Geofence-Cordova-Plugin",
-    "version": "3.4.3",
+    "version": "3.5.0",
     "description": "Allows Cordova applications to integrate with IBM MCE Push Services",
     "cordova": {
         "id": "com.xtify.mce.sdk.geofence",
