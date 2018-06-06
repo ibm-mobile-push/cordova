@@ -15,17 +15,16 @@
     bottom: 44px;
     overflow: hidden;
 }
+
 #inApp #video video {
     width: 100%;
     height: 100%;
 }
 
-#inApp #videoProgress
-{
+#inApp #videoProgress {
     width: 100%;
 }
 
-#inApp .text
-{
+#inApp #video .text {
     height: 74px;
 }

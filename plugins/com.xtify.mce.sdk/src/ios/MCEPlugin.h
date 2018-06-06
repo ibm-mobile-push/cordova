@@ -50,7 +50,8 @@
 - (void) queueAddEvent:(CDVInvokedUrlCommand*)command;
 - (void) setBadge:(CDVInvokedUrlCommand*)command; // Arguments badge
 - (void) setIcon:(CDVInvokedUrlCommand*)command; // Arguments icon
-
+- (void) safeAreaInsets: (CDVInvokedUrlCommand*)command;
+- (void) userInvalidated: (CDVInvokedUrlCommand*)command;
 @end
 
 void sendAttributeCallback(NSString* callback, NSError*error, id <CDVCommandDelegate> delegate);

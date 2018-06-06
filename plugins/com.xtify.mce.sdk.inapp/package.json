@@ -1,6 +1,6 @@
 {
     "name": "InApp-Action-for-IBM-MCE-Cordova-Plugin",
-    "version": "3.5.0",
+    "version": "3.6.0",
     "description": "InApp Action for IBM MCE Push Services",
     "cordova": {
         "id": "com.xtify.mce.sdk.inapp",

@@ -13,14 +13,43 @@ $(function() {
 
 // Geofence Page
 
-function setupLocationPage() {
+function updateLocationStatus() {
     MCEGeofencePlugin.geofenceEnabled(function(status) {
-        if (status)
-            $('#geofences .status').html('ENABLED').addClass('enabled');
-        else
+        console.log("Update Geofence Status");
+
+        if (status) {
+            MCELocationPlugin.locationAuthorization(function(status) {
+                $('#geofences .status').removeClass('delayed').removeClass('disabled').removeClass('enabled')
+                if (status == 0) {
+                    $('#geofences .status').html('DELAYED (touch to enable)').addClass('delayed');
+                } else if (status == -1) {
+                    $('#geofences .status').html('DENIED').addClass('disabled');
+                } else if (status == -2) {
+                    $('#geofences .status').html('FOREGROUND (touch to enable)').addClass('delayed');
+                } else if (status == 1) {
+                    $('#geofences .status').html('ENABLED').addClass('enabled');
+                }
+            });
+        } else
             $('#geofences .status').html('DISABLED').addClass('disabled');
     });
+}
 
+function setupLocationPage() {
+    $('#geofences .status').click(function() {
+        MCELocationPlugin.manualLocationInitialization();
+    });
+
+    MCELocationPlugin.setLocationAuthorizationCallback(function() {
+        updateBeaconStatus();
+        updateLocationStatus();
+    });
+
+    $('#geofences').on('pagebeforeshow', function() {
+        updateLocationStatus();
+    });
+
+    updateLocationStatus();
     MCEGeofencePlugin.geofencesNear(function(geofences) {}, 10, 10, 1000);
 
     MCELocationPlugin.setLocationUpdatedCallback(function() {
@@ -134,9 +163,34 @@ document.addEventListener("backbutton", function() {
     }
 }, false);
 
+function updateBeaconStatus() {
+    MCEBeaconPlugin.beaconEnabled(function(status) {
+        console.log("Update Beacon Status");
+        if (status) {
+            MCELocationPlugin.locationAuthorization(function(status) {
+                $('#beacons .status').removeClass('delayed').removeClass('disabled').removeClass('enabled')
+                if (status == 0) {
+                    $('#beacons .status').html('DELAYED (touch to enable)').addClass('delayed');
+                } else if (status == -1) {
+                    $('#beacons .status').html('DENIED').addClass('disabled');
+                } else if (status == -2) {
+                    $('#beacons .status').html('FOREGROUND (touch to enable)').addClass('delayed');
+                } else if (status == 1) {
+                    $('#beacons .status').html('ENABLED').addClass('enabled');
+                }
+            });
+        } else
+            $('#beacons .status').html('DISABLED').addClass('disabled');
+    });
+}
+
 function setupBeaconPage() {
     var lastRegions = [];
     var beaconStatus = {};
+
+    $('#beacons').on('pagebeforeshow', function() {
+        updateBeaconStatus();
+    });
 
     $('#beacon_refresh').click(function() {
         MCELocationPlugin.syncLocations();
@@ -152,12 +206,11 @@ function setupBeaconPage() {
         });
     }
 
-    MCEBeaconPlugin.beaconEnabled(function(status) {
-        if (status)
-            $('#beacons .status').html('ENABLED').addClass('enabled');
-        else
-            $('#beacons .status').html('DISABLED').addClass('disabled');
+    $('#beacons .status').click(function() {
+        MCELocationPlugin.manualLocationInitialization();
     });
+
+    updateBeaconStatus();
 
     MCEBeaconPlugin.beaconUUID(function(uuid) {
         $('#uuid').html(uuid)
@@ -188,6 +241,12 @@ function setupBeaconPage() {
 
 
 document.addEventListener('deviceready', function() {
+    MCEPlugin.getPluginVersion(function(version) {
+        $('#pluginVersion span').html(version);
+    });
+    MCEPlugin.getSdkVersion(function(version) {
+        $('#sdkVersion span').html(version);
+    });
     setupLocationPage();
     FastClick.attach(document.body);
     setupInAppPage();
@@ -215,6 +274,19 @@ function setupPhoneHomePage() {
 }
 
 function setupInAppPage() {
+    $('#cannedInAppBannerTop').click(function() {
+        // TODO
+    });
+    $('#cannedInAppBannerBottom').click(function() {
+        // TODO
+    });
+    $('#cannedInAppImage').click(function() {
+        // TODO
+    });
+    $('#cannedInAppVideo').click(function() {
+        // TOOD
+    });
+
     $('#inAppBannerTop').click(function() {
         MCEInAppPlugin.executeInAppRule(['topBanner']);
     });
@@ -293,6 +365,14 @@ function setupAttributesPage() {
         updateActions();
     });
 
+    MCEPlugin.setAttributeQueueCallbacks(function() {
+        console.log("attribute success");
+        animateGreen($('#sendAttributes'));
+    }, function(error) {
+        console.log("attribute failure")
+        animateRed($('#sendAttributes'));
+    });
+
     $('#sendAttributes').click(function() {
         var action = getValueForId("action");
         var attribute = getValueForId("attribute");
@@ -301,29 +381,9 @@ function setupAttributesPage() {
         json[attribute] = value;
 
         if (action == 'update') {
-            MCEPlugin.updateUserAttributes(json, function() {
-                console.log("update attribute success");
-                animateGreen($('#sendAttributes'));
-            }, function(error) {
-                console.log("attribute failure")
-                animateRed($('#sendAttributes'));
-            });
-        } else if (action == 'set') {
-            MCEPlugin.setUserAttributes(json, function() {
-                console.log("set attribute success");
-                animateGreen($('#sendAttributes'));
-            }, function(error) {
-                console.log("attribute failure")
-                animateRed($('#sendAttributes'));
-            });
+            MCEPlugin.queueUpdateUserAttributes(json);
         } else if (action == 'delete') {
-            MCEPlugin.deleteUserAttributes([attribute], function() {
-                console.log("delete attribute success");
-                animateGreen($('#sendAttributes'));
-            }, function(error) {
-                console.log("attribute failure")
-                animateRed($('#sendAttributes'));
-            });
+            MCEPlugin.queueDeleteUserAttributes([attribute]);
         } else {
             console.log("unknown action value")
         }
@@ -332,23 +392,13 @@ function setupAttributesPage() {
 
 function updateActions() {
     var action = getValueForId('action');
-    if (action == 'set' || action == 'update')
+    if (action == 'update')
         $('#valuerow').show();
     else
         $('#valuerow').hide();
 }
 
 function setupEventPage() {
-    $('#send_click').click(function() {
-        MCEPlugin.addEvent({ type: "simpleNotification", name: "appOpened", timestamp: new Date() }, function() {
-            console.log("event success")
-            animateGreen($('#send_click'));
-        }, function() {
-            console.log("event failure")
-            animateRed($('#send_click'));
-        });
-    });
-
     MCEPlugin.setEventQueueCallbacks(function(events) {
         animateGreen($('#send_click_queue'));
         console.log("event queue success");

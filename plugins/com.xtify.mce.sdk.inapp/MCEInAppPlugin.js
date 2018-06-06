@@ -92,3 +92,11 @@ exports.processColor = function(colorString, defaultColor) {
     }
     return defaultColor;
 }
+
+/**
+ * Adds an InAppMessage to the database, this is largely for testing purposes.
+ * @param {dictionary} InApp Message Dictionary 
+ */
+exports.addInAppMessage = function(inAppMessage) {
+    cordova.exec(null, this.error, "MCEInAppPlugin", "addInAppMessage", [inAppMessage]);
+}

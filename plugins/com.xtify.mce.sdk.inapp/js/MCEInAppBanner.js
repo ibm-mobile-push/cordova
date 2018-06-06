@@ -7,73 +7,105 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
+var inAppBannerElement;
 var bannerInAppHidden;
 var bannerInAppShown;
 document.addEventListener('deviceready', function() {
     MCEInAppPlugin.registerInAppTemplate(function(inAppMessage) {
+        MCEPlugin.safeAreaInsets(function(insets) {
+            var close = MCEInAppPlugin.addImageRatio("images/inApp/cancel");
 
-        var close = MCEInAppPlugin.addImageRatio("images/inApp/cancel");
+            var icon = undefined;
+            if (inAppMessage['content']['icon']) {
+                icon = MCEInAppPlugin.addImageRatio("images/inApp/" + inAppMessage['content']['icon']);
+            }
 
-        var icon = undefined;
-        if (inAppMessage['content']['icon']) {
-            icon = MCEInAppPlugin.addImageRatio("images/inApp/" + inAppMessage['content']['icon']);
-        }
+            var styles = "";
+            var iconStyle = "";
+            var closeStyle = "";
+            var textStyle = "";
+            if (inAppMessage["content"]["orientation"] == "top") {
+                styles = 'padding-top: ' + insets.top + "px;";
+                closeStyle = "top: " + insets.top + "px;";
+                iconStyle = "top: " + insets.top + "px;";
+            } else {
+                styles = 'padding-bottom: ' + insets.bottom + "px;";
+                closeStyle = "bottom: " + insets.bottom + "px;";
+                iconStyle = "bottom: " + insets.bottom + "px;";
+            }
+            var background;
+            if (typeof(inAppMessage['content']['mainImage']) != 'undefined') {
+                styles += 'background-image: url(' + inAppMessage['content']['mainImage'] + ');';
+                styles += 'background-size: cover;';
+            } else if (typeof(inAppMessage['content']['color']) != 'undefined')
+                styles += 'background-color: ' + MCEInAppPlugin.processColor(inAppMessage['content']['color'], "RGBA(18,84,189,1)") + ";";
+            else
+                styles += 'background-color: RGBA(18,84,189,1);';
 
-        var styles = '';
-        var background;
-        if (typeof(inAppMessage['content']['mainImage']) != 'undefined') {
-            styles += 'background-image: url(' + inAppMessage['content']['mainImage'] + ');';
-            styles += 'background-size: cover;';
-        } else if (typeof(inAppMessage['content']['color']) != 'undefined')
-            styles += 'background-color: ' + MCEInAppPlugin.processColor(inAppMessage['content']['color'], "RGBA(18,84,189,1)") + ";";
-        else
-            styles += 'background-color: RGBA(18,84,189,1);';
+            styles += 'color: ' + MCEInAppPlugin.processColor(inAppMessage['content']['foreground'], "white") + ';';
 
-        styles += 'color: ' + MCEInAppPlugin.processColor(inAppMessage['content']['foreground'], "white") + ';';
+            $('#inApp').remove();
 
-        $('#inApp').remove();
+            var closeElement = $("<div class='close' style='" + closeStyle + "'><img src='" + close + "'></div>");
+            var iconElement = $("<div class='icon' style='" + iconStyle + "'><img src='" + icon + "'></div>");
+            inAppBannerElement = $("<div style='" + styles + "' id='inApp' class='bannerInApp'></div>");
+            inAppBannerElement.append(closeElement);
+            if (icon) {
+                textStyle = 'margin-left: 44px;';
+                inAppBannerElement.append(iconElement);
+            } else {
+                textStyle = 'margin-left: 10px;';
+            }
+            var textElement = $("<div class='text' style='" + textStyle + "'>" + inAppMessage['content']['text'] + " </div>");
+            inAppBannerElement.append(textElement);
 
-        $('body').prepend("<div style='" + styles + "' id='inApp' class='bannerInApp'><div class='close'><img src='" + close + "'></div>" + (icon ? "<div class='icon'><img src='" + icon + "'></div>" : "") + "<div class='text'" + (icon ? "" : " style='margin-left: 10px;'") + ">" + inAppMessage['content']['text'] + "</div></div>");
+            $('body').append(inAppBannerElement);
 
-        $('#inApp .icon,#inApp .text').click(function() {
-            MCEInAppPlugin.executeInAppAction(inAppMessage['content']['action'])
-            MCEInAppPlugin.deleteInAppMessage(inAppMessage['inAppMessageId']);
-            hideBannerInApp();
+            iconElement.click(function() {
+                MCEInAppPlugin.executeInAppAction(inAppMessage['content']['action'])
+                MCEInAppPlugin.deleteInAppMessage(inAppMessage['inAppMessageId']);
+                hideBannerInApp();
+            });
+
+            textElement.click(function() {
+                MCEInAppPlugin.executeInAppAction(inAppMessage['content']['action'])
+                MCEInAppPlugin.deleteInAppMessage(inAppMessage['inAppMessageId']);
+                hideBannerInApp();
+            });
+
+            closeElement.click(function() {
+                hideBannerInApp();
+            });
+
+            // Vertical center text
+            var padding = ($('#inApp').height() - $('#inApp div.text').height()) / 2;
+            textElement.css('padding-top', padding + "px");
+
+            if (inAppMessage["content"]["orientation"] == "top") {
+                bannerInAppHidden = { 'top': (-44 - insets.top) + "px" };
+                bannerInAppShown = { 'top': "0px" };
+            } else {
+                bannerInAppHidden = { 'bottom': "-44px" };
+                bannerInAppShown = { 'bottom': "0px" };
+            }
+
+            var duration = inAppMessage["content"]["duration"];
+            if (duration !== 0 && !duration)
+                duration = 5;
+
+            // Animate in
+            inAppBannerElement.css(bannerInAppHidden).animate(bannerInAppShown, function() {
+                if (duration)
+                    setTimeout(hideBannerInApp, duration * 1000);
+            });
         });
-
-        $('#inApp .close').click(function() {
-            hideBannerInApp();
-        });
-
-        // Vertical center text
-        var padding = ($('#inApp').height() - $('#inApp div.text').height()) / 2;
-        $('#inApp div.text').css('padding-top', padding + "px");
-
-        if (inAppMessage["content"]["orientation"] == "top") {
-            bannerInAppHidden = { 'top': "-44px" };
-            bannerInAppShown = { 'top': "0" };
-        } else {
-            bannerInAppHidden = { 'bottom': "-44px" };
-            bannerInAppShown = { 'bottom': "0" };
-        }
-
-        var duration = inAppMessage["content"]["duration"];
-        if (duration !== 0 && !duration)
-            duration = 5;
-
-        // Animate in
-        $('#inApp').css(bannerInAppHidden).animate(bannerInAppShown, function() {
-            if (duration)
-                setTimeout(hideBannerInApp, duration * 1000);
-        });
-
     }, "default");
 });
 
 function hideBannerInApp() {
     // Animate Out
-    $('#inApp').animate(bannerInAppHidden, function() {
+    inAppBannerElement.animate(bannerInAppHidden, function() {
         // Complete
-        $('#inApp').remove();
+        inAppBannerElement.remove();
     });
 }

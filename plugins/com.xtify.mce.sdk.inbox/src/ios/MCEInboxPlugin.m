@@ -59,7 +59,7 @@
 
 -(NSDictionary*)packageInboxMessage:(MCEInboxMessage*)message
 {
-    return @{ @"inboxMessageId": message.inboxMessageId, @"richContentId": message.richContentId, @"expirationDate": @([message.expirationDate timeIntervalSince1970]*1000),  @"sendDate": @([message.sendDate timeIntervalSince1970]*1000),  @"template": message.templateName, @"attribution": message.attribution, @"isRead": @(message.isRead), @"isDeleted": @(message.isDeleted), @"content": message.content };
+    return @{ @"inboxMessageId": message.inboxMessageId, @"richContentId": message.richContentId, @"expirationDate": @([message.expirationDate timeIntervalSince1970]*1000),  @"sendDate": @([message.sendDate timeIntervalSince1970]*1000),  @"template": message.templateName, @"attribution": message.attribution, @"isRead": @(message.isRead), @"isDeleted": @(message.isDeleted), @"content": message.content, @"mailingId": message.mailingId };
 }
 
 -(void)fetchInboxMessageViaRichContentId:(CDVInvokedUrlCommand*)command;
@@ -118,6 +118,10 @@
         return;
     }
     [self sendInboxMessages:inboxMessages];
+}
+
+-(void)clearExpiredMessages:(CDVInvokedUrlCommand*)command {
+    [MCEInboxDatabase.sharedInstance clearExpiredMessages];
 }
 
 @end

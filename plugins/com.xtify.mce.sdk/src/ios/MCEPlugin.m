@@ -36,8 +36,7 @@
 
 - (void) phoneHome: (CDVInvokedUrlCommand*)command;
 {
-    [[NSUserDefaults standardUserDefaults] setObject: [NSDate distantPast] forKey: @"MCELastPhoneHome"];
-    [MCEPhoneHomeManager phoneHome];
+    [MCEPhoneHomeManager forcePhoneHome];
 }
 
 -(NSArray*)packageEvents: (NSArray*)events
@@ -368,6 +367,7 @@
         details[@"deviceToken"] = [MCEApiUtil deviceToken: MCERegistrationDetails.sharedInstance.pushToken];
     }
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: details ];
+    result.keepCallback = @TRUE;
     [self.commandDelegate sendPluginResult:result callbackId:callbackId];
 }
 
@@ -572,6 +572,24 @@
 {
     NSLog(@"setIcon unimplemented in iOS");
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"unimplemented in iOS"];
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+}
+
+- (void) safeAreaInsets: (CDVInvokedUrlCommand*)command {
+    if (@available(iOS 11.0, *)) {
+        UIEdgeInsets insets = UIApplication.sharedApplication.keyWindow.safeAreaInsets;
+        NSNumber * topInset = insets.top > 20 ? @(insets.top) : @20;
+        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: @{@"top": topInset, @"bottom": @(insets.bottom), @"left": @(insets.left), @"right": @(insets.right)}];
+        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    } else {
+        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: @{@"top": @20, @"bottom": @0, @"left": @0, @"right": @0}];
+        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    }
+}
+
+- (void) userInvalidated: (CDVInvokedUrlCommand*)command {
+    BOOL userInvalidated = MCERegistrationDetails.sharedInstance.userInvalidated;
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool: userInvalidated];
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 

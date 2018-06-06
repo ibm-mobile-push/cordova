@@ -7,24 +7,22 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
-.bannerInApp
-{
+#inApp.bannerInApp {
     position: fixed;
     left: 0;
     right: 0;
     height: 44px;
     z-index: 1100;
     text-shadow: none;
+    height: 44px;
 }
 
-.bannerInApp .text
-{
+#inApp.bannerInApp .text {
     margin-left: 44px;
     margin-right: 44px;
 }
 
-.bannerInApp .icon
-{
+#inApp.bannerInApp .icon {
     position: absolute;
     height: 44px;
     width: 44px;
@@ -33,15 +31,13 @@
     top: 0;
 }
 
-.bannerInApp .icon img
-{
+#inApp.bannerInApp .icon img {
     margin: 10px;
     height: 24px;
     width: 24px;
 }
 
-.bannerInApp .close
-{
+#inApp.bannerInApp .close {
     position: absolute;
     height: 44px;
     width: 44px;
@@ -50,8 +46,7 @@
     top: 0;
 }
 
-.bannerInApp .close img
-{
+#inApp.bannerInApp .close img {
     margin: 10px;
     height: 24px;
     width: 24px;

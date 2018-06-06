@@ -18,4 +18,6 @@
 - (void) executeInAppAction: (CDVInvokedUrlCommand*)command;
 - (void) registerInAppTemplate: (CDVInvokedUrlCommand*)command;
 - (void) executeInAppRule:(CDVInvokedUrlCommand*)command;
+- (void) addInAppMessage: (CDVInvokedUrlCommand*)command;
+
 @end

@@ -1,23 +1,22 @@
-/* IBM Confidential
- * OCO Source Materials
- * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2017
+/*
+ * Licensed Materials - Property of IBM
  *
- * The source code for this program is not published or otherwise
- * divested of its trade secrets, irrespective of what has been
- * deposited with the U.S. Copyright Office.
+ * 5725E28, 5725I03
+ *
+ * © Copyright IBM Corp. 2014, 2018
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
 /** The MCEConstants header contains several important SDK integration constants */
 
 /** The MCESdkVersion constant contains the current release number */
-static NSString * const MCESdkVersion = @"3.7.1.0";
+static NSString * const MCESdkVersion = @"3.7.1.2.2";
 
-/** The RegisteredNotification message is sent via NSNotificationCenter when the SDK registers with the IBM servers */
-static NSString * const RegisteredNotification = @"RegisteredNotification";
+/** The MCERegisteredNotification message is sent via NSNotificationCenter when the SDK registers with the IBM servers */
+static NSString * const MCERegisteredNotification = @"MCERegisteredNotification";
 
-/** The RegistrationChangedNotification message is sent via NSNotificationCenter when the userId or channelId change durring the phone home process */
-static NSString * const RegistrationChangedNotification = @"RegistrationChangedNotification";
+/** The MCERegistrationChangedNotification message is sent via NSNotificationCenter when the userId or channelId change durring the phone home process */
+static NSString * const MCERegistrationChangedNotification = @"MCERegistrationChangedNotification";
 
 /** The MCEEventSuccess message is sent via NSNotificationCenter when events are successfully sent to the server */
 static NSString * const MCEEventSuccess = @"MCEEventSuccess";

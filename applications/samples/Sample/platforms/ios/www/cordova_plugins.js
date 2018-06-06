@@ -32,8 +32,7 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.1",
     "cordova-plugin-statusbar": "2.1.2",
     "cordova-plugin-actionsheet": "2.2.2",
-    "cordova-plugin-email-composer": "0.8.3",
-    "cordova-plugin-crosswalk-webview": "2.3.0"
+    "cordova-plugin-email-composer": "0.8.3"
 };
 // BOTTOM OF METADATA
 });

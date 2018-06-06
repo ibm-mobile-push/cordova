@@ -92,3 +92,10 @@ Allows Cordova Inbox Plugin to retrieve an inbox message by providing a richCont
 exports.fetchInboxMessageViaRichContentId = function(richContentId, callback) {
     cordova.exec(callback, this.error, "MCEInboxPlugin", "fetchInboxMessageViaRichContentId", [richContentId]);
 }
+
+/**
+Allows Cordova Inbox Plugin to immediately remove expired messages from the inbox database
+*/
+exports.clearExpiredMessages = function() {
+	cordova.exec(null, this.error, "MCEInboxPlugin", "clearExpiredMessages", []);
+}

@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2015, 2016
+ * © Copyright IBM Corp. 2015, 2018
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -25,10 +25,15 @@
 // Only needed so we can conform to the MCEInAppTemplate protocol
 +(void) registerTemplate { }
 
+- (void) addInAppMessage: (CDVInvokedUrlCommand*)command {
+    NSDictionary * inAppMessage = [command argumentAtIndex:0];
+    [MCEInAppManager.sharedInstance processPayload: @{ @"inApp": inAppMessage }];
+}
+
 -(NSDictionary*)packageInAppMessage: (MCEInAppMessage*)inAppMessage
 {
     return @{
-             @"inAppMessageId": @(inAppMessage.inAppMessageId),
+             @"inAppMessageId": inAppMessage.inAppMessageId,
              @"maxViews": @(inAppMessage.maxViews),
              @"numViews": @(inAppMessage.numViews),
              @"template": inAppMessage.templateName,
@@ -50,8 +55,9 @@
 
 -(void)deleteInAppMessage: (CDVInvokedUrlCommand*)command
 {
-    NSNumber * inAppMessageId = [command argumentAtIndex:0];
-    [[MCEInAppManager sharedInstance] disableById: [inAppMessageId intValue]];
+    NSString * inAppMessageId = [command argumentAtIndex:0];
+    MCEInAppMessage * inAppMessage = [MCEInAppManager.sharedInstance inAppMessageById: inAppMessageId];
+    [[MCEInAppManager sharedInstance] disable: inAppMessage];
 }
 
 -(void)registerInAppTemplate: (CDVInvokedUrlCommand*)command

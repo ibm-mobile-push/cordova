@@ -13,14 +13,43 @@ $(function() {
 
 // Geofence Page
 
-function setupLocationPage() {
+function updateLocationStatus() {
     MCEGeofencePlugin.geofenceEnabled(function(status) {
-        if (status)
-            $('#geofences .status').html('ENABLED').addClass('enabled');
-        else
+        console.log("Update Geofence Status");
+
+        if (status) {
+            MCELocationPlugin.locationAuthorization(function(status) {
+                $('#geofences .status').removeClass('delayed').removeClass('disabled').removeClass('enabled')
+                if (status == 0) {
+                    $('#geofences .status').html('DELAYED (touch to enable)').addClass('delayed');
+                } else if (status == -1) {
+                    $('#geofences .status').html('DENIED').addClass('disabled');
+                } else if (status == -2) {
+                    $('#geofences .status').html('FOREGROUND (touch to enable)').addClass('delayed');
+                } else if (status == 1) {
+                    $('#geofences .status').html('ENABLED').addClass('enabled');
+                }
+            });
+        } else
             $('#geofences .status').html('DISABLED').addClass('disabled');
     });
+}
 
+function setupLocationPage() {
+    $('#geofences .status').click(function() {
+        MCELocationPlugin.manualLocationInitialization();
+    });
+
+    MCELocationPlugin.setLocationAuthorizationCallback(function() {
+        updateBeaconStatus();
+        updateLocationStatus();
+    });
+
+    $('#geofences').on('pagebeforeshow', function() {
+        updateLocationStatus();
+    });
+
+    updateLocationStatus();
     MCEGeofencePlugin.geofencesNear(function(geofences) {}, 10, 10, 1000);
 
     MCELocationPlugin.setLocationUpdatedCallback(function() {
@@ -134,9 +163,34 @@ document.addEventListener("backbutton", function() {
     }
 }, false);
 
+function updateBeaconStatus() {
+    MCEBeaconPlugin.beaconEnabled(function(status) {
+        console.log("Update Beacon Status");
+        if (status) {
+            MCELocationPlugin.locationAuthorization(function(status) {
+                $('#beacons .status').removeClass('delayed').removeClass('disabled').removeClass('enabled')
+                if (status == 0) {
+                    $('#beacons .status').html('DELAYED (touch to enable)').addClass('delayed');
+                } else if (status == -1) {
+                    $('#beacons .status').html('DENIED').addClass('disabled');
+                } else if (status == -2) {
+                    $('#beacons .status').html('FOREGROUND (touch to enable)').addClass('delayed');
+                } else if (status == 1) {
+                    $('#beacons .status').html('ENABLED').addClass('enabled');
+                }
+            });
+        } else
+            $('#beacons .status').html('DISABLED').addClass('disabled');
+    });
+}
+
 function setupBeaconPage() {
     var lastRegions = [];
     var beaconStatus = {};
+
+    $('#beacons').on('pagebeforeshow', function() {
+        updateBeaconStatus();
+    });
 
     $('#beacon_refresh').click(function() {
         MCELocationPlugin.syncLocations();
@@ -152,12 +206,11 @@ function setupBeaconPage() {
         });
     }
 
-    MCEBeaconPlugin.beaconEnabled(function(status) {
-        if (status)
-            $('#beacons .status').html('ENABLED').addClass('enabled');
-        else
-            $('#beacons .status').html('DISABLED').addClass('disabled');
+    $('#beacons .status').click(function() {
+        MCELocationPlugin.manualLocationInitialization();
     });
+
+    updateBeaconStatus();
 
     MCEBeaconPlugin.beaconUUID(function(uuid) {
         $('#uuid').html(uuid)
@@ -188,6 +241,12 @@ function setupBeaconPage() {
 
 
 document.addEventListener('deviceready', function() {
+    MCEPlugin.getPluginVersion(function(version) {
+        $('#pluginVersion span').html(version);
+    });
+    MCEPlugin.getSdkVersion(function(version) {
+        $('#sdkVersion span').html(version);
+    });
     setupLocationPage();
     FastClick.attach(document.body);
     setupInAppPage();
@@ -215,6 +274,43 @@ function setupPhoneHomePage() {
 }
 
 function setupInAppPage() {
+    $('#cannedInAppBannerTop').click(function() {
+        var expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 1);
+
+        var triggerDate = new Date();
+        triggerDate.setDate(triggerDate.getDate() - 1);
+
+        MCEPlugin.addInAppMessage({ "rules": ["topBanner", "all"], "maxViews": 5, "template": "default", "content": { "orientation": "top", "action": { "type": "url", "value": "http://ibm.co" }, "text": "Canned Banner Template Text", "icon": "note", "color": "0077FF" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
+    });
+    $('#cannedInAppBannerBottom').click(function() {
+        var expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 1);
+
+        var triggerDate = new Date();
+        triggerDate.setDate(triggerDate.getDate() - 1);
+
+        MCEPlugin.addInAppMessage({ "rules": ["bottomBanner", "all"], "maxViews": 5, "template": "default", "content": { "action": { "type": "url", "value": "http://ibm.co" }, "text": "Canned Banner Template Text", "icon": "note", "color": "0077FF" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
+    });
+    $('#cannedInAppImage').click(function() {
+        var expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 1);
+
+        var triggerDate = new Date();
+        triggerDate.setDate(triggerDate.getDate() - 1);
+
+        MCEPlugin.addInAppMessage({ "rules": ["image", "all"], "maxViews": 5, "template": "image", "content": { "action": { "type": "url", "value": "http://ibm.co" }, "title": "Canned Image Template Title", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ", "image": "https://www.ibm.com/us-en/images/homepage/leadspace/01172016_ls_dynamic-pricing-announcement_bg_14018_2732x1300.jpg" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
+    });
+    $('#cannedInAppVideo').click(function() {
+        var expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 1);
+
+        var triggerDate = new Date();
+        triggerDate.setDate(triggerDate.getDate() - 1);
+
+        MCEPlugin.addInAppMessage({ "rules": ["video", "all"], "maxViews": 5, "template": "video", "content": { "action": { "type": "url", "value": "http://ibm.co" }, "title": "Canned Video Template Title", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ", "video": "http://techslides.com/demos/sample-videos/small.mp4" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
+    });
+
     $('#inAppBannerTop').click(function() {
         MCEInAppPlugin.executeInAppRule(['topBanner']);
     });
@@ -293,6 +389,14 @@ function setupAttributesPage() {
         updateActions();
     });
 
+    MCEPlugin.setAttributeQueueCallbacks(function() {
+        console.log("attribute success");
+        animateGreen($('#sendAttributes'));
+    }, function(error) {
+        console.log("attribute failure")
+        animateRed($('#sendAttributes'));
+    });
+
     $('#sendAttributes').click(function() {
         var action = getValueForId("action");
         var attribute = getValueForId("attribute");
@@ -301,29 +405,9 @@ function setupAttributesPage() {
         json[attribute] = value;
 
         if (action == 'update') {
-            MCEPlugin.updateUserAttributes(json, function() {
-                console.log("update attribute success");
-                animateGreen($('#sendAttributes'));
-            }, function(error) {
-                console.log("attribute failure")
-                animateRed($('#sendAttributes'));
-            });
-        } else if (action == 'set') {
-            MCEPlugin.setUserAttributes(json, function() {
-                console.log("set attribute success");
-                animateGreen($('#sendAttributes'));
-            }, function(error) {
-                console.log("attribute failure")
-                animateRed($('#sendAttributes'));
-            });
+            MCEPlugin.queueUpdateUserAttributes(json);
         } else if (action == 'delete') {
-            MCEPlugin.deleteUserAttributes([attribute], function() {
-                console.log("delete attribute success");
-                animateGreen($('#sendAttributes'));
-            }, function(error) {
-                console.log("attribute failure")
-                animateRed($('#sendAttributes'));
-            });
+            MCEPlugin.queueDeleteUserAttributes([attribute]);
         } else {
             console.log("unknown action value")
         }
@@ -332,23 +416,13 @@ function setupAttributesPage() {
 
 function updateActions() {
     var action = getValueForId('action');
-    if (action == 'set' || action == 'update')
+    if (action == 'update')
         $('#valuerow').show();
     else
         $('#valuerow').hide();
 }
 
 function setupEventPage() {
-    $('#send_click').click(function() {
-        MCEPlugin.addEvent({ type: "simpleNotification", name: "appOpened", timestamp: new Date() }, function() {
-            console.log("event success")
-            animateGreen($('#send_click'));
-        }, function() {
-            console.log("event failure")
-            animateRed($('#send_click'));
-        });
-    });
-
     MCEPlugin.setEventQueueCallbacks(function(events) {
         animateGreen($('#send_click_queue'));
         console.log("event queue success");

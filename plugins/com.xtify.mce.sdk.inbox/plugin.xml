@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.inbox"
-version="3.5.0">
+version="3.6.0">
     <name>Inbox Action for IBM MCE Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Inbox Action for IBM MCE Push Services</description>
@@ -56,8 +56,8 @@ version="3.5.0">
             </feature>
         </config-file>
 
-        <source-file src="src/android/ibm-mobile-push-android-cordova-inbox-3.7.1.0.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-inbox-3.7.1.0.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-inbox-3.7.1.2.3.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-inbox-3.7.1.2.3.jar" target-dir="libs" framework="false" />
         
     </platform>
 </plugin>

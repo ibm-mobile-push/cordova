@@ -25,6 +25,7 @@ exports.addImageRatio = function(name) {
 }
 
 exports.openInboxMessage = function(inboxMessage) {
+	MCEPlugin.queueAddEvent({ type: "inbox", name: "messageOpened", timestamp: new Date(), "attributes":{ "richContentId": inboxMessage.richContentId, "inboxMessageId": inboxMessage.inboxMessageId, "attribution":inboxMessage.attribution, "mailingId":inboxMessage.mailingId } });
     $("#inboxMessageContent").attr('inboxMessageId', inboxMessage['inboxMessageId'])
     MCEInboxPlugin.readMessageId(inboxMessage['inboxMessageId']);
     inboxMessage['expirationDate'] = new Date(inboxMessage['expirationDate']);

@@ -30,7 +30,7 @@ Allow Cordova developer to get the current native SDK version in use
 @param callback {sdkVersionCallback} The callback that handles the response
 */
 exports.getPluginVersion = function(callback) {
-    callback("3.5.0");
+    callback("3.6.0");
 };
 
 /**
@@ -499,4 +499,20 @@ Executes phone home request which may update the userId and channelId to match c
 */
 exports.phoneHome = function() {
     cordova.exec(null, this.error, "MCEPlugin", "phoneHome", []);
+}
+
+/**
+ * Get safe are insets for device.
+ * @param {function} callback to retrieve safe area for device
+ */
+exports.safeAreaInsets = function(callback) {
+    cordova.exec(callback, this.error, "MCEPlugin", "safeAreaInsets", []);
+}
+
+/**
+ * Queries if user has been invalidated.
+ * @param {function} callback to retrieve status of user.
+ */
+exports.userInvalidated = function(callback) {
+    cordova.exec(callback, this.error, "MCEPlugin", "userInvalidated", []);
 }

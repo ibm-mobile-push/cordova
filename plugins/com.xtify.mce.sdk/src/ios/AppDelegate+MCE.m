@@ -234,7 +234,8 @@
     
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(appDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
-    [center addObserver:self selector:@selector(registration:) name:RegisteredNotification object:nil];
+    [center addObserver:self selector:@selector(registration:) name:MCERegisteredNotification object:nil];
+    [center addObserver:self selector:@selector(registration:) name:MCERegistrationChangedNotification object:nil];
     [center addObserver:self selector:@selector(eventSuccess:) name:MCEEventSuccess object:nil];
     [center addObserver:self selector:@selector(eventFailure:) name:MCEEventFailure object:nil];
     
@@ -251,20 +252,27 @@
     NSString * devAppKey = [self settingForKey:@"devAppKey"];
     NSString * prodAppKey = [self settingForKey:@"prodAppKey"];
     NSString * loglevel = [self settingForKey:@"loglevel"];
+    
+    NSString * autoReinitializeString = [self settingForKey:@"autoReinitialize"];
+    NSNumber * autoReinitialize = ([autoReinitializeString caseInsensitiveCompare: @"true"] == NSOrderedSame || [autoReinitializeString caseInsensitiveCompare: @"yes"] == NSOrderedSame) ? @YES : @NO;
+    
     NSString * baseUrl = [self settingForKey:@"baseUrl"];
-    NSNumber * autoInitialize = [[self settingForKey:@"autoInitialize"] caseInsensitiveCompare:@"false"] == NSOrderedSame ? @NO : @YES;
+    
+    NSString * autoInitializeString = [self settingForKey:@"autoInitialize"];
+    NSNumber * autoInitialize = ([autoInitializeString caseInsensitiveCompare: @"true"] == NSOrderedSame || [autoInitializeString caseInsensitiveCompare: @"yes"] == NSOrderedSame) ? @YES : @NO;
     
     NSString * invalidateExistingUserString = [self settingForKey:@"invalidateExistingUser"];
     NSNumber * invalidateExistingUser = ([invalidateExistingUserString caseInsensitiveCompare: @"true"] == NSOrderedSame || [invalidateExistingUserString caseInsensitiveCompare: @"yes"] == NSOrderedSame) ? @YES : @NO;
     
-    NSMutableDictionary * config = [@{@"invalidateExistingUser":invalidateExistingUser, @"loglevel":loglevel,@"baseUrl":baseUrl, @"appKey":@{ @"prod":prodAppKey, @"dev":devAppKey}, @"autoInitialize":autoInitialize, @"location": [NSMutableDictionary dictionary] } mutableCopy];
+    NSMutableDictionary * config = [@{@"invalidateExistingUser":invalidateExistingUser, @"autoReinitialize": autoReinitialize, @"loglevel":loglevel,@"baseUrl":baseUrl, @"appKey":@{ @"prod":prodAppKey, @"dev":devAppKey}, @"autoInitialize":autoInitialize, @"location": [NSMutableDictionary dictionary] } mutableCopy];
+    
     if([self settingForKey:@"geofence"] && [[self settingForKey:@"geofence"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
     {
         config[@"location"][@"geofence"] = [NSMutableDictionary dictionary];
     }
     
     
-    NSNumber * autoInitializeLocation = (NSNumber*)[self settingForKey:@"autoInitializeLocation"];
+    NSString * autoInitializeLocation = [self settingForKey:@"autoInitializeLocation"];
     NSNumber * geofenceSyncInterval = (NSNumber*)[self settingForKey:@"locationSyncInterval"];
     NSNumber * geofenceSyncRadius = (NSNumber*)[self settingForKey:@"locationSyncRadius"];
     if(geofenceSyncRadius && geofenceSyncInterval)
@@ -272,7 +280,12 @@
         config[@"location"][@"sync"] = [NSMutableDictionary dictionary];
         config[@"location"][@"sync"][@"syncRadius"] = geofenceSyncRadius;
         config[@"location"][@"sync"][@"syncInterval"] = geofenceSyncInterval;
-        config[@"location"][@"autoInitialize"] = autoInitializeLocation;
+    }
+    
+    if(autoInitializeLocation && [autoInitializeLocation caseInsensitiveCompare: @"true"] == NSOrderedSame) {
+        config[@"location"][@"autoInitialize"] = @YES;
+    } else {
+        config[@"location"][@"autoInitialize"] = @NO;
     }
     
     if([self settingForKey:@"geofence"] && [[self settingForKey:@"ibeacon"] caseInsensitiveCompare: @"true"] == NSOrderedSame)
@@ -296,7 +309,8 @@
 {
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self name:UIApplicationDidFinishLaunchingNotification object:nil];
-    [center removeObserver:self name:RegisteredNotification object:nil];
+    [center removeObserver:self name:MCERegisteredNotification object:nil];
+    [center removeObserver:self name:MCERegistrationChangedNotification object:nil];
     [center removeObserver:self name:MCEEventSuccess object:nil];
     [center removeObserver:self name:MCEEventFailure object:nil];
     [center removeObserver:self name:SetUserAttributesError object:nil];
