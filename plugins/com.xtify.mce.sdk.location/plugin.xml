@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.location"
-version="3.6.0">
+version="3.6.1">
     <name>IBM MCE Location Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -51,8 +51,8 @@ version="3.6.0">
     </platform>
     <platform name="android">
         <framework src="com.google.android.gms:play-services-location:+" />
-        <source-file src="src/android/ibm-mobile-push-android-cordova-location-3.7.1.2.3.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-location-3.7.1.2.3.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-location-3.7.1.2.8.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-location-3.7.1.2.8.jar" target-dir="libs" framework="false" />
 
         <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="overwrite">
             <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/activity_name" android:launchMode="singleTop" android:name="com.ibm.mce.plugin.cordova.location.MceJsonActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:windowSoftInputMode="adjustResize" />
@@ -63,6 +63,21 @@ version="3.6.0">
             <meta-data android:name="refAreaRadius" android:value="$SYNC_RADIUS" />
             <meta-data android:name="syncInterval" android:value="$SYNC_INTERVAL" />
             <meta-data android:name="autoInitializeLocation" android:value="$AUTO_INITIALIZE_LOCATION" />
+
+            <!-- LocationUpdateCaller is used for scheduling location updates -->
+            <receiver android:name="com.ibm.mce.sdk.location.LocationUpdateCaller" />
+
+            <!-- LocationRetrieveService is optional. It is used to handle location events backoff. It is required only if locations are enabled -->
+            <service android:name="com.ibm.mce.sdk.location.LocationEventsIntentService" />
+            <!-- LocationSyncAlarmListener is optional. It is used to scheduled location sync. It is required only if inbox is used -->
+            <service android:name="com.ibm.mce.sdk.location.LocationSyncAlarmListener" />
+            <!-- LocationRetrieveService is optional. It is used for retrieving the device location. It is required only if locations are enabled -->
+            <service android:name="com.ibm.mce.sdk.location.LocationRetrieveService" />
+            <receiver android:name="com.ibm.mce.sdk.js.location.JsonMceBroadcastReceiver">
+                <intent-filter>
+                    <action android:name="com.ibm.mce.sdk.NOTIFIER" />
+                </intent-filter>
+            </receiver>
         </config-file>
 
         <config-file target="res/xml/config.xml" parent="/widget">
@@ -72,20 +87,11 @@ version="3.6.0">
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
+            <!-- ACCESS_FINE_LOCATION is optional. It is only required if location services needs to use GPS location -->
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <!-- ACCESS_COARSE_LOCATION is optional. It is only required if location services needs to use network location -->
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
         </config-file>
         
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <service android:name="com.ibm.mce.sdk.location.LocationRetrieveService" />
-            <service android:name="com.ibm.mce.sdk.location.LocationEventsIntentService" />
-            <service android:name="com.ibm.mce.sdk.location.LocationSyncAlarmListener" />
-            <receiver android:name="com.ibm.mce.sdk.js.location.JsonMceBroadcastReceiver">
-                <intent-filter>
-                    <action android:name="com.ibm.mce.sdk.NOTIFIER" />
-                </intent-filter>
-            </receiver>
-        </config-file>
-
     </platform>
 </plugin>
