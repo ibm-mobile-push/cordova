@@ -1,9 +1,9 @@
 {
-    "name": "Snooze-Action-for-IBM-MCE-Cordova-Plugin",
+    "name": "IBM-MCE-Cordova-Plugin-GCM",
     "version": "3.6.2",
-    "description": "Snooze Action for IBM MCE Cordova Plugin",
+    "description": "Allows Cordova applications to integrate with IBM MCE Push Services",
     "cordova": {
-        "id": "com.xtify.mce.sdk.snooze",
+        "id": "com.xtify.mce.sdk.gcm",
         "platforms": [
             "ios",
             "android"

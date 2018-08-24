@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.geofence"
-version="3.6.1">
+version="3.6.2">
     <name>IBM MCE Geofence Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>

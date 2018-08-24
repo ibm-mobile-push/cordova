@@ -30,7 +30,7 @@ Allow Cordova developer to get the current native SDK version in use
 @param callback {sdkVersionCallback} The callback that handles the response
 */
 exports.getPluginVersion = function(callback) {
-    callback("3.6.1");
+    callback("3.6.2");
 };
 
 /**
