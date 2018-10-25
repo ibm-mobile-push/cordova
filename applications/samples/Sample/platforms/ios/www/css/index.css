@@ -12,6 +12,14 @@
     font-weight: bold;
 }
 
+#pluginVersion {
+    text-align: center;
+}
+
+#sdkVersion {
+    text-align: center;
+}
+
 #geofences .ui-header {
     position: relative;
 }
@@ -41,9 +49,9 @@
 }
 
 #map {
-    left: 0;
-    right: 10px;
-    bottom: 10px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     top: 100px;
 }
 
@@ -52,13 +60,14 @@
 }
 
 .ui-body {
+    background-color: white;
     position: absolute;
     top: 44px;
     left: 0;
     right: 0;
-    padding-bottom: 50px;
-    padding-top: constant(safe-area-inset-top) !important;
-    padding-top: env(safe-area-inset-top) !important;
+    padding-bottom: 40px;
+    margin-top: constant(safe-area-inset-top) !important;
+    margin-top: env(safe-area-inset-top) !important;
 }
 
 .ui-bar-inherit {
@@ -92,8 +101,8 @@ div.header {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 200px 100px;
-    height: 100px;
-    margin-bottom: 30px;
+    height: 71px;
+    margin-bottom: 15px;
 }
 
 .right,
@@ -110,5 +119,3 @@ div.header {
     padding: 0;
     padding-right: 10px;
 }
-
-

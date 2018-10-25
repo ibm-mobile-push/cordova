@@ -24,6 +24,14 @@ module.exports = [
             "cordova.plugins.email",
             "plugin.email"
         ]
+    },
+    {
+        "id": "skwas-cordova-plugin-datetimepicker.DateTimePicker",
+        "file": "plugins/skwas-cordova-plugin-datetimepicker/www/datetimepicker.js",
+        "pluginId": "skwas-cordova-plugin-datetimepicker",
+        "clobbers": [
+            "cordova.plugins.DateTimePicker"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -32,7 +40,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.1",
     "cordova-plugin-statusbar": "2.1.2",
     "cordova-plugin-actionsheet": "2.2.2",
-    "cordova-plugin-email-composer": "0.8.3"
+    "cordova-plugin-email-composer": "0.8.3",
+    "skwas-cordova-plugin-datetimepicker": "1.1.3"
 };
 // BOTTOM OF METADATA
 });

@@ -10,7 +10,7 @@
  */
 
 
-.ui-icon-action:after {
+ .ui-icon-action:after {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANCAYAAACZ3F9/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAKZJREFUKJGVkbEJAkEQRQcRM2OxAQswE8E27MDUDo5rQ8HYIswtRQwFDTR4f0xcmTuX9e6Hs/8tf/6YdRCwd/dRF29D7u7AWdK0N/iBL5IWjWFQbWYmaQYc3f0WH4GXu2/aYIJWwCPz6S+YYkkaA1fgKamSNClGDeAWuEtaFstpg8BJ0jqWA+zSOdI6OfBQaLf+ejNR5//OkgVLit5hHHaBkwZ9zFFvZs0ccjGSLdsAAAAASUVORK5CYII=');
 }
 .ui-icon-arrow-d-l:after {
@@ -596,9 +596,9 @@ div.ui-mobile-viewport {
 }
 /* Buttons and icons */
 .ui-btn {
-    font-size: 16px;
+    font-size: 14px;
     margin: .5em 0;
-    padding: .7em 1em;
+    padding: 0.5em 0.5em;
     display: block;
     position: relative;
     text-align: center;
@@ -3880,7 +3880,7 @@ select,
 textarea,
 button,
 .ui-btn {
-    font-size: 1em;
+    font-size: 14px;
     line-height: 1.3;
     font-family: Lato, sans-serif;
 }
@@ -3898,7 +3898,7 @@ h3 {
 .ui-mobile label,
 div.ui-controlgroup-label {
     font-weight: normal;
-    font-size: 16px;
+    font-size: 14px;
 }
 /* Separators
  -----------------------------------------------------------------------------------------------------------*/

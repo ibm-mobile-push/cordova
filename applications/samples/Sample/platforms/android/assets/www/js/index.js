@@ -273,6 +273,15 @@ function setupPhoneHomePage() {
     });
 }
 
+function guid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
 function setupInAppPage() {
     $('#cannedInAppBannerTop').click(function() {
         var expirationDate = new Date();
@@ -281,7 +290,7 @@ function setupInAppPage() {
         var triggerDate = new Date();
         triggerDate.setDate(triggerDate.getDate() - 1);
 
-        MCEPlugin.addInAppMessage({ "rules": ["topBanner", "all"], "maxViews": 5, "template": "default", "content": { "orientation": "top", "action": { "type": "url", "value": "http://ibm.co" }, "text": "Canned Banner Template Text", "icon": "note", "color": "0077FF" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
+        MCEInAppPlugin.addInAppMessage({ "inAppMessageId": guid(), "rules": ["topBanner", "all"], "maxViews": 5, "template": "default", "content": { "orientation": "top", "action": { "type": "url", "value": "http://ibm.co" }, "text": "Canned Banner Template Text", "icon": "note", "color": "0077FF" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
     });
     $('#cannedInAppBannerBottom').click(function() {
         var expirationDate = new Date();
@@ -290,7 +299,7 @@ function setupInAppPage() {
         var triggerDate = new Date();
         triggerDate.setDate(triggerDate.getDate() - 1);
 
-        MCEPlugin.addInAppMessage({ "rules": ["bottomBanner", "all"], "maxViews": 5, "template": "default", "content": { "action": { "type": "url", "value": "http://ibm.co" }, "text": "Canned Banner Template Text", "icon": "note", "color": "0077FF" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
+        MCEInAppPlugin.addInAppMessage({ "inAppMessageId": guid(), "rules": ["bottomBanner", "all"], "maxViews": 5, "template": "default", "content": { "action": { "type": "url", "value": "http://ibm.co" }, "text": "Canned Banner Template Text", "icon": "note", "color": "0077FF" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
     });
     $('#cannedInAppImage').click(function() {
         var expirationDate = new Date();
@@ -299,7 +308,7 @@ function setupInAppPage() {
         var triggerDate = new Date();
         triggerDate.setDate(triggerDate.getDate() - 1);
 
-        MCEPlugin.addInAppMessage({ "rules": ["image", "all"], "maxViews": 5, "template": "image", "content": { "action": { "type": "url", "value": "http://ibm.co" }, "title": "Canned Image Template Title", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ", "image": "https://www.ibm.com/us-en/images/homepage/leadspace/01172016_ls_dynamic-pricing-announcement_bg_14018_2732x1300.jpg" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
+        MCEInAppPlugin.addInAppMessage({ "inAppMessageId": guid(), "rules": ["image", "all"], "maxViews": 5, "template": "image", "content": { "action": { "type": "url", "value": "http://ibm.co" }, "title": "Canned Image Template Title", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ", "image": "https://www.ibm.com/us-en/images/homepage/leadspace/01172016_ls_dynamic-pricing-announcement_bg_14018_2732x1300.jpg" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
     });
     $('#cannedInAppVideo').click(function() {
         var expirationDate = new Date();
@@ -308,7 +317,7 @@ function setupInAppPage() {
         var triggerDate = new Date();
         triggerDate.setDate(triggerDate.getDate() - 1);
 
-        MCEPlugin.addInAppMessage({ "rules": ["video", "all"], "maxViews": 5, "template": "video", "content": { "action": { "type": "url", "value": "http://ibm.co" }, "title": "Canned Video Template Title", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ", "video": "http://techslides.com/demos/sample-videos/small.mp4" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
+        MCEInAppPlugin.addInAppMessage({ "inAppMessageId": guid(), "rules": ["video", "all"], "maxViews": 5, "template": "video", "content": { "action": { "type": "url", "value": "http://ibm.co" }, "title": "Canned Video Template Title", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ", "video": "http://techslides.com/demos/sample-videos/small.mp4" }, "triggerDate": triggerDate.toISOString(), "expirationDate": expirationDate.toISOString() });
     });
 
     $('#inAppBannerTop').click(function() {
@@ -586,18 +595,49 @@ function displayStandardValue() {
     updateStandardTypeJSON();
 }
 
+var registrationComplete = false;
+
+function updateRegistration(details) {
+    var userId = "";
+    var channelId = "";
+    var status = "";
+    if (typeof details['userId'] == "undefined" || typeof details['channelId'] == "undefined") {
+        registrationComplete = false;
+        status = "Click to register";
+        userId = "not registered";
+        channelId = "not registered";
+    } else {
+        registrationComplete = true;
+        status = "Registered";
+        userId = details['userId'];
+        channelId = details['channelId'];
+    }
+    MCEPlugin.userInvalidated(function(invalidated) {
+        if (invalidated) {
+            status += " (Invalidated State)";
+        }
+        $('#registration_status').html(status);
+        $('.userId').html(userId);
+        $('.channelId').html(channelId);
+    });
+}
+
 function setupRegistrationPage() {
+    $('#registration_status').click(function() {
+        if (!registrationComplete) {
+            $('#registration_status').html("Registering");
+            MCEPlugin.manualInitialization();
+        }
+    });
     MCEPlugin.setRegistrationCallback(function(details) {
-        $('#userId').html(details['userId']);
-        $('#channelId').html(details['channelId']);
+        updateRegistration(details);
     });
 
     MCEPlugin.getRegistrationDetails(function(details) {
-        $('#userId').html(details['userId']);
-        $('#channelId').html(details['channelId']);
+        updateRegistration(details);
     });
 
     MCEPlugin.getAppKey(function(appKey) {
-        $('#appKey').html(appKey);
+        $('.appKey').html(appKey);
     });
 }

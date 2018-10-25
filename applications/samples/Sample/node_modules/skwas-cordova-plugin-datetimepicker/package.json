@@ -1,0 +1,68 @@
+{
+  "_from": "skwas-cordova-plugin-datetimepicker",
+  "_id": "skwas-cordova-plugin-datetimepicker@1.1.3",
+  "_inBundle": false,
+  "_integrity": "sha1-Dkkh1R3dkcyo0brWGu3ngadU95w=",
+  "_location": "/skwas-cordova-plugin-datetimepicker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "skwas-cordova-plugin-datetimepicker",
+    "name": "skwas-cordova-plugin-datetimepicker",
+    "escapedName": "skwas-cordova-plugin-datetimepicker",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/skwas-cordova-plugin-datetimepicker/-/skwas-cordova-plugin-datetimepicker-1.1.3.tgz",
+  "_shasum": "0e4921d51ddd91cca8d1bad61aede781a754f79c",
+  "_spec": "skwas-cordova-plugin-datetimepicker",
+  "_where": "/Users/buchmanj/Projects/Development/Hybrid/ibm-mobile-push-hybrid/applications/samples/Sample",
+  "author": {
+    "name": "skwasjer"
+  },
+  "bugs": {
+    "url": "https://github.com/skwasjer/skwas-cordova-plugin-datetimepicker/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "turshija"
+    },
+    {
+      "name": "emanfu"
+    },
+    {
+      "name": "masimplo"
+    }
+  ],
+  "cordova_name": "DateTime picker",
+  "deprecated": false,
+  "description": "Cordova DateTime picker plugin",
+  "engines": [],
+  "homepage": "https://github.com/skwasjer/skwas-cordova-plugin-datetimepicker#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova",
+    "datetime"
+  ],
+  "license": "MIT",
+  "name": "skwas-cordova-plugin-datetimepicker",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skwasjer/skwas-cordova-plugin-datetimepicker.git"
+  },
+  "types": "./types/index.d.ts",
+  "version": "1.1.3"
+}

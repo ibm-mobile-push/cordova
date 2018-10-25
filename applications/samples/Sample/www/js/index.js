@@ -388,6 +388,9 @@ function animateRed(item) {
 }
 
 function setupAttributesPage() {
+    var valueType = getValueForId('value-type');
+    $('#' + valueType + '-type').prop("checked", true);
+    
     var action = getValueForId('action');
     $('#' + action + "-action").prop("checked", true);
 
@@ -398,37 +401,127 @@ function setupAttributesPage() {
         updateActions();
     });
 
-    MCEPlugin.setAttributeQueueCallbacks(function() {
+    MCEPlugin.setAttributeQueueCallbacks(function(details) {
         console.log("attribute success");
+        $('#sendAttributesStatus').css({"color":"green"}).html( JSON.stringify(details) );
         animateGreen($('#sendAttributes'));
+
     }, function(error) {
         console.log("attribute failure")
+        $('#sendAttributesStatus').css({"color":"red"}).html( JSON.stringify(error) );
         animateRed($('#sendAttributes'));
     });
-
+    
+    updateValueType();
+    $('[name=type]').change(function () {
+        updateValueType();
+    })
+  
+    $('#value').click(function () {
+        clickValueField();
+    }).keypress(function (event) {
+        editValueField();
+    });
+    
     $('#sendAttributes').click(function() {
+        var valueType = $('[name=type]:checked').val();
+        if(valueType == "bool") {
+            var value = $('[name=bool-value]:checked').val() == "true";
+        } else {
+            var value = $('#value').val();
+            if(valueType == "number") {
+                value = parseFloat(value);
+                if(isNaN(value)) {
+                    value = 0;
+                }
+            } else if(valueType == "date") {
+                value = Date.parse(value);
+                if(isNaN(value)) {
+                    value = new Date();
+                } else {
+                    value = new Date(value);
+                }
+            }
+        }
+        var attribute = $('#attribute').val();
+
         var action = getValueForId("action");
-        var attribute = getValueForId("attribute");
-        var value = getValueForId("value");
         var json = {};
         json[attribute] = value;
 
         if (action == 'update') {
             MCEPlugin.queueUpdateUserAttributes(json);
+            $('#sendAttributesStatus').css({"color":"gray"}).html("Queued attribute update " + attribute + "=" + value);
         } else if (action == 'delete') {
             MCEPlugin.queueDeleteUserAttributes([attribute]);
+            $('#sendAttributesStatus').css({"color":"gray"}).html("Queued attribute delete " + attribute);
         } else {
             console.log("unknown action value")
         }
     });
 }
 
+function editValueField() {
+    var valueType = $('[name=type]:checked').val();
+    if(valueType == "number") {
+        if (!event.key.match(/[\d\.]/) ) {
+            event.preventDefault();
+        }
+    }
+}
+
+function updateValueType() {
+    var valueType = $('[name=type]:checked').val();
+    saveValueForId("value-type", valueType);
+    if(valueType=="bool") {
+        $('#bool-value-container').show();
+        $('#value-container').hide();
+    } else {
+        $('#bool-value-container').hide();
+        $('#value-container').show();
+        if(valueType=="date") {
+            var value = Date.parse($('#value'));
+            if(isNaN(value)) {
+                value = new Date();
+            }
+            $('#value').val( value.toISOString() );
+        } else if(valueType=="number") {
+            var value = parseFloat($('#value').val() );
+            if(isNaN(value)) {
+                value = 0;
+            }
+            $('#value').val(value);
+        } else if(valueType=="string") {
+
+        }
+    }
+}
+
+function clickValueField() {
+    $('#value').attr("type", "text");
+    var type = $('[name=type]:checked').val();
+    if(type == "date") {
+        cordova.plugins.DateTimePicker.show({
+            mode:"datetime", 
+            allowOldDates: true, 
+            allowFutureDates: true, 
+            okText: "Select", 
+            cancelText: "Cancel",
+            success: function(newDate) {
+                $('#value').val(newDate.toISOString());
+            }        
+        });
+    } else if(type == "number") {
+        $('#value').attr("type", "number")
+    }
+}
+
 function updateActions() {
     var action = getValueForId('action');
     if (action == 'update')
-        $('#valuerow').show();
+        $('#value-container-container').show();
     else
-        $('#valuerow').hide();
+        $('#value-container-container').hide();
 }
 
 function setupEventPage() {

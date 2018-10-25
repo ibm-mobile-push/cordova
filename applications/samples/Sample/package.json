@@ -1,6 +1,6 @@
 {
-    "name": "com.xtify.silverpop",
-    "version": "3.6.2",
+    "name": "com.ibm.mce.samples.gcm",
+    "version": "3.6.3",
     "displayName": "Sample",
     "cordova": {
         "platforms": [
@@ -8,11 +8,14 @@
             "ios"
         ],
         "plugins": {
-            "cordova-plugin-whitelist": {}
+            "cordova-plugin-whitelist": {},
+            "skwas-cordova-plugin-datetimepicker": {}
         }
     },
     "dependencies": {
         "cordova-ios": "~4.4.0",
-        "cordova-plugin-whitelist": "1"
+        "cordova-plugin-whitelist": "1",
+        "skwas-cordova-plugin-datetimepicker": "^1.1.3",
+        "cordova-android": "~6.2.3"
     }
 }

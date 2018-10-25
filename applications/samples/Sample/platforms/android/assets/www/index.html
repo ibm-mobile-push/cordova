@@ -149,6 +149,17 @@
 
     <div data-role="page" id="phonehome">
         <div class="ui-body">
+            <p><b>Credentials</b></p>
+            <ul data-role="listview">
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">User Id</div>
+                    <div class="ui-block-b right userId"></div>
+                </li>
+                <li class="ui-grid-a">
+                    <div class="ui-block-a">Channel Id</div>
+                    <div class="ui-block-b right channelId"></div>
+                </li>
+            </ul>
             <a data-transition="slide" id='phonehome_button' data-role="button">Execute Phone Home</a>
         </div>
         <div data-role="header">
@@ -185,17 +196,18 @@
             <ul data-role="listview">
                 <li class="ui-grid-a">
                     <div class="ui-block-a">User Id</div>
-                    <div class="ui-block-b right" id='userId'></div>
+                    <div class="ui-block-b right userId"></div>
                 </li>
                 <li class="ui-grid-a">
                     <div class="ui-block-a">Channel Id</div>
-                    <div class="ui-block-b right" id='channelId'></div>
+                    <div class="ui-block-b right channelId"></div>
                 </li>
                 <li class="ui-grid-a">
                     <div class="ui-block-a">App Key</div>
-                    <div class="ui-block-b right" id='appKey'></div>
+                    <div class="ui-block-b right appKey"></div>
                 </li>
             </ul>
+            <a data-transition="slide" id='registration_status' data-role="button">Undefined</a>
             <p>User ID and Channel ID only known after registration. The registration process could take several minutes, If you have issues with registering a device make sure you have the correct certificate and appKey</p>
         </div>
 
