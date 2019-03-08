@@ -47,7 +47,11 @@ Set callback for entering iBeacon regions
 @param callback {beaconCallback} Callback function for entering iBeacon regions.
  */
 exports.setBeaconEnterCallback = function(callback) {
-    cordova.exec(callback, this.error, "MCEBeaconPlugin", "setBeaconEnterCallback", []);
+    MCEPlugin.pauseResumeCallback(function () {
+        cordova.exec(null, null, "MCEBeaconPlugin", "setBeaconEnterCallback", []);
+    }, function () {
+        cordova.exec(callback, this.error, "MCEBeaconPlugin", "setBeaconEnterCallback", []);
+    });
 }
 
 /**
@@ -55,7 +59,11 @@ Set callback for exiting iBeacon regions
 @param callback {beaconCallback} Callback function for exiting iBeacon regions.
  */
 exports.setBeaconExitCallback = function(callback) {
-    cordova.exec(callback, this.error, "MCEBeaconPlugin", "setBeaconExitCallback", []);
+    MCEPlugin.pauseResumeCallback(function () {
+        cordova.exec(null, null, "MCEBeaconPlugin", "setBeaconExitCallback", []);
+    }, function () {
+        cordova.exec(callback, this.error, "MCEBeaconPlugin", "setBeaconExitCallback", []);
+    });
 }
 
 /**

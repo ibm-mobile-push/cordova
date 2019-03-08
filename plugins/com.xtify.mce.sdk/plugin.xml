@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk"
-version="3.6.3">
+version="3.6.4">
     <name>IBM MCE Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -24,12 +24,13 @@ version="3.6.3">
     <preference name="CHANNEL_ID" default="mce_sample_channel"/>
 
     <preference name="LOGLEVEL" default="error" />
-    <preference name="SERVER_URL" default="https://api.ibm.xtify.com" />
+    <preference name="SERVER_URL" default="https://sdk.ibm.xtify.com" />
     <preference name="IOS_PROD_APPKEY" />
     <preference name="IOS_DEV_APPKEY" />
     <preference name="CUSTOM_ACTIONS" default="none" />
     <preference name="INVALIDATE_EXISTING_USER" default="false" />
     <preference name="AUTO_REINITIALIZE" default="true" />
+    <preference name="AUTO_INITIALIZE" default="true" />
     <preference name="ANDROID_APPKEY" />
     <platform name="ios">
         <framework src="src/ios/IBMMobilePush.framework" custom="true" />
@@ -49,7 +50,7 @@ version="3.6.3">
             <preference name="baseUrl" value="$SERVER_URL" />
             <preference name="prodAppKey" value="$IOS_PROD_APPKEY" />
             <preference name="devAppKey" value="$IOS_DEV_APPKEY" />
-            <preference name="autoInitialize" value="true" />
+            <preference name="autoInitialize" value="$AUTO_INITIALIZE" />
             <preference name="customActions" value="$CUSTOM_ACTIONS" />
             <preference name="loglevel" value="$LOGLEVEL" />
             <preference name="invalidateExistingUser" value="$INVALIDATE_EXISTING_USER" />
@@ -77,7 +78,7 @@ version="3.6.3">
         <framework src="com.google.android.gms:play-services-auth:+" />
 
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="overwrite">
-            <application android:hardwareAccelerated="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:name="com.ibm.mce.sdk.js.MceJsonApplication" android:supportsRtl="true" />
+            <application android:allowBackup="false" android:hardwareAccelerated="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:name="com.ibm.mce.sdk.js.MceJsonApplication" android:supportsRtl="true" />
         </edit-config>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
@@ -102,6 +103,7 @@ version="3.6.3">
             <meta-data android:name="channelId" android:value="$CHANNEL_ID" />
 
             <!-- MCE properties -->            
+            <meta-data android:name="autoInitialize" android:value="$AUTO_INITIALIZE" />
             <meta-data android:name="autoReinitialize" android:value="$AUTO_REINITIALIZE" />
             <meta-data android:name="mceAppKey" android:value="@string/appkey" />
             <meta-data android:name="loglevel" android:value="$LOGLEVEL" />
@@ -175,8 +177,8 @@ version="3.6.3">
             </feature>
         </config-file>
         <source-file src="src/android/gson-2.2.4.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-sdk-3.7.1.2.11.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-3.7.1.2.11.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-cordova-3.7.1.2.11.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-sdk-3.7.1.2.14.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-3.7.1.2.14.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-3.7.1.2.14.jar" target-dir="libs" framework="false" />
     </platform>
 </plugin>

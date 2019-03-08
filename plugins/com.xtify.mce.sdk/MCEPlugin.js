@@ -30,7 +30,7 @@ Allow Cordova developer to get the current native SDK version in use
 @param callback {sdkVersionCallback} The callback that handles the response
 */
 exports.getPluginVersion = function(callback) {
-    callback("3.6.3");
+    callback("3.6.4");
 };
 
 /**
@@ -54,7 +54,11 @@ until the next time this method is called to register a callback handler
 @param callback {registrationCallback} The callback that handles the response
 */
 exports.setRegistrationCallback = function(callback) {
-    cordova.exec(callback, null, "MCEPlugin", "setRegistrationCallback", []);
+    pauseResumeCallback(function () {
+        cordova.exec(null, null, "MCEPlugin", "setRegistrationCallback", []);
+    }, function () {
+        cordova.exec(callback, null, "MCEPlugin", "setRegistrationCallback", []);
+    });
 }
 
 /** 
@@ -69,7 +73,11 @@ Allow Cordova developer to handle custom actions
 @param type {string} Custom Action type from the "notification-action" or the "category-actions" section of the payload
 */
 exports.setRegisteredActionCallback = function(callback, type) {
-    cordova.exec(callback, null, "MCEPlugin", "setRegisteredActionCallback", [type]);
+    pauseResumeCallback(function () {
+        cordova.exec(null, null, "MCEPlugin", "setRegisteredActionCallback", [type]);
+    }, function () {
+        cordova.exec(callback, null, "MCEPlugin", "setRegisteredActionCallback", [type]);
+    });
 }
 
 /**
@@ -101,14 +109,34 @@ until the next time this method is called to register a callback handler
 @param successCallback {eventQueueSuccessCallback} The callback that handles the response
 @param errorCallback {eventQueueFailureCallback} The callback that handles the response
 */
+
 exports.setEventQueueCallbacks = function(successCallback, errorCallback) {
-    cordova.exec(function(events) {
-        successCallback(MCEPlugin.translateEvents(events));
-    }, function(eventsAndError) {
-        MCEPlugin.translateEvents(eventsAndError['events']);
-        errorCallback(eventsAndError);
-    }, "MCEPlugin", "setEventQueueCallbacks", []);
+    pauseResumeCallback(function () {
+            cordova.exec(null, null, "MCEPlugin", "setEventQueueCallbacks", []);
+        }, function () {
+            cordova.exec(function(events) {
+                successCallback(MCEPlugin.translateEvents(events));
+            }, function(eventsAndError) {
+                MCEPlugin.translateEvents(eventsAndError['events']);
+                errorCallback(eventsAndError);
+            }, "MCEPlugin", "setEventQueueCallbacks", []);
+        }
+    );
 }
+
+function pauseResumeCallback(pauseFunction, resumeFunction) {
+    resumeFunction();
+
+    document.addEventListener("pause", function () {
+        pauseFunction();
+    }, false);
+
+    document.addEventListener("resume", function () {
+        resumeFunction();
+    }, false);
+}
+
+exports.pauseResumeCallback = pauseResumeCallback;
 
 /** 
 Internal function to translate timestamps from integers or strings to JavaScript date objects
@@ -150,14 +178,19 @@ queued until the next time this method is called to register a callback handler
 @param callback {attributeQueueSuccessCallback} The callback that handles the response
 @param callback {attributeQueueFailureCallback} The callback that handles the response
 */
+
 exports.setAttributeQueueCallbacks = function(successCallback, errorCallback) {
-    cordova.exec(function(details) {
-        details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
-        successCallback(details);
-    }, function(details) {
-        details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
-        errorCallback(details)
-    }, "MCEPlugin", "setAttributeQueueCallbacks", []);
+    pauseResumeCallback(function () {
+        cordova.exec(null, null, "MCEPlugin", "setAttributeQueueCallbacks", []);
+    }, function () {
+        cordova.exec(function(details) {
+            details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
+            successCallback(details);
+        }, function(details) {
+            details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
+            errorCallback(details)
+        }, "MCEPlugin", "setAttributeQueueCallbacks", []);
+    });
 }
 
 /** 
@@ -476,7 +509,7 @@ exports.setCategoryCallbacks = function(callback, categoryName, actions) {
     cordova.exec(callback, this.error, "MCEPlugin", "setCategoryCallbacksCommand", [categoryName, actions]);
 }
 
-/** iOS Support Only 
+/** 
 Manually initialize SDK, is used to wait until an event occurs before beginning 
 to interact with the IBM servers. For example, you might not want to create a 
 userid/channelid until after a user logs into your system. Requires 

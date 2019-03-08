@@ -7,16 +7,16 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
+    },
+    "cordova-plugin-email-composer": {
       "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
     },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
     },
-    "cordova-plugin-actionsheet": {
-      "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
-    },
-    "cordova-plugin-email-composer": {
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
     },
     "skwas-cordova-plugin-datetimepicker": {

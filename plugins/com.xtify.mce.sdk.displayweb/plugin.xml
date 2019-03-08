@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.displayweb"
-version="3.6.3">
+version="3.6.4">
   <name>Display Web Action for IBM MCE Cordova Plugin</name>
   <author>IBM MCE</author>
   <description>Display Web Action for IBM MCE Push Services</description>
@@ -35,7 +35,7 @@ version="3.6.3">
                 android:name="com.ibm.mce.sdk.plugin.displayweb.DisplayWebViewActivity">
             </activity>            
         </config-file>
-        <source-file src="src/android/ibm-mobile-push-android-sdk-plugin-displayweb-3.7.1.2.11.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-sdk-plugin-displayweb-3.7.1.2.14.jar" target-dir="libs" framework="false" />
         <source-file src="src/android/assets/mce/plugins/displayweb.json" target-dir="assets/mce/plugins" framework="false" />
         <source-file src="src/android/res/drawable-hdpi/ic_action_back.png" target-dir="res/drawable-hdpi" framework="false" />
         <source-file src="src/android/res/drawable-hdpi/ic_action_forward.png" target-dir="res/drawable-hdpi" framework="false" />
@@ -48,16 +48,10 @@ version="3.6.3">
         <source-file src="src/android/res/layout/activity_action_webview.xml" target-dir="res/layout" framework="false" />
         <source-file src="src/android/res/menu/menu_action_webview.xml" target-dir="res/menu" framework="false" />
         
-        <config-file target="res/values/strings.xml" parent="/resources">
+        <config-file target="app/src/main/res/values/strings.xml" parent="/resources">
             <string name="action_back">Back</string>
             <string name="action_forward">Forward</string>
             <string name="action_done">Done</string>
-        </config-file>
-
-        <config-file target="res/values/dimens.xml" parent="/resources">
-            <!-- Default screen margins, per the Android Design guidelines. -->
-            <dimen name="activity_horizontal_margin">16dp</dimen>
-            <dimen name="activity_vertical_margin">16dp</dimen>
         </config-file>
 
     </platform>

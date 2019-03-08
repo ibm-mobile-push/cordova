@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.location"
-version="3.6.3">
+version="3.6.4">
     <name>IBM MCE Location Cordova Plugin</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -51,8 +51,8 @@ version="3.6.3">
     </platform>
     <platform name="android">
         <framework src="com.google.android.gms:play-services-location:+" />
-        <source-file src="src/android/ibm-mobile-push-android-cordova-location-3.7.1.2.11.jar" target-dir="libs" framework="false" />
-        <source-file src="src/android/ibm-mobile-push-android-js-location-3.7.1.2.11.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-cordova-location-3.7.1.2.14.jar" target-dir="libs" framework="false" />
+        <source-file src="src/android/ibm-mobile-push-android-js-location-3.7.1.2.14.jar" target-dir="libs" framework="false" />
 
         <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="overwrite">
             <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/activity_name" android:launchMode="singleTop" android:name="com.ibm.mce.plugin.cordova.location.MceJsonActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:windowSoftInputMode="adjustResize" />

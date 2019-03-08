@@ -22,7 +22,11 @@ Set callback for location database updates
 @param callback {locationCallback} Callback which will be called when the database is updated.
  */
 exports.setLocationUpdatedCallback = function(callback) {
-    cordova.exec(callback, this.error, "MCELocationPlugin", "setLocationUpdatedCallback", []);
+    MCEPlugin.pauseResumeCallback(function () {    
+        cordova.exec(null, null, "MCELocationPlugin", "setLocationUpdatedCallback", []);
+    }, function () {
+        cordova.exec(callback, this.error, "MCELocationPlugin", "setLocationUpdatedCallback", []);
+    });
 }
 
 /**

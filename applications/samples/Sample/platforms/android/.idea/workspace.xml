@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="79c6373e-d703-438c-9c8e-8905b3b637d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_28_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CordovaLib/CordovaLib.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/outputFileStates.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/cordova.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/cordova.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaBridge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaClientCertRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaClientCertRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaInterfaceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaInterfaceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaResourceApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaResourceApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaWebView.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaWebView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaWebViewImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaWebViewImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/NativeToJsMessageQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/NativeToJsMessageQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemWebChromeClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemWebChromeClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemWebViewEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemWebViewEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/android.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/cordova-js-src/android/nativeapiprovider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/cordova-js-src/android/promptbasednativeapi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/cordova-js-src/exec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/cordova-js-src/platform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/cordova-js-src/plugin/android/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/cordova.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/cordova_plugins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/Flat-UI-Icons-24.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/Flat-UI-Icons-24.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/lato-black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/lato-black.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/lato-bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/lato-bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/lato-italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/lato-italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/lato-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/fonts/lato-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/images/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/images/logo@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/images/logo@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/jquery.mobile-1.4.5.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/jquery.mobile.flatui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/css/jquery.mobile.flatui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/Flat-UI-Icons-24.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/Flat-UI-Icons-24.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/lato-black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/lato-black.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/lato-bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/lato-bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/lato-italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/lato-italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/lato-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/fonts/lato-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/images/blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/images/gps.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/images/gps@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/images/gps@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/images/icons-18-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/images/icons-18-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/images/icons-36-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/images/icons-36-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/js/fastclick.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/js/jquery-1.11.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/js/jquery-ui-1.11.4.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/js/jquery.mobile-1.4.5.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/plugins/cordova-plugin-actionsheet/www/ActionSheet.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/plugins/cordova-plugin-email-composer/www/email_composer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/plugins/cordova-plugin-statusbar/www/statusbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/plugins/cordova-plugin-whitelist/whitelist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/www/plugins/skwas-cordova-plugin-datetimepicker/www/datetimepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/.jshintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/android_sdk_version.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/android_sdk_version.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/check_reqs.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/check_reqs.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/Adb.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/Adb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/AndroidManifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/AndroidManifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/AndroidProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/AndroidProject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/AndroidStudio.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/AndroidStudio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/android_sdk.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/android_sdk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/build.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/build.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/builders/AntBuilder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/builders/GenericBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/builders/GenericBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/builders/GradleBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/builders/GradleBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/builders/builders.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/builders/builders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/check_reqs.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/check_reqs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/device.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/device.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/emulator.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/emulator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/install-device.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/install-device.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/install-emulator.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/install-emulator.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/list-devices.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/list-devices.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/list-emulator-images.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/list-emulator-images.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/list-started-emulators.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/list-started-emulators.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/log.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/log.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/plugin-build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/plugin-build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/pluginHandlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/pluginHandlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/prepare.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/prepare.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/retry.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/retry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/run.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/run.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/lib/start-emulator.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/lib/start-emulator.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/abbrev/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/abbrev/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/abbrev/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/abbrev/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/ansi/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/ansi/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/balanced-match/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/balanced-match/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/balanced-match/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/balanced-match/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/base64-js/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/base64-js/LICENSE.MIT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/base64-js/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/base64-js/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/base64-js/bench/bench.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/base64-js/lib/b64.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/base64-js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/base64-js/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/base64-js/test/convert.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/base64-js/test/convert.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/base64-js/test/url-safe.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/base64-js/test/url-safe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/big-integer/BigInteger.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/big-integer/BigInteger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/big-integer/BigInteger.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/big-integer/BigInteger.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/big-integer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/big-integer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/big-integer/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/big-integer/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/big-integer/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/big-integer/bower.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/big-integer/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/big-integer/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/bplist-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/bplist-parser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/brace-expansion/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/brace-expansion/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/brace-expansion/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/brace-expansion/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/concat-map/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/concat-map/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/.jshintignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/.ratignore" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/.ratignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/RELEASENOTES.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/RELEASENOTES.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/.jshintrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ActionStack.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ActionStack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigChanges/ConfigChanges.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigChanges/ConfigChanges.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigChanges/ConfigFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigChanges/ConfigFile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigChanges/ConfigKeeper.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigChanges/ConfigKeeper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigChanges/munge-util.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigChanges/munge-util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigParser/ConfigParser.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigParser/ConfigParser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/ConfigParser/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/CordovaCheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/CordovaCheck.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/CordovaError/CordovaError.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/CordovaError/CordovaError.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/CordovaError/CordovaExternalToolErrorContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/CordovaError/CordovaExternalToolErrorContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/CordovaLogger.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/CordovaLogger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/FileUpdater.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/FileUpdater.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/PlatformJson.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/PlatformJson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/PluginInfo/PluginInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/PluginInfo/PluginInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/PluginInfo/PluginInfoProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/PluginInfo/PluginInfoProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/PluginManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/PluginManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/superspawn.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/superspawn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/util/addProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/util/addProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/util/plist-helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/util/plist-helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/util/xml-helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-common/src/util/xml-helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/cordova-registry-mapper/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/cordova-registry-mapper/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/elementtree/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/elementtree/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/glob/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/glob/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/inflight/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/inflight/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/inherits/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/inherits/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/compact.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/difference.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/drop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/dropRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/dropRightWhile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/dropWhile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/fill.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/findIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/findLastIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/first.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/flatten.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/flattenDeep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/head.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/indexOf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/initial.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/intersection.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/last.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/lastIndexOf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/object.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/pull.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/pullAt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/remove.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/rest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/slice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/sortedIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/sortedLastIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/tail.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/take.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/takeRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/takeRightWhile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/takeWhile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/union.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/uniq.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/unique.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/unzip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/unzipWith.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/without.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/xor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/zip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/zipObject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/array/zipWith.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/chain.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/commit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/concat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/lodash.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/plant.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/reverse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/run.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/tap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/thru.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/toJSON.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/toString.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/value.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/valueOf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/wrapperChain.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/wrapperCommit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/wrapperConcat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/wrapperPlant.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/wrapperReverse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/wrapperToString.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/chain/wrapperValue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/any.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/at.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/collect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/contains.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/countBy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/detect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/each.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/eachRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/every.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/filter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/find.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/findLast.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/findWhere.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/foldl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/foldr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/forEach.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/forEachRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/groupBy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/include.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/includes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/indexBy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/inject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/invoke.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/map.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/max.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/partition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/pluck.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/reduce.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/reduceRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/reject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/sample.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/select.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/shuffle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/size.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/some.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/sortBy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/sortByAll.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/sortByOrder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/sum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/collection/where.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/date.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/date/now.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/after.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/ary.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/backflow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/before.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/bind.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/bindAll.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/bindKey.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/compose.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/curry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/curryRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/debounce.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/defer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/delay.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/flow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/flowRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/memoize.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/modArgs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/negate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/once.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/partial.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/partialRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/rearg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/restParam.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/spread.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/throttle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/function/wrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/LazyWrapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/LodashWrapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/MapCache.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/SetCache.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayConcat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayCopy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayEach.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayEachRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayEvery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayExtremum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayFilter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayMap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayPush.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayReduce.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arrayReduceRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arraySome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/arraySum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/assignDefaults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/assignOwnDefaults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/assignWith.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseAssign.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseAt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseCallback.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseClone.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseCompareAscending.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseCopy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseCreate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseDelay.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseDifference.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseEach.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseEachRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseEvery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseExtremum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseFill.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseFilter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseFind.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseFindIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseFlatten.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseFor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseForIn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseForOwn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseForOwnRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseForRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseFunctions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseGet.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseIndexOf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseIsEqual.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseIsEqualDeep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseIsFunction.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseIsMatch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseLodash.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseMap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseMatches.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseMatchesProperty.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseMerge.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseMergeDeep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseProperty.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/basePropertyDeep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/basePullAt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseRandom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseReduce.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseSetData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseSlice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseSome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseSortBy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseSortByOrder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseSum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseToString.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseUniq.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseValues.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseWhile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/baseWrapperValue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/binaryIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/binaryIndexBy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/bindCallback.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/bufferClone.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/cacheIndexOf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/cachePush.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/charsLeftIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/charsRightIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/compareAscending.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/compareMultiple.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/composeArgs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/composeArgsRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createAggregator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createAssigner.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createBaseEach.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createBaseFor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createBindWrapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createCache.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createCompounder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createCtorWrapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createCurry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createDefaults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createExtremum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createFind.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createFindIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createFindKey.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createFlow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createForEach.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createForIn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createForOwn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createHybridWrapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createObjectMapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createPadDir.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createPadding.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createPartial.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createPartialWrapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createReduce.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createRound.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createSortedIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/createWrapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/deburrLetter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/equalArrays.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/equalByTag.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/equalObjects.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/escapeHtmlChar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/escapeRegExpChar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/escapeStringChar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/getData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/getFuncName.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/getLength.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/getMatchData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/getNative.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/getView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/indexOfNaN.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/initCloneArray.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/initCloneByTag.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/initCloneObject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/invokePath.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/isArrayLike.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/isIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/isIterateeCall.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/isKey.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/isLaziable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/isLength.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/isObjectLike.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/isSpace.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/isStrictComparable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/lazyClone.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/lazyReverse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/lazyValue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/mapDelete.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/mapGet.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/mapHas.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/mapSet.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/mergeData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/mergeDefaults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/metaMap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/pickByArray.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/pickByCallback.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/reEscape.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/reEvaluate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/reInterpolate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/realNames.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/reorder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/replaceHolders.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/setData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/shimKeys.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/sortedUniq.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/toIterable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/toObject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/toPath.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/trimmedLeftIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/trimmedRightIndex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/unescapeHtmlChar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/internal/wrapperClone.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/clone.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/cloneDeep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/eq.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/gt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/gte.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isArguments.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isArray.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isBoolean.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isDate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isElement.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isEmpty.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isEqual.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isError.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isFinite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isFunction.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isMatch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isNaN.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isNative.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isNull.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isNumber.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isObject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isPlainObject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isRegExp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isString.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isTypedArray.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/isUndefined.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/lt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/lte.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/toArray.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/lang/toPlainObject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/math.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/math/add.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/math/ceil.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/math/floor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/math/max.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/math/min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/math/round.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/math/sum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/number.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/number/inRange.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/number/random.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/assign.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/create.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/defaults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/defaultsDeep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/extend.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/findKey.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/findLastKey.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/forIn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/forInRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/forOwn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/forOwnRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/functions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/get.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/has.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/invert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/keys.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/keysIn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/mapKeys.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/mapValues.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/merge.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/methods.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/omit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/pairs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/pick.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/result.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/set.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/transform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/values.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/object/valuesIn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/camelCase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/capitalize.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/deburr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/endsWith.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/escape.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/escapeRegExp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/kebabCase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/pad.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/padLeft.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/padRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/parseInt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/repeat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/snakeCase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/startCase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/startsWith.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/templateSettings.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/trim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/trimLeft.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/trimRight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/trunc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/unescape.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/string/words.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/support.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/attempt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/callback.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/constant.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/identity.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/iteratee.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/matches.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/matchesProperty.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/method.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/methodOf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/mixin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/noop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/property.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/propertyOf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/range.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/times.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/lodash/utility/uniqueId.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/minimatch/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/minimatch/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/nopt/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/nopt/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/nopt/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/nopt/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/nopt/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/nopt/lib/nopt.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/nopt/lib/nopt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/nopt/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/nopt/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/nopt/test/basic.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/nopt/test/basic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/once/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/once/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/os-homedir/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/os-homedir/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/os-homedir/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/os-homedir/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/os-tmpdir/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/os-tmpdir/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/os-tmpdir/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/os-tmpdir/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/osenv/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/osenv/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/osenv/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/osenv/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/osenv/osenv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/osenv/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/osenv/test/unix.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/osenv/test/windows.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/osenv/x.tap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/path-is-absolute/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/path-is-absolute/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/plist/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/plist/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/plist/History.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/plist/History.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/plist/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/plist/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/plist/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/plist/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/plist/lib/build.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/plist/lib/build.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/plist/lib/node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/plist/lib/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/plist/lib/parse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/plist/lib/plist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/plist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/plist/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/properties-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/properties-parser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/properties-parser/test/ReadProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/properties-parser/test/ReadProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/properties-parser/test/test-cases-copy.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/properties-parser/test/test-cases.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/properties-parser/test/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/q/CHANGES.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/q/CHANGES.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/q/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/q/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/q/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/q/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/q/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/q/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/q/q.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/q/q.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/sax/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/sax/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/semver/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/semver/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/semver/bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/semver/bin/semver" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/semver/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/semver/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/semver/range.bnf" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/semver/range.bnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/semver/semver.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/semver/semver.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/shelljs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/shelljs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/underscore/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/underscore/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/underscore/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/underscore/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/underscore/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/underscore/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/underscore/underscore-min.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/underscore/underscore-min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/underscore/underscore-min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/underscore/underscore.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/underscore/underscore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/unorm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/unorm/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/util-deprecate/History.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/util-deprecate/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/util-deprecate/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/util-deprecate/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/util-deprecate/node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/util-deprecate/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/wrappy/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/wrappy/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLAttribute.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLAttribute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLBuilder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLCData.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLCData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLComment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDTDAttList.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDTDAttList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDTDElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDTDElement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDTDEntity.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDTDEntity.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDTDNotation.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDTDNotation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDeclaration.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDeclaration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDocType.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLDocType.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLElement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLNode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLProcessingInstruction.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLProcessingInstruction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLRaw.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLRaw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLStringifier.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLStringifier.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLText.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/XMLText.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/lib/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmlbuilder/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmldom/__package__.js" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmldom/__package__.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/node_modules/xmldom/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/node_modules/xmldom/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cordova/version" beforeDir="false" afterPath="$PROJECT_DIR$/cordova/version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform_www/cordova-js-src/exec.js" beforeDir="false" afterPath="$PROJECT_DIR$/platform_www/cordova-js-src/exec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform_www/cordova.js" beforeDir="false" afterPath="$PROJECT_DIR$/platform_www/cordova.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform_www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/platform_www/cordova_plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable-land-hdpi/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable-land-ldpi/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable-land-mdpi/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable-land-xhdpi/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable-port-hdpi/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable-port-ldpi/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable-port-mdpi/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/drawable-port-xhdpi/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/mipmap-hdpi/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/mipmap-xxhdpi/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/mipmap-xxxhdpi/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/xml/config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ibm/mce/samples/gcm/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skwas/cordova/datetimepicker/DatePickerDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skwas/cordova/datetimepicker/DateTimePicker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skwas/cordova/datetimepicker/TimePickerDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/appplant/cordova/emailcomposer/EmailComposer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/appplant/cordova/emailcomposer/EmailComposerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nl/xservices/plugins/actionsheet/ActionSheet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/apache/cordova/statusbar/StatusBar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/apache/cordova/whitelist/WhitelistPlugin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../plugins/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../plugins/android.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../plugins/com.xtify.mce.sdk.displayweb/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../plugins/com.xtify.mce.sdk.displayweb/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../plugins/com.xtify.mce.sdk.fcm/scripts/after_prepare.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../plugins/com.xtify.mce.sdk.fcm/scripts/after_prepare.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="808861265">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../.." />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1397" />
+    <option name="height" value="877" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Developer/Xamarin/android-sdk-macosx" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="79c6373e-d703-438c-9c8e-8905b3b637d4" name="Default Changelist" comment="" />
+      <created>1550611992542</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550611992542</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1397" height="877" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" visible="true" weight="0.3298893" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Build Variants" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Logcat" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Build" visible="true" weight="0.3299363" />
+      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Gradle" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Palette&#9;" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+</project>

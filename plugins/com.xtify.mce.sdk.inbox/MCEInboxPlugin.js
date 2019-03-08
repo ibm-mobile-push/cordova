@@ -35,7 +35,11 @@ Allow Cordova Inbox Plugin to respond to changes in the inbox list.
 @param callback {inboxListCallback} The callback that handles the response
 */
 exports.setInboxMessagesUpdateCallback = function(callback) {
-    cordova.exec(callback, this.error, "MCEInboxPlugin", "setInboxMessagesUpdateCallback", []);
+    MCEPlugin.pauseResumeCallback(function () {    
+        cordova.exec(null, null, "MCEInboxPlugin", "setInboxMessagesUpdateCallback", []);
+    }, function () {
+        cordova.exec(callback, this.error, "MCEInboxPlugin", "setInboxMessagesUpdateCallback", []);
+    });
 }
 
 /**

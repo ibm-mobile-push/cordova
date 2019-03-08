@@ -31,6 +31,13 @@ module.exports = function(context) {
             try {
                 var json = JSON.parse(fs.readFileSync(source_filename).toString());
                 var strings_filename = ANDROID_DIR + '/res/values/strings.xml';
+                if(!fileExists(strings_filename)) {
+                    strings_filename = ANDROID_DIR + '/app/src/main/res/values/strings.xml';
+                }
+                if(!fileExists(strings_filename)) {
+                    console.log("Can't find strings.xml!");
+                    return
+                }
                 var strings = fs.readFileSync(strings_filename).toString();
                 strings = strings.replace(new RegExp('<string name="google_app_id">([^<]+?)</string>', 'i'), '');
                 strings = strings.replace(new RegExp('<string name="google_api_key">([^<]+?)</string>', 'i'), '');

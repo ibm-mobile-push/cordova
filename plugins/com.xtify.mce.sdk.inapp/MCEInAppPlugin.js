@@ -52,7 +52,11 @@ Allows Cordova InApp Plugin to register a template handler.
 @param templateName {string} A template name that this handler displays
 */
 exports.registerInAppTemplate = function(callback, templateName) {
-    cordova.exec(callback, this.error, "MCEInAppPlugin", "registerInAppTemplate", [templateName]);
+    MCEPlugin.pauseResumeCallback(function () {    
+        cordova.exec(null, null, "MCEInAppPlugin", "registerInAppTemplate", [templateName]);
+    }, function() {
+        cordova.exec(callback, this.error, "MCEInAppPlugin", "registerInAppTemplate", [templateName]);
+    });
 }
 
 /**

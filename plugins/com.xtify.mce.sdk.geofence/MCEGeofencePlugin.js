@@ -46,7 +46,11 @@ Set callback for entering geofences
 @param callback {geofenceCallback} Callback executed when geofences are entered.
  */
 exports.setGeofenceEnterCallback = function(callback) {
-    cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceEnterCallback", []);
+    MCEPlugin.pauseResumeCallback(function () {    
+        cordova.exec(null, null, "MCEGeofencePlugin", "setGeofenceEnterCallback", []);
+    },function () {
+        cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceEnterCallback", []);
+    });
 }
 
 /**
@@ -54,7 +58,11 @@ Set callback for exiting geofences
 @param callback {geofenceCallback} Callback executed when geofences are exited.
  */
 exports.setGeofenceExitCallback = function(callback) {
-    cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceExitCallback", []);
+    MCEPlugin.pauseResumeCallback(function () {    
+        cordova.exec(null, null, "MCEGeofencePlugin", "setGeofenceExitCallback", []);
+    },function () {
+        cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceExitCallback", []);
+    });
 }
 
 /**

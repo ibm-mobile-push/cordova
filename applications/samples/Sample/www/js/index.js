@@ -713,6 +713,10 @@ function updateRegistration(details) {
         $('.userId').html(userId);
         $('.channelId').html(channelId);
     });
+
+    MCEPlugin.getAppKey(function(appKey) {
+        $('.appKey').html(appKey);
+    });
 }
 
 function setupRegistrationPage() {

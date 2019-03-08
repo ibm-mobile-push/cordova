@@ -9,14 +9,6 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"ActionSheet\"><param name=\"android-package\" value=\"nl.xservices.plugins.actionsheet.ActionSheet\" /></feature>",
               "count": 1
             },
@@ -25,16 +17,22 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"DateTimePicker\"><param name=\"android-package\" value=\"com.skwas.cordova.datetimepicker.DateTimePicker\" /></feature>",
               "count": 1
             }
-          ],
-          "/widget": []
+          ]
         }
       },
       "AndroidManifest.xml": {
         "parents": {
-          "/manifest/application": [],
           "/manifest": [
             {
               "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
@@ -43,31 +41,20 @@
           ],
           "/*": []
         }
-      },
-      "res/values/strings.xml": {
-        "parents": {
-          "/*": [],
-          "/resources": []
-        }
-      },
-      "res/values/dimens.xml": {
-        "parents": {
-          "/resources": []
-        }
       }
     }
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
+    },
+    "cordova-plugin-email-composer": {
       "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
     },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
     },
-    "cordova-plugin-actionsheet": {
-      "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
-    },
-    "cordova-plugin-email-composer": {
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.ibm.mce.samples.gcm"
     },
     "skwas-cordova-plugin-datetimepicker": {
@@ -77,31 +64,35 @@
   "dependent_plugins": {},
   "modules": [
     {
-      "file": "plugins/cordova-plugin-whitelist/whitelist.js",
-      "id": "cordova-plugin-whitelist.whitelist",
-      "runs": true
-    },
-    {
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "id": "cordova-plugin-statusbar.statusbar",
-      "clobbers": [
-        "window.StatusBar"
-      ]
-    },
-    {
-      "file": "plugins/cordova-plugin-actionsheet/www/ActionSheet.js",
       "id": "cordova-plugin-actionsheet.ActionSheet",
+      "file": "plugins/cordova-plugin-actionsheet/www/ActionSheet.js",
+      "pluginId": "cordova-plugin-actionsheet",
       "clobbers": [
         "window.plugins.actionsheet"
       ]
     },
     {
-      "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
       "id": "cordova-plugin-email-composer.EmailComposer",
+      "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
+      "pluginId": "cordova-plugin-email-composer",
       "clobbers": [
         "cordova.plugins.email",
         "plugin.email"
       ]
+    },
+    {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
+      ]
+    },
+    {
+      "id": "cordova-plugin-whitelist.whitelist",
+      "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+      "pluginId": "cordova-plugin-whitelist",
+      "runs": true
     },
     {
       "id": "skwas-cordova-plugin-datetimepicker.DateTimePicker",
@@ -113,10 +104,10 @@
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-whitelist": "1.2.1",
-    "cordova-plugin-statusbar": "2.1.2",
     "cordova-plugin-actionsheet": "2.2.2",
     "cordova-plugin-email-composer": "0.8.3",
+    "cordova-plugin-statusbar": "2.1.2",
+    "cordova-plugin-whitelist": "1.2.1",
     "skwas-cordova-plugin-datetimepicker": "1.1.3"
   }
 }
