@@ -53,10 +53,17 @@ Allows Cordova InApp Plugin to register a template handler.
 */
 exports.registerInAppTemplate = function(callback, templateName) {
     MCEPlugin.pauseResumeCallback(function () {    
-        cordova.exec(null, null, "MCEInAppPlugin", "registerInAppTemplate", [templateName]);
+        cordova.exec(callback, this.error, "MCEInAppPlugin", "registerInAppTemplate", [templateName, false]);
     }, function() {
-        cordova.exec(callback, this.error, "MCEInAppPlugin", "registerInAppTemplate", [templateName]);
+        cordova.exec(callback, this.error, "MCEInAppPlugin", "registerInAppTemplate", [templateName, true]);
     });
+}
+
+/**
+Allows Cordova InApp Plugin to initiate a sync with the server.
+*/
+exports.syncInAppMessages = function (callback) {
+    cordova.exec(callback, this.error, "MCEInAppPlugin", "syncInAppMessages", []);
 }
 
 /**

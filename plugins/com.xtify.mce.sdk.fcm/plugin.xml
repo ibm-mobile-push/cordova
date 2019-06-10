@@ -6,7 +6,7 @@
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.xtify.mce.sdk.fcm"
-version="3.6.4">
+version="3.6.5">
     <name>IBM MCE Cordova Plugin for FCM</name>
     <author>IBM MCE</author>
     <description>Allows Cordova applications to integrate with IBM MCE Push Services</description>
@@ -24,20 +24,6 @@ version="3.6.4">
 
         <framework src="com.google.firebase:firebase-messaging:+" />
 
-        <config-file target="AndroidManifest.xml" parent="/manifest">
-
-            <!-- C2D_MESSAGE is required for receiving GCM messages -->
-            <permission
-                android:name="$PACKAGE_NAME.permission.C2D_MESSAGE"
-                android:protectionLevel="signature" />
-
-            <!-- C2D_MESSAGE is required for receiving GCM messages -->
-            <uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
-             
-            <!-- c2dm.permission.RECEIVE is required for receiving GCM messages -->
-            <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-            
-        </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <!-- MCE properties -->            
             <meta-data android:name="messagingService" android:value="fcm" />

@@ -1,4 +1,0 @@
-#Tue Feb 19 14:04:47 MST 2019
-base.0=/Users/buchmanj/Projects/Development/Hybrid/ibm-mobile-push-hybrid/applications/samples/Sample/platforms/android/app/build/intermediates/transforms/dexMerger/debug/10
-path.0=classes.dex
-renamed.0=classes.dex

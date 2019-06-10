@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2011, 2015
+ * © Copyright IBM Corp. 2011, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -47,9 +47,9 @@ Set callback for entering geofences
  */
 exports.setGeofenceEnterCallback = function(callback) {
     MCEPlugin.pauseResumeCallback(function () {    
-        cordova.exec(null, null, "MCEGeofencePlugin", "setGeofenceEnterCallback", []);
+        cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceEnterCallback", [false]);
     },function () {
-        cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceEnterCallback", []);
+        cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceEnterCallback", [true]);
     });
 }
 
@@ -59,9 +59,9 @@ Set callback for exiting geofences
  */
 exports.setGeofenceExitCallback = function(callback) {
     MCEPlugin.pauseResumeCallback(function () {    
-        cordova.exec(null, null, "MCEGeofencePlugin", "setGeofenceExitCallback", []);
+        cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceExitCallback", [false]);
     },function () {
-        cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceExitCallback", []);
+        cordova.exec(callback, this.error, "MCEGeofencePlugin", "setGeofenceExitCallback", [true]);
     });
 }
 

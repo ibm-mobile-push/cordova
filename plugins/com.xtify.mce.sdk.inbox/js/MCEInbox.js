@@ -94,9 +94,23 @@ document.addEventListener('deviceready', function() {
     });
     $('#delete_button').click(function() {
         var inboxMessageId = $("#inboxMessageContent").attr('inboxMessageId');
+
         $('#inboxMessages div[inboxMessageId=' + inboxMessageId + ']').hide(400);
         MCEInboxPlugin.deleteMessageId(inboxMessageId);
-        $.mobile.changePage("#inbox", { transition: "slide", reverse: true });
+
+        if (navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
+            $.mobile.changePage("#inbox", { transition: "slide", reverse: true });
+        } else {
+            navigator.app.backHistory();
+        }
+
+        var messageIndex = MCEInbox.findMessageIndex(inboxMessageId);
+        inboxMessages.splice(messageIndex, 1);
+
+        if(inboxMessages.length == 0) {
+            $('#inboxMessages').append( $('<div>', {class: "emptyInbox"}).html("Inbox has no messages.") )
+        }
+        $("#inboxMessageContent").html('');
     });
     $('#delete_button img').attr('src', MCEInbox.addImageRatio('images/inbox/trash'));
     $('#refresh_button img').attr('src', MCEInbox.addImageRatio('images/inbox/refresh'));
@@ -125,6 +139,11 @@ document.addEventListener('deviceready', function() {
         }
 
         $('#inboxMessages').html("");
+
+        if(inboxMessages.length == 0) {
+            $('#inboxMessages').append( $('<div>', {class: "emptyInbox"}).html("Inbox has no messages.") )
+        }
+
         for (i = 0; i < inboxMessages.length; i++) {
             var inboxMessage = inboxMessages[i];
             inboxMessage['expirationDate'] = new Date(inboxMessage['expirationDate']);

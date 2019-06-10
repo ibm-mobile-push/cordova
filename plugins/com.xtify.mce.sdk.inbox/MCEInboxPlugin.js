@@ -2,7 +2,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2011, 2015
+ * © Copyright IBM Corp. 2011, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -36,9 +36,9 @@ Allow Cordova Inbox Plugin to respond to changes in the inbox list.
 */
 exports.setInboxMessagesUpdateCallback = function(callback) {
     MCEPlugin.pauseResumeCallback(function () {    
-        cordova.exec(null, null, "MCEInboxPlugin", "setInboxMessagesUpdateCallback", []);
+        cordova.exec(callback, this.error, "MCEInboxPlugin", "setInboxMessagesUpdateCallback", [false]);
     }, function () {
-        cordova.exec(callback, this.error, "MCEInboxPlugin", "setInboxMessagesUpdateCallback", []);
+        cordova.exec(callback, this.error, "MCEInboxPlugin", "setInboxMessagesUpdateCallback", [true]);
     });
 }
 

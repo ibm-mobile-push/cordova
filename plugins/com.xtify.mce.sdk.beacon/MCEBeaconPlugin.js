@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2011, 2015
+ * © Copyright IBM Corp. 2011, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -48,9 +48,9 @@ Set callback for entering iBeacon regions
  */
 exports.setBeaconEnterCallback = function(callback) {
     MCEPlugin.pauseResumeCallback(function () {
-        cordova.exec(null, null, "MCEBeaconPlugin", "setBeaconEnterCallback", []);
+        cordova.exec(callback, this.error, "MCEBeaconPlugin", "setBeaconEnterCallback", [false]);
     }, function () {
-        cordova.exec(callback, this.error, "MCEBeaconPlugin", "setBeaconEnterCallback", []);
+        cordova.exec(callback, this.error, "MCEBeaconPlugin", "setBeaconEnterCallback", [true]);
     });
 }
 
@@ -60,9 +60,9 @@ Set callback for exiting iBeacon regions
  */
 exports.setBeaconExitCallback = function(callback) {
     MCEPlugin.pauseResumeCallback(function () {
-        cordova.exec(null, null, "MCEBeaconPlugin", "setBeaconExitCallback", []);
+        cordova.exec(null, null, "MCEBeaconPlugin", "setBeaconExitCallback", [false]);
     }, function () {
-        cordova.exec(callback, this.error, "MCEBeaconPlugin", "setBeaconExitCallback", []);
+        cordova.exec(callback, this.error, "MCEBeaconPlugin", "setBeaconExitCallback", [true]);
     });
 }
 

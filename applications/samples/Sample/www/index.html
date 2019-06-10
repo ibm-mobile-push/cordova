@@ -3,7 +3,7 @@
  
  5725E28, 5725I03
  
- © Copyright IBM Corp. 2015, 2016
+ © Copyright IBM Corp. 2015, 2019
  US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  -->
 
@@ -25,18 +25,6 @@
      <link rel="stylesheet" href="css/jquery.mobile.flatui.css" />
      <link rel="stylesheet" type="text/css" href="css/index.css" />
  
-     <!-- disable here if you don't want to use the inapp plugin -->
-     <link rel="stylesheet" type="text/css" href="css/inapp_media.css" />
-     <link rel="stylesheet" type="text/css" href="css/inapp_banner.css" />
-     <link rel="stylesheet" type="text/css" href="css/inapp_image.css" />
-     <link rel="stylesheet" type="text/css" href="css/inapp_video.css" />
-     <!-- end inapp disable -->
- 
-     <!-- disable here if you don't want to use the inbox plugin -->
-     <link rel="stylesheet" type="text/css" href="css/inbox.css" />
-     <link rel="stylesheet" type="text/css" href="css/inbox_default.css" />
-     <link rel="stylesheet" type="text/css" href="css/inbox_post.css" />
-     <!-- end inbox disable -->
      <title>Hello World</title>
  </head>
  
@@ -50,21 +38,17 @@
              <div class="header"></div>
              <div id='pluginVersion'>Plugin Version: <span></span></div>
              <div id='sdkVersion'>Native SDK Version: <span></span></div>
-             <a data-transition="slide" href="#registration" data-role="button" data-icon="arrow-r" data-iconpos="right">Registration Details</a>
-             <a data-transition="slide" href="#phonehome" data-role="button" data-icon="arrow-r" data-iconpos="right">Phone Home</a>
-             <!-- disable here if you don't want to use the inbox plugin -->
-             <a data-transition="slide" href="#inbox" data-role="button" data-icon="arrow-r" data-iconpos="right">Inbox</a>
-             <!-- end inbox disable -->
- 
-             <!-- disable here if you don't want to use the inapp plugin -->
-             <a data-transition="slide" href="#inAppPage" data-role="button" data-icon="arrow-r" data-iconpos="right">In App</a>
-             <!-- end inapp disable -->
-             <a data-transition="slide" href="#actions" data-role="button" data-icon="arrow-r" data-iconpos="right">Push Actions</a>
-             <a data-transition="slide" id='categoryNavigation' href="#categories" data-role="button" data-icon="arrow-r" data-iconpos="right">Actionable Notifications (Categories)</a>
-             <a data-transition="slide" href="#events" data-role="button" data-icon="arrow-r" data-iconpos="right">Send Test Events</a>
-             <a data-transition="slide" href="#attributes" data-role="button" data-icon="arrow-r" data-iconpos="right">Send User Attributes</a>
-             <a data-transition="slide" href="#geofences" data-role="button" data-icon="arrow-r" data-iconpos="right">View Geofences</a>
-             <a data-transition="slide" href="#beacons" data-role="button" data-icon="arrow-r" data-iconpos="right">View iBeacons</a>
+             <a data-transition="slide" id='registrationButton' href="#registration" data-role="button" data-icon="arrow-r" data-iconpos="right">Registration Details</a>
+             <a data-transition="slide" id='inboxButton' href="#inbox" data-role="button" data-icon="arrow-r" data-iconpos="right">Inbox</a>
+             <a data-transition="slide" id='inAppButton' href="#inAppPage" data-role="button" data-icon="arrow-r" data-iconpos="right">In App</a>
+             <a data-transition="slide" id='pushButton' href="#actions" data-role="button" data-icon="arrow-r" data-iconpos="right">Push Actions</a>
+             <a data-transition="slide" id='customActionButton' href="#customActions" data-role="button" data-icon="arrow-r" data-iconpos="right">Custom Actions</a>
+             <a data-transition="slide" id='categoryButton' href="#categories" data-role="button" data-icon="arrow-r" data-iconpos="right">Actionable Notifications (Categories)</a>
+             <a data-transition="slide" id='eventsButton' href="#events" data-role="button" data-icon="arrow-r" data-iconpos="right">Send Test Events</a>
+             <a data-transition="slide" id='attributesButton' href="#attributes" data-role="button" data-icon="arrow-r" data-iconpos="right">Send User Attributes</a>
+             <a data-transition="slide" id='geofenceButton' href="#geofences" data-role="button" data-icon="arrow-r" data-iconpos="right">View Geofences</a>
+             <a data-transition="slide" id='beaconButton' href="#beacons" data-role="button" data-icon="arrow-r" data-iconpos="right">View iBeacons</a>
+             <a data-transition="slide" id='phoneHomeButton' href="#phonehome" data-role="button" data-icon="arrow-r" data-iconpos="right">Phone Home</a>
          </div>
  
          <div class='copyright'>Copyright (c) 2015 IBM. All rights reserved.</div>
@@ -74,6 +58,25 @@
          </div>
  
      </div>
+ 
+      <div data-role="page" id="customActions">
+         <div class="ui-body">
+ 
+             <p><b>Custom Action Type</b></p>
+             <p><input type="text" id='customActionType' data-mini="true" default="custom" /></p>
+             <p><b>Register Custom Action</b></p>
+             <p><button id='customActionRegister'>Register Custom Action with Type</button></p>
+             <p><b>Unregister Custom Action</b></p>
+             <p><button id='customActionUnregister'>Unregister Custom Action with Type</button></p>
+             <p><b>Status</b></p>
+             <p id='customActionStatus' class='noStatus'>No status yet</p>
+         </div>
+         <div data-role="header">
+             <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
+             <h1>Custom Actions</h1>
+         </div>
+     </div>
+
  
      <div data-role="page" id="beacons">
          <div class="ui-body">
@@ -123,13 +126,14 @@
          </div>
      </div>
  
-     <!-- disable here if you don't want to use the inbox plugin -->
      <div data-role="page" id="inbox">
-         <div id='inboxMessages' class="ui-body"></div>
+         <div id='inboxMessages' class="ui-body">
+             <div class="emptyInbox">Inbox is not yet available.</div>
+         </div>
          <div data-role="header">
              <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
              <h1>Inbox</h1>
-             <a id="refresh_button"><img width='22' height='22' src="images/inbox/refresh.png"></a>
+             <a id="inbox_refresh_button"><img width='22' height='22' src="images/inbox/refresh.png"></a>
          </div>
      </div>
  
@@ -145,7 +149,6 @@
              <h1></h1>
          </div>
      </div>
-     <!-- end inbox disable -->
  
      <div data-role="page" id="phonehome">
          <div class="ui-body">
@@ -168,7 +171,6 @@
          </div>
      </div>
  
-     <!-- disable here if you don't want to use the inapp plugin -->
      <div data-role="page" id="inAppPage">
          <div class="ui-body">
              <p><b>Execute InApp Actions</b></p>
@@ -186,9 +188,9 @@
          <div data-role="header">
              <a href="#sample" data-direction="reverse" data-transition="slide">Sample</a>
              <h1>In App</h1>
+             <a id="inapp_refresh_button"><img width='22' height='22' src="images/inbox/refresh.png"></a>
          </div>
      </div>
-     <!-- end inapp disable -->
  
      <div data-role="page" id="registration">
          <div class="ui-body">

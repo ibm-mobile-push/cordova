@@ -23,19 +23,18 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-email-composer": {
-    "source": {
-      "type": "git",
-      "url": "https://github.com/katzer/cordova-plugin-email-composer.git",
-      "subdir": "."
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "skwas-cordova-plugin-datetimepicker": {
     "source": {
       "type": "registry",
       "id": "skwas-cordova-plugin-datetimepicker"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-email-composer": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-email-composer"
     },
     "is_top_level": true,
     "variables": {}

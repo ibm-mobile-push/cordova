@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2011, 2015
+ * © Copyright IBM Corp. 2011, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -30,7 +30,7 @@ Allow Cordova developer to get the current native SDK version in use
 @param callback {sdkVersionCallback} The callback that handles the response
 */
 exports.getPluginVersion = function(callback) {
-    callback("3.6.4");
+    callback("3.6.5");
 };
 
 /**
@@ -55,9 +55,9 @@ until the next time this method is called to register a callback handler
 */
 exports.setRegistrationCallback = function(callback) {
     pauseResumeCallback(function () {
-        cordova.exec(null, null, "MCEPlugin", "setRegistrationCallback", []);
+        cordova.exec(callback, null, "MCEPlugin", "setRegistrationCallback", [false]);
     }, function () {
-        cordova.exec(callback, null, "MCEPlugin", "setRegistrationCallback", []);
+        cordova.exec(callback, null, "MCEPlugin", "setRegistrationCallback", [true]);
     });
 }
 
@@ -74,10 +74,42 @@ Allow Cordova developer to handle custom actions
 */
 exports.setRegisteredActionCallback = function(callback, type) {
     pauseResumeCallback(function () {
-        cordova.exec(null, null, "MCEPlugin", "setRegisteredActionCallback", [type]);
+        cordova.exec(callback, null, "MCEPlugin", "setRegisteredActionCallback", [type, false]);
     }, function () {
-        cordova.exec(callback, null, "MCEPlugin", "setRegisteredActionCallback", [type]);
+        cordova.exec(callback, null, "MCEPlugin", "setRegisteredActionCallback", [type, true]);
     });
+};
+
+
+/**
+Allow Cordova developer to detect when a push action is not handled.
+*/
+exports.setActionNotRegisteredCallback = function (callback) {
+    pauseResumeCallback(function () {
+        cordova.exec(callback, null, "MCEPlugin", "setActionNotRegisteredCallback", [false]);
+    }, function () {
+        cordova.exec(callback, null, "MCEPlugin", "setActionNotRegisteredCallback", [true]);
+    });
+};
+
+/**
+Allow Cordova developer to detect when a push action is not handled, but was previously registered.
+*/
+exports.setActionNotYetRegisteredCallback = function (callback) {
+    pauseResumeCallback(function () {
+        cordova.exec(callback, null, "MCEPlugin", "setActionNotYetRegisteredCallback", [false]);
+    }, function () {
+        cordova.exec(callback, null, "MCEPlugin", "setActionNotYetRegisteredCallback", [true]);
+    });
+};
+
+
+/** 
+Allow Cordova developer to stop handling custom actions
+@param type {string} Custom Action type from the "notification-action" or the "category-actions" section of the payload
+*/
+exports.unregisterActionCallback = function(type) {
+    cordova.exec(null, null, "MCEPlugin", "unregisterActionCallback", [type]);
 }
 
 /**
@@ -111,17 +143,19 @@ until the next time this method is called to register a callback handler
 */
 
 exports.setEventQueueCallbacks = function(successCallback, errorCallback) {
+    var successCallbackWrapper = function (events) {
+        successCallback(MCEPlugin.translateEvents(events));
+    };
+
+    var errorCallbackWrapper = function (eventsAndError) {
+        errorCallback({ events: MCEPlugin.translateEvents(eventsAndError.events), error: eventsAndError.error});
+    }
+
     pauseResumeCallback(function () {
-            cordova.exec(null, null, "MCEPlugin", "setEventQueueCallbacks", []);
-        }, function () {
-            cordova.exec(function(events) {
-                successCallback(MCEPlugin.translateEvents(events));
-            }, function(eventsAndError) {
-                MCEPlugin.translateEvents(eventsAndError['events']);
-                errorCallback(eventsAndError);
-            }, "MCEPlugin", "setEventQueueCallbacks", []);
-        }
-    );
+        cordova.exec(successCallbackWrapper, errorCallbackWrapper, "MCEPlugin", "setEventQueueCallbacks", [false]);
+    }, function () {
+        cordova.exec(successCallbackWrapper, errorCallbackWrapper, "MCEPlugin", "setEventQueueCallbacks", [true]);
+    });
 }
 
 function pauseResumeCallback(pauseFunction, resumeFunction) {
@@ -180,16 +214,18 @@ queued until the next time this method is called to register a callback handler
 */
 
 exports.setAttributeQueueCallbacks = function(successCallback, errorCallback) {
+    var successCallbackWrapper = function (details) {
+        details.attributes = MCEPlugin.translateAttributesCallback(details.attributes);
+        successCallback(details);
+    };
+    var errorCallbackWrapper = function (details) {
+        details.attributes = MCEPlugin.translateAttributesCallback(details.attributes);
+        errorCallback(details);
+    };
     pauseResumeCallback(function () {
-        cordova.exec(null, null, "MCEPlugin", "setAttributeQueueCallbacks", []);
+        cordova.exec(successCallbackWrapper, errorCallbackWrapper, "MCEPlugin", "setAttributeQueueCallbacks", [false]);
     }, function () {
-        cordova.exec(function(details) {
-            details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
-            successCallback(details);
-        }, function(details) {
-            details["attributes"] = MCEPlugin.translateAttributesCallback(details["attributes"])
-            errorCallback(details)
-        }, "MCEPlugin", "setAttributeQueueCallbacks", []);
+        cordova.exec(successCallbackWrapper, errorCallbackWrapper, "MCEPlugin", "setAttributeQueueCallbacks", [true]);
     });
 }
 
@@ -278,45 +314,6 @@ exports.translateAttributes = function(attributes) {
 }
 
 /** 
-Allow Cordova developer to replace all channel attributes with a specified set of attributes
-This method also includes automatic retrying of failures
-This method has no callbacks, but the status of the request will be sent to the JavaScript callback that was registered with setAttributeQueueCallbacks or if none were registered, it will be queued.
-@param attributes {Object} a list of attributes in key, value format
-
-@deprecated This method is deprecated.
-*/
-exports.queueSetChannelAttributes = function(attributes) {
-    console.log("Calling deprecated method queueSetChannelAttributes.");
-    attributes = MCEPlugin.translateAttributes(attributes);
-    cordova.exec(null, this.error, "MCEPlugin", "queueSetChannelAttributes", [attributes]);
-}
-
-/**
-Allow Cordova developer to replace all user attributes with a specified set of attributes
-This method also includes automatic retrying of failures
-This method has no callbacks, but the status of the request will be sent to the JavaScript callback that was registered with setAttributeQueueCallbacks or if none were registered, it will be queued.
-@param attributes {Object} a list of attributes in key, value format
-
-@deprecated This method is deprecated.
-*/
-exports.queueSetUserAttributes = function(attributes) {
-    console.log("Calling deprecated method queueSetUserAttributes.");
-    attributes = MCEPlugin.translateAttributes(attributes);
-    cordova.exec(null, this.error, "MCEPlugin", "queueSetUserAttributes", [attributes]);
-}
-
-/**
-Allow Cordova developer to update any channel attributes while leaving the existing attributes alone
-This method also includes automatic retrying of failures
-This method has no callbacks, but the status of the request will be sent to the JavaScript callback that was registered with setAttributeQueueCallbacks or if none were registered, it will be queued.
-@param attributes {Object} a list of attributes in key, value format
-*/
-exports.queueUpdateChannelAttributes = function(attributes) {
-    attributes = MCEPlugin.translateAttributes(attributes);
-    cordova.exec(null, this.error, "MCEPlugin", "queueUpdateChannelAttributes", [attributes]);
-}
-
-/** 
 Allow Cordova developer to update any user attributes while leaving the existing attributes alone
 This method also includes automatic retrying of failures
 This method has no callbacks, but the status of the request will be sent to the JavaScript callback that was registered with setAttributeQueueCallbacks or if none were registered, it will be queued.
@@ -325,19 +322,6 @@ This method has no callbacks, but the status of the request will be sent to the 
 exports.queueUpdateUserAttributes = function(attributes) {
     attributes = MCEPlugin.translateAttributes(attributes);
     cordova.exec(null, this.error, "MCEPlugin", "queueUpdateUserAttributes", [attributes]);
-}
-
-/**
-Allow Cordova developer to remove specific channel attributes
-This method also includes automatic retrying of failures
-This method has no callbacks, but the status of the request will be sent to the JavaScript callback that was registered with setAttributeQueueCallbacks or if none were registered, it will be queued.
-@param attributes {Array} a list of attribute keys to be removed
-
-@deprecated This method is deprecated.
-*/
-exports.queueDeleteChannelAttributes = function(attributes) {
-    console.log("Calling deprecated method queueDeleteChannelAttributes.");
-    cordova.exec(null, this.error, "MCEPlugin", "queueDeleteChannelAttributes", [attributes]);
 }
 
 /** 
@@ -360,88 +344,6 @@ exports.queueDeleteUserAttributes = function(attributes) {
 */
 
 /**
-Allow Cordova developer to replace all channel attributes with a specified set of attributes
-@param attributes {Object} a list of attributes in key, value format
-@param successCallback {basicSuccessCallback}
-@param failureCallback {basicFailureCallback}
-
-@deprecated This method is deprecated.
-*/
-exports.setChannelAttributes = function(attributes, successCallback, errorCallback) {
-    console.log("Calling deprecated method setChannelAttributes.");
-    attributes = MCEPlugin.translateAttributes(attributes);
-    cordova.exec(successCallback, errorCallback, "MCEPlugin", "setChannelAttributes", [attributes]);
-}
-
-/** 
-Allow Cordova developer to replace all user attributes with a specified set of attributes
-@param attributes {Object} a list of attributes in key, value format
-@param successCallback {basicSuccessCallback}
-@param failureCallback {basicFailureCallback}
-
-@deprecated This method is deprecated.
-*/
-exports.setUserAttributes = function(attributes, successCallback, errorCallback) {
-    console.log("Calling deprecated method setUserAttributes.");
-    attributes = MCEPlugin.translateAttributes(attributes);
-    cordova.exec(successCallback, errorCallback, "MCEPlugin", "setUserAttributes", [attributes]);
-}
-
-/** 
-Allow Cordova developer to update any channel attributes while leaving the existing attributes alone
-@param attributes {Object} a list of attributes in key, value format
-@param successCallback {basicSuccessCallback}
-@param failureCallback {basicFailureCallback}
-
-@deprecated This method is deprecated.
-*/
-exports.updateChannelAttributes = function(attributes, successCallback, errorCallback) {
-    console.log("Calling deprecated method updateChannelAttributes.");
-    attributes = MCEPlugin.translateAttributes(attributes);
-    cordova.exec(successCallback, errorCallback, "MCEPlugin", "updateChannelAttributes", [attributes]);
-}
-
-/**
-Allow Cordova developer to update any user attributes while leaving the existing  attributes alone
-@param attributes {Object} a list of attributes in key, value format
-@param successCallback {basicSuccessCallback}
-@param failureCallback {basicFailureCallback}
-
-@deprecated This method is deprecated, please use queueUpdateUserAttributes.
-*/
-exports.updateUserAttributes = function(attributes, successCallback, errorCallback) {
-    console.log("Calling deprecated method updateUserAttributes.");
-    attributes = MCEPlugin.translateAttributes(attributes);
-    cordova.exec(successCallback, errorCallback, "MCEPlugin", "updateUserAttributes", [attributes]);
-}
-
-/**
-Allow Cordova developer to remove specific channel attributes
-@param attributes {Array} a list of attribute keys to be removed
-@param successCallback {basicSuccessCallback}
-@param failureCallback {basicFailureCallback}
-
-@deprecated This method is deprecated.
-*/
-exports.deleteChannelAttributes = function(attributes, successCallback, errorCallback) {
-    console.log("Calling deprecated method deleteChannelAttributes.");
-    cordova.exec(successCallback, errorCallback, "MCEPlugin", "deleteChannelAttributes", [attributes]);
-}
-
-/**
-Allow Cordova developer to remove specific user attributes
-@param attributes {Array} a list of attribute keys to be removed
-@param successCallback {basicSuccessCallback}
-@param failureCallback {basicFailureCallback}
-
-@deprecated This method is deprecated, please use queueDeleteUserAttributes instead.
-*/
-exports.deleteUserAttributes = function(attributes, successCallback, errorCallback) {
-    console.log("Calling deprecated method deleteUserAttributes.");
-    cordova.exec(successCallback, errorCallback, "MCEPlugin", "deleteUserAttributes", [attributes]);
-}
-
-/**
 Allow Cordova developer to send an event to the IBM infrastructure.
 Status will be reported to method registered via setEventQueueCallbacks
 @param event {Event} Event to be sent to the server
@@ -450,20 +352,6 @@ Status will be reported to method registered via setEventQueueCallbacks
 exports.queueAddEvent = function(event, flush) {
     event['timestamp'] = event['timestamp'].getTime();
     cordova.exec(null, this.error, "MCEPlugin", "queueAddEvent", [event, flush]);
-}
-
-/**
-Allow Cordova developer to send an event to the IBM infrastructure.
-@param event {Event} Event to be sent to the server
-@param successCallback {basicSuccessCallback}
-@param failureCallback {basicFailureCallback}
-
-@deprecated This method is deprecated, please use queueAddEvent instead.
-*/
-exports.addEvent = function(event, successCallback, errorCallback) {
-    console.log("Calling deprecated method addEvent.");
-    event['timestamp'] = event['timestamp'].getTime();
-    cordova.exec(successCallback, errorCallback, "MCEPlugin", "addEvent", [event]);
 }
 
 /**

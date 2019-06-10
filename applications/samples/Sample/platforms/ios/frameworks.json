@@ -1,7 +1,0 @@
-{
-    "CoreTelephony.framework": 1,
-    "libsqlite3.dylib": 1,
-    "EventKit.framework": 1,
-    "EventKitUI.framework": 1,
-    "MessageUI.framework": 1
-}

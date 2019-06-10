@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2011, 2015
+ * © Copyright IBM Corp. 2011, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -23,9 +23,9 @@ Set callback for location database updates
  */
 exports.setLocationUpdatedCallback = function(callback) {
     MCEPlugin.pauseResumeCallback(function () {    
-        cordova.exec(null, null, "MCELocationPlugin", "setLocationUpdatedCallback", []);
+        cordova.exec(callback, this.error, "MCELocationPlugin", "setLocationUpdatedCallback", [false]);
     }, function () {
-        cordova.exec(callback, this.error, "MCELocationPlugin", "setLocationUpdatedCallback", []);
+        cordova.exec(callback, this.error, "MCELocationPlugin", "setLocationUpdatedCallback", [true]);
     });
 }
 

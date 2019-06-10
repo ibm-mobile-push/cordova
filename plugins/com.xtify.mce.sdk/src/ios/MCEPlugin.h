@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2011, 2015
+ * © Copyright IBM Corp. 2011, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -15,8 +15,12 @@
 @property NSString * eventCallback;
 @property NSString * registrationCallbacks;
 @property NSString * attributeCallback;
+@property NSString * actionNotRegistered;
+@property NSString * actionNotYetRegistered;
 
 - (void) phoneHome: (CDVInvokedUrlCommand*)command;
+- (void) sendActionNotYetRegistered:(NSDictionary*)details;
+- (void) sendActionNotRegistered:(NSDictionary*)details;
 - (void) sendEventSuccess:(NSArray*)events;
 - (void) sendEventFailure:(NSArray*)events error: (NSString*)error;
 - (void) sendRegistration;
@@ -34,24 +38,17 @@
 - (void) getRegistrationDetails:(CDVInvokedUrlCommand*)command;
 - (void) getAppKey:(CDVInvokedUrlCommand*)command;
 - (void) isRegistered:(CDVInvokedUrlCommand*)command;
-- (void) setChannelAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributesArray
-- (void) setUserAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributesArray
-- (void) updateChannelAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributesArray
-- (void) updateUserAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributesArray
-- (void) deleteChannelAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributeKeysArray
-- (void) deleteUserAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributeKeysArray
-- (void) queueSetChannelAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributesArray
-- (void) queueSetUserAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributesArray
-- (void) queueUpdateChannelAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributesArray
 - (void) queueUpdateUserAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributesArray
-- (void) queueDeleteChannelAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributeKeysArray
 - (void) queueDeleteUserAttributes:(CDVInvokedUrlCommand*)command; // Arguments attributeKeysArray
-- (void) addEvent:(CDVInvokedUrlCommand*)command; // Arguments event
 - (void) queueAddEvent:(CDVInvokedUrlCommand*)command;
 - (void) setBadge:(CDVInvokedUrlCommand*)command; // Arguments badge
 - (void) setIcon:(CDVInvokedUrlCommand*)command; // Arguments icon
 - (void) safeAreaInsets: (CDVInvokedUrlCommand*)command;
 - (void) userInvalidated: (CDVInvokedUrlCommand*)command;
+- (void) unregisterActionCallback:(CDVInvokedUrlCommand*)command;
+- (void) setActionNotRegisteredCallback:(CDVInvokedUrlCommand*)command;
+- (void) setActionNotYetRegisteredCallback:(CDVInvokedUrlCommand*)command;
+
 @end
 
 void sendAttributeCallback(NSString* callback, NSError*error, id <CDVCommandDelegate> delegate);

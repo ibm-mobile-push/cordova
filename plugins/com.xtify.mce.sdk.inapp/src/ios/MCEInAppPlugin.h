@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2015, 2016
+ * © Copyright IBM Corp. 2015, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -19,5 +19,5 @@
 - (void) registerInAppTemplate: (CDVInvokedUrlCommand*)command;
 - (void) executeInAppRule:(CDVInvokedUrlCommand*)command;
 - (void) addInAppMessage: (CDVInvokedUrlCommand*)command;
-
+- (void) syncInAppMessages: (CDVInvokedUrlCommand*)command;
 @end

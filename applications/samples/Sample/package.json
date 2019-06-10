@@ -1,20 +1,19 @@
 {
-    "name": "com.ibm.mce.samples.gcm",
-    "version": "3.6.4",
+    "name": "com.ibm.mce.samples",
+    "version": "3.6.5",
     "displayName": "Sample",
     "cordova": {
-        "platforms": [
-            "ios",
-            "android"
-        ],
+        "platforms": [],
         "plugins": {
             "cordova-plugin-whitelist": {},
-            "skwas-cordova-plugin-datetimepicker": {}
+            "skwas-cordova-plugin-datetimepicker": {},
+            "cordova-plugin-email-composer": {
+                "ANDROID_SUPPORT_V4_VERSION": "27.+"
+            }
         }
     },
     "dependencies": {
-        "cordova-android": "^7.1.4",
-        "cordova-ios": "~4.4.0",
+        "cordova-plugin-email-composer": "^0.9.2",
         "cordova-plugin-whitelist": "1",
         "skwas-cordova-plugin-datetimepicker": "^1.1.3"
     }

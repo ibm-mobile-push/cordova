@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2015, 2018
+ * © Copyright IBM Corp. 2015, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -21,6 +21,15 @@
 @end
 
 @implementation MCEInAppPlugin
+
+- (void) syncInAppMessages: (CDVInvokedUrlCommand*)command {
+    [NSNotificationCenter.defaultCenter addObserverForName:@"MCESyncDatabase" object:nil queue: NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+        CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:result callbackId: command.callbackId];
+    }];
+
+    [[MCEInboxQueueManager sharedInstance] syncInbox];
+}
 
 // Only needed so we can conform to the MCEInAppTemplate protocol
 +(void) registerTemplate { }

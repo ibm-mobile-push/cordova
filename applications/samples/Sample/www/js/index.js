@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2015, 2016
+ * © Copyright IBM Corp. 2015, 2019 
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -36,6 +36,11 @@ function updateLocationStatus() {
 }
 
 function setupLocationPage() {
+    if(typeof(MCELocationPlugin) == "undefined" || typeof(MCEGeofencePlugin) == "undefined") {
+        $('#geofenceButton').hide();
+        return;
+    }
+
     $('#geofences .status').click(function() {
         MCELocationPlugin.manualLocationInitialization();
     });
@@ -185,6 +190,11 @@ function updateBeaconStatus() {
 }
 
 function setupBeaconPage() {
+    if(typeof(MCELocationPlugin) == "undefined" || typeof(MCEBeaconPlugin) == "undefined") {
+        $('#beaconButton').hide();
+        return;
+    }
+
     var lastRegions = [];
     var beaconStatus = {};
 
@@ -239,6 +249,20 @@ function setupBeaconPage() {
     });
 }
 
+function setupInboxPage() {
+    if(typeof(MCEInboxPlugin) == "undefined") {
+        $('#inboxButton').hide();
+        return;
+    }
+
+    $('#inbox_refresh_button').click(function () {
+        MCEInboxPlugin.syncInboxMessages();
+    });
+
+    $('head').append( $('<link>', {rel: 'stylesheet', type: 'text/css', href: 'css/inbox.css'}) );
+    $('head').append( $('<link>', {rel: 'stylesheet', type: 'text/css', href: 'css/inbox_default.css'}) );
+    $('head').append( $('<link>', {rel: 'stylesheet', type: 'text/css', href: 'css/inbox_post.css'}) );
+}
 
 document.addEventListener('deviceready', function() {
     MCEPlugin.getPluginVersion(function(version) {
@@ -250,6 +274,7 @@ document.addEventListener('deviceready', function() {
     setupLocationPage();
     FastClick.attach(document.body);
     setupInAppPage();
+    setupInboxPage();
     setupDefaults();
     setupRegistrationPage();
     setupPushActionsPage();
@@ -258,14 +283,39 @@ document.addEventListener('deviceready', function() {
     setupAttributesPage();
     setupPhoneHomePage();
     setupBeaconPage();
+    setupCustomActionPage();
 
     if (navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
         setupCategoriesPage();
     } else {
-        $('#categoryNavigation').hide()
+        $('#categoryButton').hide()
         return;
     }
 }, false);
+
+function setupCustomActionPage() {    
+    MCEPlugin.setActionNotRegisteredCallback(function (actionType) {
+        $('#customActionStatus').attr('class', '').addClass('errorStatus').html("Unregistered Custom Action Received: " + actionType);
+    });
+    
+    MCEPlugin.setActionNotYetRegisteredCallback(function (actionType) {
+        $('#customActionStatus').attr('class', '').addClass('warningStatus').html("Previously Registered Custom Action Received: " + actionType);
+    });
+    
+    $('#customActionRegister').click(function () {
+        var type = $('#customActionType').val();
+        MCEPlugin.setRegisteredActionCallback(function(action, payload) {
+            $('#customActionStatus').attr('class', '').addClass('successStatus').html("Recevied push for action type: " + type);
+        }, type);
+        $('#customActionStatus').attr('class', '').addClass('successStatus').html("Registered handler for action type: " + type);
+    });
+    
+    $('#customActionUnregister').click(function () {
+        var type = $('#customActionType').val();
+        MCEPlugin.unregisterActionCallback(type);
+        $('#customActionStatus').attr('class', '').addClass('successStatus').html("Unregistered handler for action type: " + type);
+    });
+}
 
 function setupPhoneHomePage() {
     $('#phonehome_button').click(function() {
@@ -283,6 +333,22 @@ function guid() {
 }
 
 function setupInAppPage() {
+    if(typeof(MCEInAppPlugin) == "undefined") {
+        $('#inAppButton').hide();
+        return;
+    }
+
+    $('#inapp_refresh_button').click(function () {
+        MCEInAppPlugin.syncInAppMessages( function () {
+            // sync complete here.
+        });
+    });
+
+    $('head').append( $('<link>', {rel: 'stylesheet', type: 'text/css', href: 'css/inapp_media.css'}) );
+    $('head').append( $('<link>', {rel: 'stylesheet', type: 'text/css', href: 'css/inapp_banner.css'}) );
+    $('head').append( $('<link>', {rel: 'stylesheet', type: 'text/css', href: 'css/inapp_image.css'}) );
+    $('head').append( $('<link>', {rel: 'stylesheet', type: 'text/css', href: 'css/inapp_video.css'}) );
+
     $('#cannedInAppBannerTop').click(function() {
         var expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + 1);
@@ -611,6 +677,7 @@ function standardTypeSelection() {
 
 function setupPushActionsPage() {
     MCEPlugin.setRegisteredActionCallback(function(action, payload) {
+        console.log("Send Email Action Callback");
         if (navigator.userAgent.match(/Android/)) {
             window.open('mailto:' + action['value']['recipient'] + '?subject=' + encodeURIComponent(action['value']['subject']) + '&body=' + encodeURIComponent(action['value']['body']), '_system');
         } else {
